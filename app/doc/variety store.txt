@@ -1,0 +1,14 @@
+
+
+1. 의문의 요새 - 이력서 
+2. 기억의 복도 - 프로젝트
+3. 지식의 서재 - 기술블로그
+
+이력서 프로젝트 기술블로그
+
+
+책펼쳐지는거 참고용
+https://yunjeoming.dev/blog/make-interactive-web-animation1
+
+테일윈드 컴포넌트
+https://ui.shadcn.com/docs/components/carousel
