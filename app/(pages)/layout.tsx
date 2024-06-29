@@ -1,4 +1,3 @@
-
 import "../globals.css";
 
 export default function RootLayout({
@@ -8,7 +7,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="kr">
-      <body>{children}</body>
+      <body>
+        <div className="w-full h-screen relative">{children}</div>
+      </body>
     </html>
   );
 }
