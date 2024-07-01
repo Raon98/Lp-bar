@@ -13,7 +13,12 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-      
+      keyframes : {
+        meteor: {
+          '0%' : {top : '-10vh', transform : 'transformX(0px)', opeacity : '1'},
+          '100%' : {top : '100vh', transform : 'transformX(0px)', opeacity : '1'},
+        }
+      }
     },
   },
   plugins: [],
