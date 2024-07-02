@@ -68,3 +68,21 @@ table {
 	width: 30% !important;
 	height: 30% !important;
 }
+.star {
+	@apply relative top-1/2 w-[4px] h-[4px] rounded-[50%] animate-meteorAnimate opacity-0 
+	after:absolute after:top-[-1050%] after:left-[-1950%] after:w-[2500%] after:h-[2px] after:bg-[linear-gradient(to_left,#fff0,#fff)] 
+	after:content-[""] after:rotate-[-125deg] 
+	before:left-[-10px] before:top-[-10px] bottom-[-10px] right-[10px] before:absolute  before:w-[7px] before:h-[7px]
+}
+.star_ivory {
+	@apply before:shadow-custom-ivory
+}
+.star_darkgoldenrod {
+	@apply before:shadow-custom-darkgoldenrod 
+}
+.star_palevioletred {
+	@apply before:shadow-custom-palevioletred  
+}
+.star_mediumslateblue {
+	@apply before:shadow-custom-mediumslateblue
+}
