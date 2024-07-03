@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 
 const MAX_STAR_COUNT = 50;
+const colors = ['palevioletred','ivory','mediumslateblue','darkgoldenrod']
 
 interface MeteorEffectProps {
   count? : number;
@@ -21,8 +22,12 @@ interface MeteorEffectProps {
 export default function MeteorEffectLayout({ count = 12, white = false, maxDelay = 15, minSpeed = 2 , maxSpeed =  4, angle = 30, direction  = "right", children , className }: MeteorEffectProps) {
   const startCount = count < MAX_STAR_COUNT ? count : MAX_STAR_COUNT;
   const [starInterval, setStarInterval] = useState<number>(0);
-  const colors = ['palevioletred','ivory','mediumslateblue','darkgoldenrod']
-  const animationDelay = ['0','25','50','75']
+  const [useMounted, setUseMounted] = useState<boolean>(false)
+
+  useEffect(()=> {
+    setUseMounted(true);
+  },[])
+
   useEffect(() => {
     const calcStarInterval = () => {
       let innerWidth = window.innerWidth;
@@ -34,6 +39,11 @@ export default function MeteorEffectLayout({ count = 12, white = false, maxDelay
       window.removeEventListener("resize",calcStarInterval);
     }
   }, [])
+  
+  if(!useMounted) return null
+  
+
+  
   return (
     <div className={`absolute top-0 left-0 w-full h-full overflow-hidden bg-slate-800  ${className}`}>
       {(new Array(startCount).fill(0).map((_,idx) => {
@@ -41,7 +51,7 @@ export default function MeteorEffectLayout({ count = 12, white = false, maxDelay
       const animationDelay =`${Math.random() * maxDelay}s`;
       const animationDuration = maxSpeed > minSpeed ? `${minSpeed + Math.random() * maxSpeed}s` : `${2 + Math.random() * 4}`; 
       const starColor = `${colors[idx % colors.length]}`;
-      return <div key={idx}  className={`star star_${starColor} delay-[1000]s`} style={{left}}></div>
+      return <div key={idx}  className={`star star_${starColor} delay-[1000]s`} style={{left,animationDelay,animationDuration}}></div>
       }))}
       {children ?? children}
     </div>
