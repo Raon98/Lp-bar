@@ -1,12 +1,12 @@
 "use client";
 
 import MeteorEffectLayout from "@/app/common/component/MeteorEffectLayout";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Intro() {
   const [useMounted, setUseMounted] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     setUseMounted(!useMounted);
   }, []);
@@ -15,7 +15,10 @@ export default function Intro() {
     <>
       <div className="relative flex items-center z-10 h-full overflow-hidden">
         <div className="w-1/3 z-10 flex justify-center">
-          <button className="cursor-pointer w-12 mb-80">
+          <button
+            className="cursor-pointer w-12 mb-80"
+            onClick={() => router.push("/shop")}
+          >
             <div className="flex flex-col justify-center items-center text-3xl  text-white gap-5 ">
               {["입", "장", "하", "기"].map((char, index) => (
                 <span key={index}>{char}</span>

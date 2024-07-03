@@ -1,9 +1,24 @@
 "use client";
-import Image from 'next/image';
+
+import { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 export default function MainLayout() {
-  return <>
-  <div className="w-full h-screen p-3">
-  </div>
-  </>;
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      // setIsLoading(!isLoading);
+    }, 3000);
+  }, []);
+  return ( 
+    <>
+      {isLoading && <Loading />}
+      {!isLoading && (
+        <>
+          <div className="">메인페이지입니다</div>
+        </>
+      )}
+    </>
+  );
 }
