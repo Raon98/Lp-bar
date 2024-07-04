@@ -31,11 +31,15 @@ const config: Config = {
             '0%' : {opacity : '0'}, 
             '100%' : {opacity : '1'}       
         },
-
+        fadeOut : {
+          '0%' : {opacity : '1'}, 
+          '100%' : {opacity : '0'}       
+      },
       },
       animation : {
         'meteorAnimate' : 'meteorKeyframes 4s ease-in infinite',
-        'fadeIn' : 'light 1s linear 1 0s normal forwards'
+        'fadeIn' : 'fadeIn 1s linear 1 0s normal forwards',
+        'fadeOut' : 'fadeOut 1s linear 1 0s normal forwards'
       }
     },
   },

@@ -6,11 +6,18 @@ interface LoadingState {
 
 
 interface LoadingAction {
-    setIntroState : () => void
+    setIntroState : (callback?:()=>void) => void
 }
 const useLoadingStore = create<LoadingState & LoadingAction>((set) => ({
     introState : true,
-    setIntroState : () => set(state => ({introState : !state.introState}))
+    setIntroState : (callback?) => {
+        
+        set(() => ({introState : false}))
+
+        setTimeout(()=> {
+            if(callback) callback();
+        },1000)
+    }
 }))
 
 export default useLoadingStore
