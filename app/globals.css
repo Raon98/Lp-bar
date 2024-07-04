@@ -76,15 +76,16 @@ table {
 	after:content-[""] after:rotate-[-125deg] 
 	before:left-[-10px] before:top-[-10px] bottom-[-10px] right-[10px] before:absolute  before:w-[7px] before:h-[7px]
 }
-.star_ivory {
-	@apply before:shadow-custom-ivory
+.star_color1 {
+	@apply before:shadow-custom-meteor1 
 }
-.star_darkgoldenrod {
-	@apply before:shadow-custom-darkgoldenrod 
+.star_color2 {
+	@apply before:shadow-custom-meteor2 
 }
-.star_palevioletred {
-	@apply before:shadow-custom-palevioletred  
+.star_color3  {
+	@apply before:shadow-custom-meteor3 
 }
-.star_mediumslateblue {
-	@apply before:shadow-custom-mediumslateblue
+.star_color4 {
+	@apply before:shadow-custom-meteor4 
 }
+

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 
 const MAX_STAR_COUNT = 50;
-const colors = ['palevioletred','ivory','mediumslateblue','darkgoldenrod']
+const colors = ['color1','color2','color3','color4']
 
 interface MeteorEffectProps {
   count? : number;
@@ -39,7 +39,7 @@ export default function MeteorEffectLayout({ count = 12, white = false, maxDelay
       window.removeEventListener("resize",calcStarInterval);
     }
   }, [])
-  
+
   if(!useMounted) return null
   
 
