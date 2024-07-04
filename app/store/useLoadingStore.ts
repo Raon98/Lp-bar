@@ -1,43 +1,40 @@
 import { create } from "zustand";
 
 interface LoadingState {
-  clean: CleanType;
+  state: {
+    intro: boolean;
+  };
+  clean: {
+    intro: boolean;
+  };
 }
 
-interface CleanType {
+interface LoadingType {
   intro: boolean;
 }
 
 interface LoadingAction {
-  setState: (key: keyof CleanType, state?: boolean) => void;
-  cleanLoading: (key: keyof CleanType) => void;
-  state: (option: keyof LoadingState ,key: keyof CleanType) => boolean;
+  setState: (option: keyof LoadingState, key: keyof LoadingType, state?: boolean) => void;
+  getState: (option: keyof LoadingState, key: keyof LoadingType) => boolean;
 }
 
-/* Clean */
-const CleanDefault: CleanType = {
-  intro: false,
-};
-
 const useLoadingStore = create<LoadingState & LoadingAction>((set, get) => ({
-  clean: CleanDefault,
-  setState: (key, state = true) => {
+  state: {
+    intro: false,
+  },
+  clean: {
+    intro: false,
+  },
+  setState: (option, key, state = true) => {
     set((currentState) => ({
-      clean: {
-        ...currentState.clean,
+      ...currentState,
+      [option]: {
+        ...currentState[option],
         [key]: state,
       },
     }));
   },
-  cleanLoading: (key) => {
-    set((currentState) => ({
-      clean: {
-        ...currentState.clean,
-        [key]: !currentState.clean[key],
-      },
-    }));
-  },
-  state: (option ,key) => {
+  getState: (option, key) => {
     const currentState = get();
     return currentState[option][key];
   },

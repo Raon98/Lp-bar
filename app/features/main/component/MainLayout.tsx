@@ -1,25 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Loading from "./Loading";
 import useLoadingStore from "@/app/store/useLoadingStore";
+import { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 export default function MainLayout() {
   const [isMount, setIsMount] = useState(true);
-  const {state,cleanLoading} = useLoadingStore();
-  const clean = state('clean','intro')
+  const { clean, setState } = useLoadingStore();
   useEffect(() => {
     setIsMount(!isMount);
 
     setTimeout(() => {
-      cleanLoading('intro')
+      setState("clean", "intro");
     }, 3000);
-
   }, []);
 
   return (
     <>
-      {!clean && <Loading />}
+      {!clean.intro && <Loading />}
       {!isMount && (
         <>
           <div className="w-full h-full overflow-hidden relative">
