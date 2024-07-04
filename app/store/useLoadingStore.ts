@@ -9,7 +9,7 @@ interface LoadingAction {
     setIntroState : () => void
 }
 const useLoadingStore = create<LoadingState & LoadingAction>((set) => ({
-    introState : false,
+    introState : true,
     setIntroState : () => set(state => ({introState : !state.introState}))
 }))
 
