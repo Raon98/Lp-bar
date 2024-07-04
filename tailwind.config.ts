@@ -12,10 +12,10 @@ const config: Config = {
         '-125': '-125deg',
       },
       boxShadow: {
-        'custom-ivory': '7px 7px 3px ivory',
-        'custom-darkgoldenrod': '7px 7px 3px darkgoldenrod',
-        'custom-palevioletred': '7px 7px 3px palevioletred',
-        'custom-mediumslateblue': '7px 7px 3px mediumslateblue'
+        'custom-meteor1': '2px 2px 8px #FFFFFF',
+        'custom-meteor2': '2px 2px 8px #c77eff',
+        'custom-meteor3': '2px 2px 8px #f6ff7e',
+        'custom-meteor4': '2px 2px 8px #ff8d7e'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -27,15 +27,15 @@ const config: Config = {
           '0%' : {top : '-10vh', transform : 'translateX(0px)', opacity : '1'},
           '100%': { top: '110vh', transform: 'translateX(100vh)', opacity: '1' },
         },
-        light : {
-            '0%' : {opacity : '1'}, 
-            '50%' : {opacity : '0.6'}, 
-            '100%' : {opacity : '1'},         
-        }
+        fadeIn : {
+            '0%' : {opacity : '0'}, 
+            '100%' : {opacity : '1'}       
+        },
+
       },
       animation : {
         'meteorAnimate' : 'meteorKeyframes 4s ease-in infinite',
-        'starLight' : 'light 2.5s ease-in infinite'
+        'fadeIn' : 'light 1s linear 1 0s normal forwards'
       }
     },
   },
