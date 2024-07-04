@@ -1,27 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Loading from "./Loading";
 import useLoadingStore from "@/app/store/useLoadingStore";
 
 export default function MainLayout() {
-  const {setIntroState} = useLoadingStore(state => state);
-  const [loading, setLoading] = useState(true);
-  
+  const [isMount, setIsMount] = useState(true);
+  const {state,cleanLoading} = useLoadingStore();
+  const clean = state('clean','intro')
   useEffect(() => {
-    setTimeout(() => {
-      setIntroState(()=>{
-        setLoading(!loading)
-      })
-    }, 1000);
-  }, [setIntroState]);
+    setIsMount(!isMount);
 
-  return ( 
+    setTimeout(() => {
+      cleanLoading('intro')
+    }, 3000);
+
+  }, []);
+
+  return (
     <>
-      {loading && <Loading />}
-      {!loading && (
+      {!clean && <Loading />}
+      {!isMount && (
         <>
-          <div className="">메인페이지입니다</div>
+          <div className="w-full h-full overflow-hidden relative">
+            <img
+              src="/assets/images/tree.jpg"
+              alt="shop"
+              className="absolute left-0 right-0 top-0 bottom-0 bg-no-repeat bg-transparent bg-center object-cover w-screen h-screen "
+            />
+            <div className=" relative flex justify-center items-center w-full h-screen">
+              <img
+                src="/assets/images/carpet.jpg"
+                alt="shop"
+                className="bg-no-repeat bg-transparent bg-center object-cover w-[80vw]"
+              ></img>
+            </div>
+          </div>
         </>
       )}
     </>

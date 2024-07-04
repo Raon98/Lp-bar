@@ -39,7 +39,7 @@ const config: Config = {
       animation : {
         'meteorAnimate' : 'meteorKeyframes 4s ease-in infinite',
         'fadeIn' : 'fadeIn 1s linear 1 0s normal forwards',
-        'fadeOut' : 'fadeOut 1s linear 1 0s normal forwards'
+        'fadeOut' : 'fadeOut 0.6s linear 1 0s normal forwards'
       }
     },
   },
