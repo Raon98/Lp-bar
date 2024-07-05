@@ -8,6 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'gray-rgba-0.3': 'rgba(255,255,255,0.3)',
+        'gray-rgba-0.5': 'rgba(255,255,255,0.5)',
+        'gray-rgba-0.7': 'rgba(255,255,255,0.7)',
+      },
+      backdropFilter : {
+        '30' : '30px'
+      },
       rotate: {
         '-125': '-125deg',
         '-45' : '-45deg'
@@ -44,8 +52,6 @@ const config: Config = {
       }
     },
   },
-  plugins: [
-    require("@xpd/tailwind-3dtransforms")
-  ],
+  plugins: [],
 };
 export default config;
