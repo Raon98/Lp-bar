@@ -7,10 +7,16 @@ import { useAsyncStore } from "@/app/hooks/useAsyncStore";
 
 export default function MainLayout() {
   const [isMount, setIsMount] = useState(true);
-  const { setState} = useLoadingStore();
+  const { clean,setState } = useLoadingStore();
   const introStore = useAsyncStore(useLoadingStore, (state) => state);
+  const widthRandom = Math.floor(Math.random() * 1920);
+  const heightRandom = Math.floor(Math.random() * 1080);
   
   useEffect(() => {
+    if(clean.intro){
+      setState("clean", "intro",false);
+      setState("state", "intro",false);
+    }
     setIsMount(!isMount);
 
     setTimeout(() => {
@@ -32,14 +38,17 @@ export default function MainLayout() {
               <img
                 src="/assets/images/carpet.png"
                 alt="shop"
-                className="bg-no-repeat bg-transparent bg-center object-cover w-[70vw] block opacity-95"
+                className="bg-no-repeat bg-transparent bg-center object-cover w-[1280px] block opacity-95"
               ></img>
-              <img
-                src="/assets/images/watch.png"
-                alt="shop"
-                className="bg-no-repeat bg-transparent bg-center object-cover absolute left-0 top-0 w-[10vw] rotate-z-[-45d"
-              ></img>
+              <div className="absolute left-[10%] top-[15%]">
+                <img
+                  src="/assets/images/watch.png"
+                  alt="shop"
+                  className="bg-no-repeat bg-transparent bg-center object-cover  w-[200px] rotate-[-15deg]"
+                ></img>
+              </div>
             </div>
+            
           </div>
         </>
       )}

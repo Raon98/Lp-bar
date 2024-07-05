@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       rotate: {
         '-125': '-125deg',
+        '-45' : '-45deg'
       },
       boxShadow: {
         'custom-meteor1': '2px 2px 8px #FFFFFF',
