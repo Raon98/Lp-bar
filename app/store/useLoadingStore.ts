@@ -1,32 +1,34 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-interface LoadingState {
-  state: {
-    intro: boolean;
-  };
-  clean: {
-    intro: boolean;
-  };
-}
+type Store = LoadingState & LoadingAction;
 
-interface LoadingType {
+interface State {
   intro: boolean;
 }
 
-interface LoadingAction {
-  setState: (option: keyof LoadingState, key: keyof LoadingType, state?: boolean) => void;
-  getState: (option: keyof LoadingState, key: keyof LoadingType) => boolean;
+interface LoadingState {
+  state: State;
+  clean: State;
 }
 
-const useLoadingStore = create<LoadingState & LoadingAction>((set, get) => ({
+interface LoadingAction {
+  setState: (option: keyof LoadingState, key: keyof State, state?: boolean) => void;
+  getState: (option: keyof LoadingState, key: keyof State) => boolean;
+}
+
+const initialState: LoadingState = {
   state: {
     intro: false,
   },
   clean: {
     intro: false,
   },
+};
+
+const actions = (set: any, get: any): LoadingAction => ({
   setState: (option, key, state = true) => {
-    set((currentState) => ({
+    set((currentState: LoadingState) => ({
       ...currentState,
       [option]: {
         ...currentState[option],
@@ -38,6 +40,19 @@ const useLoadingStore = create<LoadingState & LoadingAction>((set, get) => ({
     const currentState = get();
     return currentState[option][key];
   },
-}));
+});
+
+const useLoadingStore = create<Store>()(
+  persist(
+    (set, get) => ({
+      ...initialState,
+      ...actions(set, get),
+    }),
+    {
+      name: 'loading-storage', 
+      getStorage: () => localStorage,
+    }
+  )
+);
 
 export default useLoadingStore;
