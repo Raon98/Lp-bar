@@ -3,10 +3,13 @@
 import useLoadingStore from "@/app/store/useLoadingStore";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
+import { useAsyncStore } from "@/app/hooks/useAsyncStore";
 
 export default function MainLayout() {
   const [isMount, setIsMount] = useState(true);
-  const { clean, setState } = useLoadingStore();
+  const { setState} = useLoadingStore();
+  const introStore = useAsyncStore(useLoadingStore, (state) => state);
+  
   useEffect(() => {
     setIsMount(!isMount);
 
@@ -14,10 +17,9 @@ export default function MainLayout() {
       setState("clean", "intro");
     }, 3000);
   }, []);
-
   return (
     <>
-      {!clean.intro && <Loading />}
+      {!introStore?.clean.intro && <Loading />}
       {!isMount && (
         <>
           <div className="w-full h-full overflow-hidden relative">
@@ -31,6 +33,11 @@ export default function MainLayout() {
                 src="/assets/images/carpet.png"
                 alt="shop"
                 className="bg-no-repeat bg-transparent bg-center object-cover w-[70vw] block opacity-95"
+              ></img>
+              <img
+                src="/assets/images/watch.png"
+                alt="shop"
+                className="bg-no-repeat bg-transparent bg-center object-cover absolute left-0 top-0 w-[10vw] rotate-z-[-45d"
               ></img>
             </div>
           </div>

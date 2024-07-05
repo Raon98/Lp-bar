@@ -1,14 +1,18 @@
 "use client";
 
 import MeteorEffectLayout from "@/app/common/component/MeteorEffectLayout";
+import useLoadingStore from "@/app/store/useLoadingStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Intro() {
   const [useMounted, setUseMounted] = useState(false);
   const router = useRouter();
+  const { setState } = useLoadingStore();
   useEffect(() => {
     setUseMounted(!useMounted);
+    setState("state", "intro",false);
+    setState("clean", "intro",false);
   }, []);
 
   return (

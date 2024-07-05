@@ -51,6 +51,9 @@ const useLoadingStore = create<Store>()(
     {
       name: 'loading-storage', 
       getStorage: () => localStorage,
+      onRehydrateStorage : () => {
+        
+      }
     }
   )
 );
