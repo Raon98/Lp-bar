@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <html lang="kr">
       <body>
-        <div className="w-full h-screen relative">{children}</div>
+        <div className="h-screen overflow-y-auto px-3 py-5">{children}</div>
       </body>
     </html>
   );
