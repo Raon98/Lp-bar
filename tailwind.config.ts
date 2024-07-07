@@ -8,10 +8,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': {'max': '440px'},
+      },
       colors: {
         'gray-rgba-0.3': 'rgba(255,255,255,0.3)',
         'gray-rgba-0.5': 'rgba(255,255,255,0.5)',
         'gray-rgba-0.7': 'rgba(255,255,255,0.7)',
+        'border-rgba-0.3': 'rgba(0,0,0,0.3)',
+        matte: {
+          purple: '#8748E1',
+          green: '#65D35D',
+          red: '#EF6363',
+          skyblue: '#87CEEB',
+          yellow: '#FFD700',
+        },
       },
       backdropFilter : {
         '30' : '30px'
@@ -24,7 +35,9 @@ const config: Config = {
         'custom-meteor1': '2px 2px 8px #FFFFFF',
         'custom-meteor2': '2px 2px 8px #c77eff',
         'custom-meteor3': '2px 2px 8px #f6ff7e',
-        'custom-meteor4': '2px 2px 8px #ff8d7e'
+        'custom-meteor4': '2px 2px 8px #ff8d7e',
+        'custom-border' : '1px 10px 5px gainsboro',
+        'custom-border-1' : '1px 2px 10px rgba(0,0,0,0.7)'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

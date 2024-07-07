@@ -89,3 +89,6 @@ table {
 	@apply before:shadow-custom-meteor4 
 }
 
+.item_block {
+	@apply w-[300px] h-[300px] border  border-solid border-border-rgba-0.3 rounded-sm shadow-custom-border
+}
