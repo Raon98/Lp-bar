@@ -1,14 +1,14 @@
 "use client";
 
+import Header from "@/app/common/component/Header";
+import { useAsyncStore } from "@/app/hooks/useAsyncStore";
 import useLoadingStore from "@/app/store/useLoadingStore";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
-import { useAsyncStore } from "@/app/hooks/useAsyncStore";
-import Header from "@/app/common/component/Header";
 
 export default function MainLayout() {
   const [isMount, setIsMount] = useState(true);
-  const {setState } = useLoadingStore();
+  const { setState } = useLoadingStore();
   const introStore = useAsyncStore(useLoadingStore, (state) => state);
 
   useEffect(() => {
@@ -25,11 +25,16 @@ export default function MainLayout() {
         <>
           {introStore?.clean.intro && <Header />}
           <div className="flex flex-col justify-start w-full h-screen overflow-y-auto relative mt-14">
-            <div className="flex flex-col justify-center items-center h-1/4">
+            <div className="flex flex-col justify-center items-center h-[300px]">
               <div>처리야 잡화점에 오신걸 환영합니다.</div>
               <div>무엇을 구매하시겠습니까?</div>
             </div>
-            <div className="flex justify-center items-center gap-10 h-3/4">
+            <div className="flex justify-center  gap-10 h-3/4">
+              <div className="item_block">아이템1 - 이력서</div>
+              <div className="item_block">아이템2 - 프로젝트</div>
+              <div className="item_block">아이템3 - 시계</div>
+            </div>
+            {/* <div className="flex justify-center items-center gap-10 h-3/4">
               <div>아이템1 - 이력서</div>
               <div>아이템2 - 프로젝트</div>
               <div>아이템3 - 시계</div>
@@ -38,12 +43,7 @@ export default function MainLayout() {
               <div>아이템1 - 이력서</div>
               <div>아이템2 - 프로젝트</div>
               <div>아이템3 - 시계</div>
-            </div>
-            <div className="flex justify-center items-center gap-10 h-3/4">
-              <div>아이템1 - 이력서</div>
-              <div>아이템2 - 프로젝트</div>
-              <div>아이템3 - 시계</div>
-            </div>
+            </div> */}
             {/* <img
               src="/assets/images/tree.jpg"
               alt="shop"
