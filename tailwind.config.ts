@@ -56,12 +56,22 @@ const config: Config = {
         fadeOut : {
           '0%' : {opacity : '1'}, 
           '100%' : {opacity : '0'}       
-      },
+        },
+        switchOn : {
+          '0%' : {transform : 'rotate(0)'}, 
+          '100%' : {transform : 'rotate(80deg)'} 
+        },
+        spin : {
+          '0%' : {transform : 'rotate(0) scale(1.2)',transformOrigin: 'center center' } , 
+          '100%' : {transform : 'rotate(360deg) scale(1.2)',transformOrigin: 'center center'} 
+        }
       },
       animation : {
         'meteorAnimate' : 'meteorKeyframes 4s ease-in infinite',
         'fadeIn' : 'fadeIn 1s linear 1 0s normal forwards',
-        'fadeOut' : 'fadeOut 1s linear 1 0s normal forwards'
+        'fadeOut' : 'fadeOut 1s linear 1 0s normal forwards',
+        'spin' : 'spin 2s linear infinite 0.5s normal',
+        'switchOn' : 'switchOn 0.5s linear 1 0s normal forwards'
       }
     },
   },
