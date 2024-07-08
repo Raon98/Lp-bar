@@ -44,7 +44,7 @@ export default function Intro() {
           )}
         >
           <div className="sr-only">입장버튼</div>
-          <div className="flex justify-center items-center w-full h-full">
+          <div className="flex justify-center items-center w-full h-full rounded-[50%] shadow-custom-border-2">
             <button
               className="bg-amber-900 w-[4rem] h-[4rem] rounded-[50%] border border-solid border-gray-800 shadow-custom-border-1 relative"
               onClick={() => func.onclick()}

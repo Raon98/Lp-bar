@@ -16,6 +16,7 @@ const config: Config = {
         'gray-rgba-0.5': 'rgba(255,255,255,0.5)',
         'gray-rgba-0.7': 'rgba(255,255,255,0.7)',
         'border-rgba-0.3': 'rgba(0,0,0,0.3)',
+
         matte: {
           purple: '#8748E1',
           green: '#65D35D',
@@ -37,7 +38,9 @@ const config: Config = {
         'custom-meteor3': '2px 2px 8px #f6ff7e',
         'custom-meteor4': '2px 2px 8px #ff8d7e',
         'custom-border' : '1px 10px 5px gainsboro',
-        'custom-border-1' : '1px 2px 10px rgba(0,0,0,0.7)'
+        'custom-border-1' : '1px 2px 10px rgba(0,0,0,0.7)',
+        'custom-border-2': '1px 1px 10px rgba(0,0,0,0.7)'
+        
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
