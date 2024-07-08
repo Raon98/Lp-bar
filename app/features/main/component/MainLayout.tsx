@@ -24,7 +24,7 @@ export default function MainLayout() {
                   alt="recode"
                   className="bg-no-repeat bg-transparent bg-center object-cover w-full"
                 ></img>
-                <span className=' before:absolute before:w-[10rem] before:h-full  before:mr-[20%] before:top-0 before:right-0 before:content-[" "] before:bg-[url("/assets/images/toneArm.png")] before:bg-center before:bg-[length:7.5rem_auto] before:bg-no-repeat '></span>
+                <span className="before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-100%] before:translate-y-[-10%] before:bg-contain"></span>
               </div>
             </div>
           </div>
