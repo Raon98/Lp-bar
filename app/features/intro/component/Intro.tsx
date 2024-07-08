@@ -7,7 +7,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 export default function Intro() {
   const [useSwitch, setUseSwitch] = useState(false);
-  const [useSpin, setUseSpin] = useState(false);
+  const [useSpinStop, setUseSpinStop] = useState(false);
+  const [useRecode, seUseRecode] = useState(false);
   const router = useRouter();
   const { setState } = useLoadingStore();
 
@@ -19,28 +20,51 @@ export default function Intro() {
 
   useEffect(() => {
     if (useSwitch) {
-      setUseSpin(true);
+      setUseSpinStop(true);
     }
   }, [useSwitch]);
+
+  useEffect(() => {
+    if (useSpinStop) {
+      setTimeout(()=>{
+        console.log('실행')
+        setUseSpinStop(false);
+        seUseRecode(true);
+      },3000)
+    }
+  }, [useSpinStop]);
+
+  useEffect(()=>{
+    if(useRecode){
+      setTimeout(()=>{
+        router.push('/main')
+      },1000)
+    }
+  },[useRecode])
+
   return (
     <>
-      <MeteorEffectLayout className="z-[9]" />
+      {!useRecode && <MeteorEffectLayout className="z-[9]" />}
       <div className="relative flex items-center justify-center h-full overflow-hidden">
-        <div className="flex items-center justify-center bg-transparent rotate-180 relative z-10">
+        <div className="flex items-center justify-center bg-transparent rotate-180 relative z-30">
           <div className="sr-only">레코드판</div>
           <img
             src="/assets/images/recode.png"
             alt="recode"
             className={cn(
               "bg-no-repeat bg-transparent bg-center object-cover w-full mt-[100%] scale-[1.2]",
-              useSpin && "animate-spin"
+              (!useRecode && !useSpinStop) && 'animate-spin',
+              useSpinStop && "animate-spinStop",
+              useRecode && 'animate-introRecodeUp',
+
             )}
           ></img>
         </div>
         <div
           className={cn(
-            `absolute z-20 w-[5rem] h-[5rem] right-0 bg-[brown] rounded-[50%] bottom-0 mb-[5rem] mr-[7rem] xs:mr-[2rem]`,
-            useSwitch && "animate-switchOn"
+            `absolute z-40 w-[5rem] h-[5rem] right-0 bg-[brown] rounded-[50%] bottom-0 mb-[5rem] mr-[7rem] xs:mr-[2rem] rotate-[80deg]`,
+            useSwitch && "animate-switchStop",
+            useRecode && 'z-0'
           )}
         >
           <div className="sr-only">입장버튼</div>
@@ -53,20 +77,26 @@ export default function Intro() {
             </button>
           </div>
         </div>
-        <div className="absolute z-20 bottom-0 mb-[8rem] xs:mb-[27.5rem]">
+        <div className={cn('absolute z-20 bottom-0 mb-[8rem] xs:mb-[27.5rem]',
+          useRecode && 'animate-fadeOut'
+        )}>
           <img
             src="/assets/images/intro-text.png"
             alt="recode"
             className="bg-no-repeat bg-transparent bg-center object-cover w-full mt-[100%]"
           ></img>
         </div>
-        <div className="absolute z-20 bottom-0 mb-[6rem] text-[wheat] text-[1rem]">
+        <div className={cn('absolute z-20 bottom-0 mb-[6rem] text-[wheat] text-[1rem]',
+          useRecode && 'animate-fadeOut'
+        )}>
           Cheol's Lp Bar
         </div>
-        <div className="absolute left-0 top-0 flex w-full h-screen z-0">
+        <div className="absolute left-0 top-0 flex w-full h-screen z-100">
           <div className="w-[20%] h-full bg-matte-purple"></div>
           <div className="w-[20%] h-full bg-matte-green"></div>
-          <div className="w-[20%] h-full bg-matte-red"></div>
+          <div className={cn('w-[20%] h-full bg-matte-red',
+            useRecode && 'animate-introScale'
+          )}></div>
           <div className="w-[20%] h-full bg-matte-skyblue"></div>
           <div className="w-[20%] h-full bg-matte-yellow"></div>
         </div>

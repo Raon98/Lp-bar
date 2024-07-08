@@ -60,21 +60,38 @@ const config: Config = {
           '0%' : {opacity : '1'}, 
           '100%' : {opacity : '0'}       
         },
-        switchOn : {
-          '0%' : {transform : 'rotate(0)'}, 
-          '100%' : {transform : 'rotate(80deg)'} 
+        switchStop : {
+          '0%' : {transform : 'rotate(80deg)'}, 
+          '100%' : {transform : 'rotate(0)'} 
         },
         spin : {
           '0%' : {transform : 'rotate(0) scale(1.2)',transformOrigin: 'center center' } , 
           '100%' : {transform : 'rotate(360deg) scale(1.2)',transformOrigin: 'center center'} 
+        },
+        spinStop : {
+          '0%' : {transform : 'rotate(-360deg) scale(1.2)',transformOrigin: 'center center' } , 
+          '100%' : {transform : 'rotate(0) scale(1.2)',transformOrigin: 'center center'} 
+        },
+        recodeUp : {
+          '0%' : {marginTop : '90%'},
+          '30%' : {marginTop : '60%'},
+          '100%' : {marginTop : '300%'}
+        },
+        scale : {
+          '0%' : {transform :'scale(1)' }, 
+          '100%' : {transform :'scale(10)'}, 
         }
       },
       animation : {
         'meteorAnimate' : 'meteorKeyframes 4s ease-in infinite',
         'fadeIn' : 'fadeIn 1s linear 1 0s normal forwards',
-        'fadeOut' : 'fadeOut 1s linear 1 0s normal forwards',
-        'spin' : 'spin 2s linear infinite 0.5s normal',
-        'switchOn' : 'switchOn 0.5s linear 1 0s normal forwards'
+        'fadeOut' : 'fadeOut 1s linear 1 0.2s normal forwards',
+        'spin' : 'spin 2.5s linear infinite 0.5s normal',
+        'spinStop' : 'spinStop 3s ease-out 1 0s normal forwards',
+        'switchStop' : 'switchStop 0.5s linear 1 0s normal forwards',
+        'introRecodeUp' : 'recodeUp 1.3s linear 1 0s normal forwards',
+        'introScale' : 'scale 1s linear 1 0s normal forwards',
+
       }
     },
   },
