@@ -4,12 +4,14 @@ import { persist } from "zustand/middleware";
 type Store = LoadingState & LoadingAction;
 
 interface State {
-  intro: boolean;
+  switch?: boolean;
+  spinStop?: boolean;
+  recode?: boolean;
 }
 
 interface LoadingState {
-  state: State;
-  clean: State;
+  intro : State,
+  main : State,
 }
 
 interface LoadingAction {
@@ -18,12 +20,14 @@ interface LoadingAction {
 }
 
 const initialState: LoadingState = {
-  state: {
-    intro: false,
+  intro : {
+    switch: false,
+    spinStop: false,
+    recode: false
   },
-  clean: {
-    intro: false,
-  },
+  main : {
+
+  }
 };
 
 const actions = (set: any, get: any): LoadingAction => ({
@@ -42,20 +46,10 @@ const actions = (set: any, get: any): LoadingAction => ({
   },
 });
 
-const useLoadingStore = create<Store>()(
-  persist(
-    (set, get) => ({
-      ...initialState,
-      ...actions(set, get),
-    }),
-    {
-      name: 'loading-storage', 
-      getStorage: () => localStorage,
-      onRehydrateStorage : () => {
-        
-      }
-    }
-  )
-);
 
-export default useLoadingStore;
+const useMotionStore = create<Store>((set,get) => ({
+    ...initialState,
+    ...actions(set, get),
+}));
+
+export default useMotionStore;
