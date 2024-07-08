@@ -7,7 +7,7 @@ const Header = () => {
           <div className="flex items-center justify-center">로고</div>
           <div className="flex items-center justify-center gap-x-12">
             <div>
-                이력서
+                음소거
             </div>
             </div>
         </div>
