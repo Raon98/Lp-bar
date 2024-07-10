@@ -80,6 +80,10 @@ const config: Config = {
         scale : {
           '0%' : {transform :'scale(1)' }, 
           '100%' : {transform :'scale(10)'}, 
+        },
+        mainArmSpin : {
+          '0%' : { transform : 'translate(-120%, -12%)'},
+          '100%' : { transform : 'translate(-120%, -12%) rotate(45deg)'},
         }
       },
       animation : {
@@ -91,6 +95,7 @@ const config: Config = {
         'switchStop' : 'switchStop 0.5s linear 1 0s normal forwards',
         'introRecodeUp' : 'recodeUp 1.3s linear 1 0s normal forwards',
         'introScale' : 'scale 1s linear 1 0s normal forwards',
+        'mainArmSpin' : 'mainArmSpin 0.5s linear 1 0s normal forwards'
 
       }
     },
