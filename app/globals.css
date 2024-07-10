@@ -52,18 +52,18 @@ table {
 }
 
 *,*::before,*::after {
-	@apply font-['Mapo'] box-border;
+	@apply font-['Pretend'] box-border;
 }
 @layer base{
 	@font-face {
-		font-family: 'euly';
+		font-family: 'Pretend';
 		font-weight: 400;
-		src: url('/assets/fonts/Eulyoo1945-Regular.otf')
+		src: url('/assets/fonts/Pretendard.woff')
 	}
 	@font-face {
-		font-family: 'Mapo';
+		font-family: 'DIGI';
 		font-weight: 400;
-		src: url('/assets/fonts/MapoFlowerIsland.ttf')
+		src: url('/assets/fonts/DS-DIGI.TTF')
 	}
 }
 

@@ -24,6 +24,13 @@ export default function MainLayout() {
                 className="bg-no-repeat bg-transparent bg-center object-cover w-full"
               ></img>
               <span className="before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain"></span>
+              <div className="absolute left-[19%] top-[26%] w-[45%]">
+                <img
+                  src="/assets/images/redLp.png"
+                  alt="lp"
+                  className="bg-no-repeat bg-transparent bg-center object-cover w-full"
+                ></img>
+              </div>
             </div>
           </div>
         </div>
