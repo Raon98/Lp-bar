@@ -4,7 +4,10 @@ import { cn } from "@/app/common/utils/cn";
 import { useState } from "react";
 
 export default function MainLayout() {
-  const [theme, setTheme] = useState("bg-matte-red");
+  /* purple: '#8748E1',green: '#65D35D', red: '#EF6363',skyblue: '#87CEEB',yellow: '#FFD700',
+   */
+  const [theme, setTheme] = useState("bg-matte-green");
+
   return (
     <>
       <div
@@ -17,7 +20,7 @@ export default function MainLayout() {
           <div className="sr-only">레코드판</div>
 
           <div className="w-full h-full flex items-center justify-center">
-            <div className="relative w-1/2  ">
+            <div className="relative w-[55%]  ">
               <img
                 src="/assets/images/turnTable.png"
                 alt="recode"

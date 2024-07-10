@@ -39,7 +39,8 @@ const config: Config = {
         'custom-meteor4': '2px 2px 8px #ff8d7e',
         'custom-border' : '1px 10px 5px gainsboro',
         'custom-border-1' : '1px 2px 10px rgba(0,0,0,0.7)',
-        'custom-border-2': '1px 1px 10px rgba(0,0,0,0.7)'
+        'custom-border-2': '1px 1px 10px rgba(0,0,0,0.7)',
+        'custom-border-3': '1px 2px 5px rgba(0,0,0,0.5)',
         
       },
       backgroundImage: {

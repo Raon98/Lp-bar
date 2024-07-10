@@ -92,3 +92,7 @@ table {
 .item_block {
 	@apply w-[300px] h-[300px] border  border-solid border-border-rgba-0.3 rounded-sm shadow-custom-border
 }
+
+.rounded_block {
+	@apply border border-solid w-[4.5rem] h-[4.5rem] border-transparent rounded-[50%] shadow-custom-border-3 flex items-center justify-center
+}
