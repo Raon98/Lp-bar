@@ -52,18 +52,18 @@ table {
 }
 
 *,*::before,*::after {
-	@apply font-['Mapo'] box-border;
+	@apply font-['Pretend'] box-border;
 }
 @layer base{
 	@font-face {
-		font-family: 'euly';
+		font-family: 'Pretend';
 		font-weight: 400;
-		src: url('/assets/fonts/Eulyoo1945-Regular.otf')
+		src: url('/assets/fonts/Pretendard.woff')
 	}
 	@font-face {
-		font-family: 'Mapo';
+		font-family: 'DIGI';
 		font-weight: 400;
-		src: url('/assets/fonts/MapoFlowerIsland.ttf')
+		src: url('/assets/fonts/DS-DIGI.TTF')
 	}
 }
 
@@ -91,4 +91,8 @@ table {
 
 .item_block {
 	@apply w-[300px] h-[300px] border  border-solid border-border-rgba-0.3 rounded-sm shadow-custom-border
+}
+
+.rounded_block {
+	@apply border border-solid w-[4.5rem] h-[4.5rem] border-transparent rounded-[50%] shadow-custom-border-3 flex items-center justify-center
 }
