@@ -93,7 +93,7 @@ export default function Intro() {
             useRecode && "animate-fadeOut"
           )}
         >
-          Cheol's Lp Bar
+          Polariod Lp Bar
         </div>
         <div className="absolute left-0 top-0 flex w-full h-screen z-100">
           <div className="w-[20%] h-full bg-matte-purple"></div>

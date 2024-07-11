@@ -26,7 +26,8 @@ const initialState: LoadingState = {
     recode: false
   },
   main : {
-
+    switch: false,
+    spinStop: false,
   }
 };
 

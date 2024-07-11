@@ -6,13 +6,13 @@ import { useState } from "react";
 export default function MainLayout() {
   /* purple: '#8748E1',green: '#65D35D', red: '#EF6363',skyblue: '#87CEEB',yellow: '#FFD700',
    */
-  const [theme, setTheme] = useState("bg-matte-green");
-
+  const [theme, setTheme] = useState("bg-matte-red");
+  
   return (
     <>
       <div
         className={cn(
-          `w-full h-full overflow-hidden relative px-8 py-5 ${theme}`,
+          `w-full h-full overflow-hidden relative px-8 py-5 ${theme} animate-fadeIn`,
           ""
         )}
       >
@@ -29,7 +29,7 @@ export default function MainLayout() {
               <span className="before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain"></span>
               <div className="absolute left-[19%] top-[26%] w-[45%]">
                 <img
-                  src="/assets/images/redLp.png"
+                  src="/assets/images/doc_lp1.png"
                   alt="lp"
                   className="bg-no-repeat bg-transparent bg-center object-cover w-full"
                 ></img>
