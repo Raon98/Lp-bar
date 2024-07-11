@@ -4,8 +4,7 @@ import { cn } from "@/app/common/utils/cn";
 import { useState } from "react";
 
 export default function MainLayout() {
-  /* purple: '#8748E1',green: '#65D35D', red: '#EF6363',skyblue: '#87CEEB',yellow: '#FFD700',
-   */
+  /* purple: '#8748E1',green: '#65D35D', red: '#EF6363',skyblue: '#87CEEB',yellow: '#FFD700',*/
   const [theme, setTheme] = useState("bg-matte-red");
   
   return (
