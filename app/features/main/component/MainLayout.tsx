@@ -1,25 +1,31 @@
 "use client";
 
 import { cn } from "@/app/common/utils/cn";
-import { useState } from "react";
+import useMotionStore from "@/app/store/useMotionStore";
+import { useEffect, useState } from "react";
 
 export default function MainLayout() {
   /* purple: '#8748E1',green: '#65D35D', red: '#EF6363',skyblue: '#87CEEB',yellow: '#FFD700',*/
+  const { getState, setState } = useMotionStore();
   const [theme, setTheme] = useState("bg-matte-red");
-  
+  const [mount, setMount] = useState(false);
+
+  useEffect(()=> {
+    setMount(true)
+  },[])
   return (
     <>
-      <div
+    {mount && <div
         className={cn(
-          `w-full h-full overflow-hidden relative px-8 py-5 ${theme} animate-fadeIn`,
-          ""
+          `w-full h-full overflow-hidden relative px-8 py-5 ${theme}`,
+          ''
         )}
       >
         <div className="flex w-full h-screen">
           <div className="sr-only">레코드판</div>
 
           <div className="w-full h-full flex items-center justify-center">
-            <div className="relative w-[55%]  ">
+            <div className="relative w-[55%] animate-fadeIn">
               <img
                 src="/assets/images/turnTable.png"
                 alt="recode"
@@ -37,6 +43,8 @@ export default function MainLayout() {
           </div>
         </div>
       </div>
+      }
+      
     </>
   );
 }
