@@ -2,10 +2,23 @@ import { create } from "zustand";
 
  /* purple: '#8748E1',green: '#65D35D', red: '#EF6363',skyblue: '#87CEEB',yellow: '#FFD700',*/
 
-export const lpInitState  = [
+ export interface LpStateProp {
+  idx : number,
+  state : boolean,
+  img : string,
+  theme : string,
+  iconTheme : string,
+  since : number
+ }
+
+ interface lpAction {
+  getLpList : () => void
+}
+
+export const lpInitState:LpStateProp[]  = [
   {
     idx : 1,
-    state : false,
+    state : true,
     img : 'doc_lp1',
     theme : 'red',
     iconTheme : 'w',
@@ -22,9 +35,6 @@ export const lpInitState  = [
   
 ]
 
-interface lpAction {
-  getLpList : () => void
-}
 
 const actions = (set: any, get: any):lpAction => ({
     getLpList : () => {

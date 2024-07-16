@@ -1,14 +1,17 @@
 "use client";
 import { cn } from "@/app/common/utils/cn";
+import { useTheme } from "@/app/hooks/themeContext";
 import useMotionStore from "@/app/store/useMotionStore";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 export default function MainLayout() {
-  const { getState, setState } = useMotionStore();
-  const [theme, setTheme] = useState("bg-matte-red");
+  const { getState, setChangeState } = useMotionStore();
+  
+  const { theme,iconTheme, toggleTheme } = useTheme();
   const [mount, setMount] = useState(false);
-  const soundIcon = "play_w";
-  const boxIcon = "storageBox_w";
+  const [since, setSince] = useState<String>("1998");
+  const play = getState('main','play');
+  const box = getState('main','boxState');
 
   const lpRef = useRef<HTMLDivElement | null>(null);
   const dropRef = useRef<HTMLButtonElement | null>(null);
@@ -20,11 +23,24 @@ export default function MainLayout() {
     },
     onDrop: (e: React.DragEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      
+
       const data = e.dataTransfer.getData("text");
       if (data === "dragging") {
         console.log("drop");
       }
+    },
+    recodePlay : () => {
+      setChangeState('main','play');
+      if(play){
+        //재생
+
+      }else {
+        //중지
+
+      }
+    },
+    openBox: () => {
+
     }
   };
 
@@ -44,11 +60,14 @@ export default function MainLayout() {
               ""
             )}
           >
-            <div className="flex w-full h-screen">
+            <div className="flex w-full h-screen relative">
               <div className="sr-only">레코드판</div>
-
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="relative w-[55%] animate-fadeIn">
+              <div className="text-[6.75rem] font-['DIGI'] mt-[4.25rem] mr-[6.75rem] absolute right-0 top-0 text-white">
+                {since}
+              </div>
+              <div className="w-full h-full flex items-center justify-center ">
+              
+                <div className="relative w-[55%] animate-fadeIn x-1200:w-full">
                   <img
                     src="/assets/images/turnTable.png"
                     alt="recode"
@@ -74,10 +93,9 @@ export default function MainLayout() {
           </div>
           <div className="bg-transparent font-bold px-[3.5rem] py-[1rem] fixed  w-full z-[1000] bottom-0 left-0">
             <div className="mx-[2rem] mb-[3rem] my-auto flex items-end justify-between text-white ">
-              <button
-                className="rounded_block">
+              <button className="rounded_block" onClick={() => func.recodePlay()}>
                 <img
-                  src={`/assets/images/${soundIcon}.png`}
+                  src={`/assets/images/${play ? `stop_${iconTheme}` : `play_${iconTheme}`}.png`}
                   alt="soundIcon"
                   className="bg-no-repeat bg-transparent bg-center object-cover w-2/3"
                 />
@@ -91,8 +109,8 @@ export default function MainLayout() {
                 onDrop={(e) => func.onDrop(e)}
               >
                 <img
-                  src={`/assets/images/${boxIcon}.png`}
-                  alt="soundIcon"
+                  src={`/assets/images/${box ? `openBox_${iconTheme}` : `closeBox_${iconTheme}`}.png`}
+                  alt="boxIcon"
                   className="bg-no-repeat bg-transparent bg-center object-cover w-1/2"
                 />
               </button>
