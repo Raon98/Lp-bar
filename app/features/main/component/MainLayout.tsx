@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/app/common/utils/cn";
 import useMotionStore from "@/app/store/useMotionStore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function MainLayout() {
   const { getState, setState } = useMotionStore();
@@ -10,8 +10,22 @@ export default function MainLayout() {
   const soundIcon = "play_w";
   const boxIcon = "storageBox_w";
 
+  const lpRef = useRef<HTMLDivElement | null>(null);
+  const dropRef = useRef<HTMLButtonElement | null>(null);
+
   const func = {
-    onDragEnd: (res?: any) => {},
+    onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
+      console.log("drag start");
+      e.dataTransfer.setData("text/plain", "dragging");
+    },
+    onDrop: (e: React.DragEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      
+      const data = e.dataTransfer.getData("text");
+      if (data === "dragging") {
+        console.log("drop");
+      }
+    }
   };
 
   useEffect(() => {
@@ -42,7 +56,12 @@ export default function MainLayout() {
                   />
                   <span className="before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain"></span>
 
-                  <div className="absolute left-[19%] top-[26%] w-[45%]">
+                  <div
+                    className="absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item"
+                    draggable={true}
+                    ref={lpRef}
+                    onDragStart={(e) => func.onDragStart(e)}
+                  >
                     <img
                       src="/assets/images/doc_lp1.png"
                       alt="lp"
@@ -55,14 +74,22 @@ export default function MainLayout() {
           </div>
           <div className="bg-transparent font-bold px-[3.5rem] py-[1rem] fixed  w-full z-[1000] bottom-0 left-0">
             <div className="mx-[2rem] mb-[3rem] my-auto flex items-end justify-between text-white ">
-              <button className="rounded_block">
+              <button
+                className="rounded_block">
                 <img
                   src={`/assets/images/${soundIcon}.png`}
                   alt="soundIcon"
                   className="bg-no-repeat bg-transparent bg-center object-cover w-2/3"
                 />
               </button>
-              <button className="rounded_block">
+              <button
+                className="rounded_block"
+                ref={dropRef}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                }}
+                onDrop={(e) => func.onDrop(e)}
+              >
                 <img
                   src={`/assets/images/${boxIcon}.png`}
                   alt="soundIcon"
