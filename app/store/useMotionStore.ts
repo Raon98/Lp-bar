@@ -8,8 +8,9 @@ interface State {
   spinStop?: boolean;
   recode?: boolean;
   sound? : boolean;
-  play? : boolean,
-  boxOpen? : boolean;
+  playArm? : boolean,
+  playRecode? : boolean,
+  boxState? : boolean;
 }
 
 interface LoadingState {
@@ -29,11 +30,11 @@ const initialState: LoadingState = {
     recode: false
   },
   main : {
-    switch: false,
-    spinStop: false,
+    recode : true,
     sound : true,
-    play : false,
-    boxOpen : false
+    playArm : false,
+    playRecode : false,
+    boxState : false
   }
 };
 
