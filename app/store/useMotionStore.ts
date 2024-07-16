@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { LpStateProp } from "./useLpStore";
+import useLpStore, { LpStateProp } from "./useLpStore";
 
 type Store = LoadingState & LoadingAction;
 
@@ -8,43 +8,48 @@ interface State {
   switch?: boolean;
   spinStop?: boolean;
   recode?: boolean;
-  sound? : boolean;
-  play? : boolean,
-  boxState? : boolean;
-  lp? : object
+  sound?: boolean;
+  play?: boolean;
+  boxState?: boolean;
+  lp?: object;
 }
 
 interface LoadingState {
-  intro : State,
-  main : State,
+  intro: State;
+  main: State;
 }
-
+const initLp = {
+  idx: null,
+  state: null,
+  img: "",
+  theme: "",
+  iconTheme: "",
+  since: null,
+};
 interface LoadingAction {
-  setState: (option: keyof LoadingState, key: keyof State, state?: boolean) => void;
-  setLpState : (lp : LpStateProp) => void;
-  setChangeState : (option: keyof LoadingState, key: keyof State) => void;
+  setState: (
+    option: keyof LoadingState,
+    key: keyof State,
+    state?: boolean
+  ) => void;
+  setChangeState: (option: keyof LoadingState, key: keyof State) => void;
+  setLp: (lp: LpStateProp) => void;
   getState: (option: keyof LoadingState, key: keyof State) => boolean;
+  getLp: () => LpStateProp;
 }
 
 const initialState: LoadingState = {
-  intro : {
+  intro: {
     switch: false,
     spinStop: false,
-    recode: false
+    recode: false,
   },
-  main : {
-    lp : {
-      idx : 1,
-      state : true,
-      img : 'doc_lp1',
-      theme : 'red',
-      iconTheme : 'w',
-      since : 1998
-    },
-    sound : true,
-    play : false,
-    boxState : false
-  }
+  main: {
+    lp: initLp,
+    sound: true,
+    play: false,
+    boxState: false,
+  },
 };
 
 const actions = (set: any, get: any): LoadingAction => ({
@@ -57,12 +62,13 @@ const actions = (set: any, get: any): LoadingAction => ({
       },
     }));
   },
-  setLpState: (lp : LpStateProp) => {
+  setLp: (lp: LpStateProp) => {
+    const lpObj = lp ? lp : initLp
     set((currentState: LoadingState) => ({
       ...currentState,
       main: {
-        ...currentState['main'],
-        lp: lp,
+        ...currentState["main"],
+        lp: lpObj,
       },
     }));
   },
@@ -70,21 +76,25 @@ const actions = (set: any, get: any): LoadingAction => ({
     set((currentState: LoadingState) => ({
       ...currentState,
       [option]: {
-        ...currentState[option], 
+        ...currentState[option],
         [key]: !currentState[option][key],
       },
     }));
   },
+
   getState: (option, key) => {
     const currentState = get();
     return currentState[option][key];
   },
+  getLp: () => {
+    const mainState = get().main;
+    return mainState.lp;
+  },
 });
 
-
-const useMotionStore = create<Store>((set,get) => ({
-    ...initialState,
-    ...actions(set, get),
+const useMotionStore = create<Store>((set, get) => ({
+  ...initialState,
+  ...actions(set, get),
 }));
 
 export default useMotionStore;

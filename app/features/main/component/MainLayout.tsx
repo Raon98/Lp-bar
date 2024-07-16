@@ -5,13 +5,12 @@ import useMotionStore from "@/app/store/useMotionStore";
 import { useContext, useEffect, useRef, useState } from "react";
 
 export default function MainLayout() {
-  const { getState, setChangeState } = useMotionStore();
-  
+  const { getState, setChangeState,getLp,setLp } = useMotionStore();
   const { theme,iconTheme, toggleTheme } = useTheme();
-  const [mount, setMount] = useState(false);
-  const [since, setSince] = useState<String>("1998");
+
   const play = getState('main','play');
   const box = getState('main','boxState');
+  const lp = getLp();
 
   const lpRef = useRef<HTMLDivElement | null>(null);
   const dropRef = useRef<HTMLButtonElement | null>(null);
@@ -31,9 +30,19 @@ export default function MainLayout() {
     },
     recodePlay : () => {
       setChangeState('main','play');
+      const testLp = {
+        key : 'lp2',
+        idx : 2,
+        state : false,
+        img : 'pj_lp1',
+        theme : 'green',
+        iconTheme : 'b',
+        since : 2024
+      }
+      setLp(testLp)
       if(play){
         //재생
-
+        
       }else {
         //중지
 
@@ -45,14 +54,12 @@ export default function MainLayout() {
   };
 
   useEffect(() => {
-    if (!mount) {
-      setMount(true);
-    }
-  }, []);
+    console.log(lp)
+    toggleTheme(lp)
+  }, [lp]);
 
   return (
-    <>
-      {mount && (
+
         <>
           <div
             className={cn(
@@ -62,8 +69,8 @@ export default function MainLayout() {
           >
             <div className="flex w-full h-screen relative">
               <div className="sr-only">레코드판</div>
-              <div className="text-[6.75rem] font-['DIGI'] mt-[4.25rem] mr-[6.75rem] absolute right-0 top-0 text-white">
-                {since}
+              <div className={`text-[6.75rem] font-['DIGI'] mt-[4.25rem] mr-[6.75rem] absolute right-0 top-0${iconTheme ==='w' ? 'text-white' :'text-black'}`}>
+                {lp.since}
               </div>
               <div className="w-full h-full flex items-center justify-center ">
               
@@ -82,7 +89,7 @@ export default function MainLayout() {
                     onDragStart={(e) => func.onDragStart(e)}
                   >
                     <img
-                      src="/assets/images/doc_lp1.png"
+                      src={`/assets/images/${lp.img}.png`}
                       alt="lp"
                       className="bg-no-repeat bg-transparent bg-center object-cover w-full"
                     />
@@ -117,7 +124,5 @@ export default function MainLayout() {
             </div>
           </div>
         </>
-      )}
-    </>
   );
 }
