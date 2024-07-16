@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import useLpStore, { LpStateProp } from "./useLpStore";
+import useLpStore, { LpStateProp, lpInitState, noneLp } from "./useLpStore";
 
 type Store = LoadingState & LoadingAction;
 
@@ -12,20 +12,14 @@ interface State {
   play?: boolean;
   boxState?: boolean;
   lp?: object;
+  lpSwitch? : boolean;
 }
 
 interface LoadingState {
   intro: State;
   main: State;
 }
-const initLp = {
-  idx: null,
-  state: null,
-  img: "",
-  theme: "",
-  iconTheme: "",
-  since: null,
-};
+
 interface LoadingAction {
   setState: (
     option: keyof LoadingState,
@@ -36,6 +30,7 @@ interface LoadingAction {
   setLp: (lp: LpStateProp) => void;
   getState: (option: keyof LoadingState, key: keyof State) => boolean;
   getLp: () => LpStateProp;
+  LpAnimationSwitch: () => void;
 }
 
 const initialState: LoadingState = {
@@ -45,7 +40,8 @@ const initialState: LoadingState = {
     recode: false,
   },
   main: {
-    lp: initLp,
+    lp: lpInitState[0],
+    lpSwitch : false,
     sound: true,
     play: false,
     boxState: false,
@@ -63,7 +59,7 @@ const actions = (set: any, get: any): LoadingAction => ({
     }));
   },
   setLp: (lp: LpStateProp) => {
-    const lpObj = lp ? lp : initLp
+    const lpObj = lp ? lp : noneLp
     set((currentState: LoadingState) => ({
       ...currentState,
       main: {
@@ -90,6 +86,28 @@ const actions = (set: any, get: any): LoadingAction => ({
     const mainState = get().main;
     return mainState.lp;
   },
+
+  LpAnimationSwitch : () => {
+    set((currentState: LoadingState) => ({
+      ...currentState,
+      main: {
+        ...currentState["main"],
+        lpSwitch: true,
+      },
+    }));
+    console.log("switch 실행")
+   setTimeout(()=> {
+    set((currentState: LoadingState) => ({
+      ...currentState,
+      main: {
+        ...currentState["main"],
+        lpSwitch: false,
+      },
+    }));
+    console.log("3초뒤 switch 종료")
+   },3000)
+
+  }
 });
 
 const useMotionStore = create<Store>((set, get) => ({
