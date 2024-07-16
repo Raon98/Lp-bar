@@ -27,7 +27,7 @@ interface LoadingAction {
     state?: boolean
   ) => void;
   setChangeState: (option: keyof LoadingState, key: keyof State) => void;
-  setLp: (lp: LpStateProp) => void;
+  setLp: (lp?: LpStateProp) => void;
   getState: (option: keyof LoadingState, key: keyof State) => boolean;
   getLp: () => LpStateProp;
   LpAnimationSwitch: () => void;
@@ -58,7 +58,7 @@ const actions = (set: any, get: any): LoadingAction => ({
       },
     }));
   },
-  setLp: (lp: LpStateProp) => {
+  setLp: (lp?: LpStateProp) => {
     const lpObj = lp ? lp : noneLp
     set((currentState: LoadingState) => ({
       ...currentState,

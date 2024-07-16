@@ -25,8 +25,9 @@ interface ThemeProps {
 export const ThemeProvider = ({ children }: ThemeProps) => {
   const [theme, setTheme] = useState(`bg-matte-red`);
   const [iconTheme, setIconTheme] = useState("w");
-
+  
   const toggleTheme = (lp: LpStateProp) => {
+    console.log(lp.theme)
     setTheme(`bg-matte-${lp.theme}`);
     setIconTheme(lp.iconTheme);
   };

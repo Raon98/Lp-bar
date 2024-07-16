@@ -4,11 +4,11 @@ import { create } from "zustand";
 
 
 export const noneLp = {
-  key: "none",
+  key: '',
   idx: 0,
   state: null,
   img: "",
-  theme: "ligthGray",
+  theme: "lightGray",
   iconTheme: "b",
   since: null
 };
