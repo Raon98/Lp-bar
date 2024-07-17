@@ -136,8 +136,8 @@ export default function MainLayout() {
               }.png`}
               alt="boxIcon"
               className={cn(
-                `bg-no-repeat bg-transparent bg-center object-cover`,
-                `${box ? "w-[70%]" : "w-1/2"}`
+                `bg-no-repeat bg-transparent bg-center object-cover`
+               
               )}
             />
           </button>
