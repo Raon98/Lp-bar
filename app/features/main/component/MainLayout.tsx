@@ -4,20 +4,21 @@ import { useTheme } from "@/app/hooks/themeContext";
 import useLpStore from "@/app/store/useLpStore";
 import useMotionStore from "@/app/store/useMotionStore";
 import { useContext, useEffect, useRef, useState } from "react";
+import { Modals } from "./Modals";
+import useModalStore from "@/app/store/useModalStore";
 
 export default function MainLayout() {
   const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } =
     useMotionStore();
   const { getKeyLp } = useLpStore();
   const { theme, iconTheme, toggleTheme } = useTheme();
-
+  const {modalOpen}= useModalStore();
   const play = getState("main", "play");
   const box = getState("main", "boxState");
   const lpSwitch = getState("main", "lpSwitch");
   const lp = getLp();
 
   const [mount, setMount] = useState(false);
-
   const lpRef = useRef<HTMLDivElement | null>(null);
   const dropRef = useRef<HTMLButtonElement | null>(null);
 
@@ -47,6 +48,7 @@ export default function MainLayout() {
     },
     openBox: () => {
       setChangeState("main", "boxState");
+      modalOpen('box')
     },
   };
 
@@ -143,6 +145,7 @@ export default function MainLayout() {
           </button>
         </div>
       </div>
+      <Modals/>
     </>
   );
 }

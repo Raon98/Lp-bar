@@ -1,28 +1,29 @@
 import { create } from "zustand";
 
 
-interface ModalState {
-    [key:string] : boolean
+export interface ModalState {
+    box : boolean,
 }
 
 interface ModalActions {
     modalOpen : (key : keyof ModalState) => void;
     modalClose : (key : keyof ModalState) => void;
-    modalState : (key : keyof ModalState) => void;
+    modalList : () => ModalState;
+    modalState : (key : keyof ModalState) => boolean
 }
 
 type Store = ModalActions
 
-const modals : ModalState = {
+const modalsList : ModalState = {
   box : false,
 };
 
 const actions = (set: any, get: any): ModalActions => ({
     modalOpen : (key : keyof ModalState) => {
-        set((prev:ModalState) => ({
+        set((prev: ModalState) => ({
             ...prev,
-            [key] : true
-        }))
+            [key]: true
+        }));
     },
     modalClose : (key : keyof ModalState) => {
         set((prev:ModalState) => ({
@@ -30,13 +31,18 @@ const actions = (set: any, get: any): ModalActions => ({
             [key] : false
         }))
     },
-    modalState : (key : keyof ModalState) => {
-        return modals[key];
+    modalList : () => {
+        const state = get();
+        return state;
+    },
+    modalState : (key: keyof ModalState) => {
+        const state = get();
+        return state[key]
     }
 });
 
 const useModalStore = create<Store>((set, get) => ({
-  ...modals,
+  ...modalsList,
   ...actions(set, get),
 }));
 
