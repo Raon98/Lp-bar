@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       screens: {
         'xs': {'max': '440px'},
+        'x-1100': {'max': '1100px'},
       },
       colors: {
         'gray-rgba-0.3': 'rgba(255,255,255,0.3)',
@@ -23,6 +24,7 @@ const config: Config = {
           red: '#EF6363',
           skyblue: '#87CEEB',
           yellow: '#FFD700',
+          lightGray : '#E3E3E3'
         },
       },
       backdropFilter : {
@@ -73,6 +75,7 @@ const config: Config = {
           '0%' : {transform : 'rotate(-360deg) scale(1.2)',transformOrigin: 'center center' } , 
           '100%' : {transform : 'rotate(0) scale(1.2)',transformOrigin: 'center center'} 
         },
+      
         recodeUp : {
           '0%' : {marginTop : '90%'},
           '30%' : {marginTop : '60%'},
@@ -85,7 +88,19 @@ const config: Config = {
         mainArmSpin : {
           '0%' : { transform : 'translate(-120%, -12%)'},
           '100%' : { transform : 'translate(-120%, -12%) rotate(45deg)'},
-        }
+        },
+        lpSwitch : {
+          '0%' : {opacity : '0', top : '15%'}, 
+          '100%' : {opacity : '1' ,top : '26%'}     
+        },
+        lpSpin : {
+          '0%' : {transform : 'rotate(0)',transformOrigin: 'center center' } , 
+          '100%' : {transform : 'rotate(360deg)',transformOrigin: 'center center'} 
+        },
+        lpSpinStop : {
+          '0%' : {transform : 'rotate(-360deg)',transformOrigin: 'center center' } , 
+          '100%' : {transform : 'rotate(0)',transformOrigin: 'center center'} 
+        },
       },
       animation : {
         'meteorAnimate' : 'meteorKeyframes 4s ease-in infinite',
@@ -96,8 +111,10 @@ const config: Config = {
         'switchStop' : 'switchStop 0.5s linear 1 0s normal forwards',
         'introRecodeUp' : 'recodeUp 1.3s linear 1 0s normal forwards',
         'introScale' : 'scale 1s linear 1 0s normal forwards',
-        'mainArmSpin' : 'mainArmSpin 0.5s linear 1 0s normal forwards'
-
+        'mainArmSpin' : 'mainArmSpin 0.5s linear 1 0s normal forwards',
+        'lpSwitch' : 'lpSwitch 1s linear 1 0s normal forwards',
+        'lpSpin' : 'lpSpin 2s linear infinite 0.5s normal',
+        'lpSpinStop' : 'lpSpinStop 4s linear infinite 0.5s normal',
       }
     },
   },
