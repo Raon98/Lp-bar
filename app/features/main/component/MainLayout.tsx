@@ -2,17 +2,17 @@
 import { cn } from "@/app/common/utils/cn";
 import { useTheme } from "@/app/hooks/themeContext";
 import useLpStore from "@/app/store/useLpStore";
-import useMotionStore from "@/app/store/useMotionStore";
-import { useContext, useEffect, useRef, useState } from "react";
-import { Modals } from "./Modals";
 import useModalStore from "@/app/store/useModalStore";
+import useMotionStore from "@/app/store/useMotionStore";
+import { useEffect, useRef, useState } from "react";
+import { Modals } from "./Modals";
 
 export default function MainLayout() {
   const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } =
     useMotionStore();
   const { getKeyLp } = useLpStore();
   const { theme, iconTheme, toggleTheme } = useTheme();
-  const {modalOpen}= useModalStore();
+  const { modalOpen } = useModalStore();
   const play = getState("main", "play");
   const box = getState("main", "boxState");
   const lpSwitch = getState("main", "lpSwitch");
@@ -48,7 +48,7 @@ export default function MainLayout() {
     },
     openBox: () => {
       setChangeState("main", "boxState");
-      modalOpen('box')
+      modalOpen("box");
     },
   };
 
@@ -112,7 +112,7 @@ export default function MainLayout() {
           )}
         </div>
       </div>
-      <div className="bg-transparent font-bold px-[3.5rem] py-[1rem] fixed  w-full z-[1000] bottom-0 left-0">
+      <div className="bg-transparent font-bold px-[3.5rem] py-[1rem] fixed  w-full z-[20] bottom-0 left-0">
         <div className="mx-[2rem] mb-[3rem] my-auto flex items-end justify-between text-white ">
           <button className="rounded_block" onClick={() => func.recodePlay()}>
             <img
@@ -139,13 +139,12 @@ export default function MainLayout() {
               alt="boxIcon"
               className={cn(
                 `bg-no-repeat bg-transparent bg-center object-cover`
-               
               )}
             />
           </button>
         </div>
       </div>
-      <Modals/>
+      <Modals />
     </>
   );
 }

@@ -1,14 +1,28 @@
 "use client";
 import useModalStore from "@/app/store/useModalStore";
-import React from "react";
 
 const BoxModal = () => {
-  const {modalState,modalClose} = useModalStore();
+  const { modalState, modalClose } = useModalStore();
 
-  return <>{modalState('box') && <div className=" w-full h-full absolute z-10 bg-slate-500">
-        <div onClick={() => modalClose('box')}>CLOSE</div>
-        <div>모달창입니다.</div>
-    </div>}</>;
+  return (
+    <>
+      {modalState("box") && (
+        <div className=" w-full h-full absolute z-30 left-0 bottom-0">
+          <div className="flex flex-col h-full justify-end ">
+            <div className="h-[40%] backdrop-blur-xl bg-gray-rgba-0.3">
+              <div
+                className=" flex justify-end items-center h-[3rem] mr-[3rem]"
+                onClick={() => modalClose("box")}
+              >
+                X
+              </div>
+              <div className="h-full"></div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default BoxModal;
