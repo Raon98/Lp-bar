@@ -27,7 +27,6 @@ export const ThemeProvider = ({ children }: ThemeProps) => {
   const [iconTheme, setIconTheme] = useState("w");
   
   const toggleTheme = (lp: LpStateProp) => {
-    console.log(lp.theme)
     setTheme(`bg-matte-${lp.theme}`);
     setIconTheme(lp.iconTheme);
   };
