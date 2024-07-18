@@ -26,6 +26,7 @@ export default function MainLayout() {
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData("text/plain", "dragging");
+      setSpinHover(false)
     },
     recodePlay: () => {
       setChangeState("main", "play");
@@ -83,12 +84,14 @@ export default function MainLayout() {
                 {lp.key && (
                   <div
                     className={cn(
-                      "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item hover:animate-lpSpin",
-                      lpSwitch && "animate-lpSwitch"
+                      "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item ",
+                      lpSwitch && "animate-lpSwitch",
+                      spinHover && "hover:animate-lpSpin"
                     )}
                     draggable={true}
                     ref={lpRef}
                     onDragStart={(e) => func.onDragStart(e)}
+                    onDragEnd={()=> setSpinHover(true)}
                   >
                     <img
                       src={`/assets/images/${lp.img}.png`}
