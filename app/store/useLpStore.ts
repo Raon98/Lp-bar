@@ -59,9 +59,9 @@ const actions = (set: any, get: any): lpAction => ({
   },
 });
 
-const useMotionStore = create<Store>((set, get) => ({
+const useLpStore = create<Store>((set, get) => ({
   lpList: lpInitState,
   ...actions(set, get),
 }));
 
-export default useMotionStore;
+export default useLpStore;

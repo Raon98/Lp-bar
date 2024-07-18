@@ -1,40 +1,36 @@
 "use client";
+import { Modals } from "@/app/common/component/Modals";
 import { cn } from "@/app/common/utils/cn";
 import { useTheme } from "@/app/hooks/themeContext";
+import useDragStore from "@/app/store/useDragStore";
 import useLpStore from "@/app/store/useLpStore";
-import useMotionStore from "@/app/store/useMotionStore";
-import { useContext, useEffect, useRef, useState } from "react";
-import { Modals } from "./Modals";
 import useModalStore from "@/app/store/useModalStore";
+import useMotionStore from "@/app/store/useMotionStore";
+import { useEffect, useRef, useState } from "react";
+
 
 export default function MainLayout() {
-  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } =
-    useMotionStore();
-  const { getKeyLp } = useLpStore();
   const { theme, iconTheme, toggleTheme } = useTheme();
-  const {modalOpen}= useModalStore();
+  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } = useMotionStore();
+  const { getKeyLp } = useLpStore();
+  const { modalState, modalOpen ,modalClose } = useModalStore();
+  const { setDragState } = useDragStore();
+
   const play = getState("main", "play");
-  const box = getState("main", "boxState");
+  const box = modalState("box")
   const lpSwitch = getState("main", "lpSwitch");
   const lp = getLp();
 
   const [mount, setMount] = useState(false);
   const lpRef = useRef<HTMLDivElement | null>(null);
-  const dropRef = useRef<HTMLButtonElement | null>(null);
-
+  const [spinHover,setSpinHover] = useState(true)
+  
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
-      console.log("drag start");
       e.dataTransfer.setData("text/plain", "dragging");
-    },
-    onDrop: (e: React.DragEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-
-      const data = e.dataTransfer.getData("text");
-      if (data === "dragging") {
-        console.log("drop");
-        setLp();
-      }
+      setSpinHover(false)
+      setDragState(true)
+      modalOpen("box");
     },
     recodePlay: () => {
       setChangeState("main", "play");
@@ -47,13 +43,11 @@ export default function MainLayout() {
       }
     },
     openBox: () => {
-      setChangeState("main", "boxState");
-      modalOpen('box')
+      modalOpen("box");
     },
   };
 
   useEffect(() => {
-    console.log(lp);
     if (lp.key && mount) {
       LpAnimationSwitch();
     }
@@ -71,6 +65,9 @@ export default function MainLayout() {
           `w-full h-full overflow-hidden relative px-8 py-5 ${theme}`,
           ""
         )}
+        onClick={() => {
+          box && modalClose("box");
+        }}
       >
         <div className="flex w-full h-screen relative">
           <div className="sr-only">레코드판</div>
@@ -93,12 +90,17 @@ export default function MainLayout() {
                 {lp.key && (
                   <div
                     className={cn(
-                      "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item hover:animate-lpSpin",
-                      lpSwitch && "animate-lpSwitch"
+                      "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item ",
+                      lpSwitch && "animate-lpSwitch",
+                      spinHover && "hover:animate-lpSpin"
                     )}
                     draggable={true}
                     ref={lpRef}
                     onDragStart={(e) => func.onDragStart(e)}
+                    onDragEnd={()=> {
+                      setSpinHover(true)
+                      setDragState(false)
+                    }}
                   >
                     <img
                       src={`/assets/images/${lp.img}.png`}
@@ -112,7 +114,7 @@ export default function MainLayout() {
           )}
         </div>
       </div>
-      <div className="bg-transparent font-bold px-[3.5rem] py-[1rem] fixed  w-full z-[1000] bottom-0 left-0">
+      <div className="bg-transparent font-bold px-[3.5rem] py-[1rem] fixed  w-full z-[20] bottom-0 left-0">
         <div className="mx-[2rem] mb-[3rem] my-auto flex items-end justify-between text-white ">
           <button className="rounded_block" onClick={() => func.recodePlay()}>
             <img
@@ -125,27 +127,19 @@ export default function MainLayout() {
           </button>
           <button
             className="rounded_block"
-            ref={dropRef}
-            onDragOver={(e) => {
-              e.preventDefault();
-            }}
-            onDrop={(e) => func.onDrop(e)}
             onClick={() => func.openBox()}
           >
             <img
-              src={`/assets/images/${
-                box ? `openBox_${iconTheme}` : `closeBox_${iconTheme}`
-              }.png`}
+              src={`/assets/images/openBox_${iconTheme}.png`}
               alt="boxIcon"
               className={cn(
                 `bg-no-repeat bg-transparent bg-center object-cover`
-               
               )}
             />
           </button>
         </div>
       </div>
-      <Modals/>
+      <Modals />
     </>
   );
 }
