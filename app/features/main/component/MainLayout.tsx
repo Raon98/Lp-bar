@@ -1,18 +1,19 @@
 "use client";
+import { Modals } from "@/app/common/component/Modals";
 import { cn } from "@/app/common/utils/cn";
 import { useTheme } from "@/app/hooks/themeContext";
 import useLpStore from "@/app/store/useLpStore";
 import useModalStore from "@/app/store/useModalStore";
 import useMotionStore from "@/app/store/useMotionStore";
 import { useEffect, useRef, useState } from "react";
-import { Modals } from "./Modals";
+
 
 export default function MainLayout() {
-  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } =
-    useMotionStore();
-  const { getKeyLp } = useLpStore();
+  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } = useMotionStore();
   const { theme, iconTheme, toggleTheme } = useTheme();
+  const { getKeyLp } = useLpStore();
   const { modalOpen } = useModalStore();
+
   const play = getState("main", "play");
   const box = getState("main", "boxState");
   const lpSwitch = getState("main", "lpSwitch");
@@ -20,21 +21,11 @@ export default function MainLayout() {
 
   const [mount, setMount] = useState(false);
   const lpRef = useRef<HTMLDivElement | null>(null);
-  const dropRef = useRef<HTMLButtonElement | null>(null);
+  const [spinHover,setSpinHover] = useState(true)
 
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
-      console.log("drag start");
       e.dataTransfer.setData("text/plain", "dragging");
-    },
-    onDrop: (e: React.DragEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-
-      const data = e.dataTransfer.getData("text");
-      if (data === "dragging") {
-        console.log("drop");
-        setLp();
-      }
     },
     recodePlay: () => {
       setChangeState("main", "play");
@@ -53,7 +44,6 @@ export default function MainLayout() {
   };
 
   useEffect(() => {
-    console.log(lp);
     if (lp.key && mount) {
       LpAnimationSwitch();
     }
@@ -125,11 +115,6 @@ export default function MainLayout() {
           </button>
           <button
             className="rounded_block"
-            ref={dropRef}
-            onDragOver={(e) => {
-              e.preventDefault();
-            }}
-            onDrop={(e) => func.onDrop(e)}
             onClick={() => func.openBox()}
           >
             <img

@@ -95,7 +95,6 @@ const actions = (set: any, get: any): LoadingAction => ({
         lpSwitch: true,
       },
     }));
-    console.log("switch 실행")
    setTimeout(()=> {
     set((currentState: LoadingState) => ({
       ...currentState,
@@ -104,7 +103,6 @@ const actions = (set: any, get: any): LoadingAction => ({
         lpSwitch: false,
       },
     }));
-    console.log("3초뒤 switch 종료")
    },3000)
 
   }

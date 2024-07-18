@@ -55,7 +55,6 @@ export const ThemeProvider = ({ children }: ThemeProps) => {
 
       default:
     }
-    console.log(color)
     setVolumeColor(color)
   };
 
