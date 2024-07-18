@@ -32,7 +32,6 @@ export const ThemeProvider = ({ children }: ThemeProps) => {
   const toggleTheme = (lp: LpStateProp) => {
     setTheme(`bg-matte-${lp.theme}`);
     setIconTheme(lp.iconTheme);
-    console.log(color)
     switch (lp.theme) {
       case "red":
         color = "error";
