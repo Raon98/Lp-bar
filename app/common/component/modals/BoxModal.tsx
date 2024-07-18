@@ -12,8 +12,6 @@ const BoxModal = () => {
 
   const dropRef = useRef<HTMLDivElement | null>(null);
 
-  const [isAnimating, setIsAnimating] = useState(false);
-  
   const lp = getLp();
 
   const func = {
@@ -29,19 +27,6 @@ const BoxModal = () => {
     },
   };
 
-  useEffect(() => {
-    if (dragState) {
-      const animate = () => {
-        setIsAnimating(true);
-        setTimeout(() => {
-          setIsAnimating(false);
-          setTimeout(animate, 1500);
-        }, 3000); 
-      };
-      animate();
-      
-    }
-  }, [dragState]);
   return (
     <>
       {modalState("box") && (
@@ -82,7 +67,7 @@ const BoxModal = () => {
                         alt="boxIcon"
                         className={cn(
                           `bg-no-repeat bg-transparent bg-center object-cover translate-x-[40%]`,
-                          isAnimating && "animate-lpInBox"
+                          "animate-lpInBox"
                         )}
                       />
                       <div className=" absolute  top-0 right-0 w-full h-full">

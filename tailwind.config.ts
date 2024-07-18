@@ -125,7 +125,7 @@ const config: Config = {
         'lpSpin' : 'lpSpin 2s linear infinite 0.5s normal',
         'lpSpinStop' : 'lpSpinStop 4s linear infinite 0.5s normal',
         'boxOpen' : 'boxOpen 0.2s linear 1 0s normal forwards',
-        'lpInBox' : 'lpInBox 1.5s ease-in 1 0s normal forwards',
+        'lpInBox' : 'lpInBox 1.5s ease-in infinite 0s normal forwards',
       }
     },
   },
