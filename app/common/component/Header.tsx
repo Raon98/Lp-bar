@@ -1,4 +1,5 @@
 "use client";
+import VolumeSlider from "@/app/features/main/component/VolumeSlider";
 import { useTheme } from "@/app/hooks/themeContext";
 import useMotionStore from "@/app/store/useMotionStore";
 import { useState } from "react";
@@ -15,13 +16,14 @@ const Header = () => {
         <div className={`mx-[2rem_5rem] my-auto flex items-center justify-between max-w-[96.25%] ${iconTheme ==='w' ? 'text-white' :'text-black'}`}>
           <div className="text-[1.75rem] flex self-start">Polariod</div>
           <div className="flex flex-col">
-            <button className="flex justify-end" onClick={()=>setChangeState('main','sound')}>
+            <VolumeSlider/>
+            {/* <button className="flex justify-end" onClick={()=>setChangeState('main','sound')}>
               <img
                 src={`/assets/images/${getState('main','sound') ? `soundOn_${iconTheme}` : `soundMute_${iconTheme}`}.png`}
                 alt="soundIcon"
                 className="bg-no-repeat bg-transparent bg-center object-cover w-[15%] "
               ></img>
-            </button>
+            </button> */}
           </div>
         </div>
       </header>
