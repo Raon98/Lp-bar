@@ -36,10 +36,10 @@ const BoxModal = () => {
               {!dragState && (
                 <>
                   <div
-                    className=" flex justify-end items-center h-[3rem] mr-[3rem]"
+                    className=" flex justify-end items-center h-[3rem]  mr-[3rem]"
                     onClick={() => modalClose("box")}
                   >
-                    X
+                    <div className="h-[2.5rem] w-[2.5rem]  content-center text-center">X</div>
                   </div>
                   <div className="h-full m-[0.75rem_4.5rem]">안녕하세요</div>
                 </>

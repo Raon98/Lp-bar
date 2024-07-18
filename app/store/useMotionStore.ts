@@ -10,7 +10,6 @@ interface State {
   recode?: boolean;
   sound?: boolean;
   play?: boolean;
-  boxState?: boolean;
   lp?: object;
   lpSwitch? : boolean;
 }
@@ -44,7 +43,6 @@ const initialState: LoadingState = {
     lpSwitch : false,
     sound: true,
     play: false,
-    boxState: false,
   },
 };
 

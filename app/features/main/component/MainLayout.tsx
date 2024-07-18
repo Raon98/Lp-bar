@@ -13,11 +13,11 @@ export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
   const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } = useMotionStore();
   const { getKeyLp } = useLpStore();
-  const { modalOpen } = useModalStore();
+  const { modalState, modalOpen ,modalClose } = useModalStore();
   const { setDragState } = useDragStore();
 
   const play = getState("main", "play");
-  const box = getState("main", "boxState");
+  const box = modalState("box")
   const lpSwitch = getState("main", "lpSwitch");
   const lp = getLp();
 
@@ -43,7 +43,6 @@ export default function MainLayout() {
       }
     },
     openBox: () => {
-      setChangeState("main", "boxState");
       modalOpen("box");
     },
   };
@@ -66,6 +65,9 @@ export default function MainLayout() {
           `w-full h-full overflow-hidden relative px-8 py-5 ${theme}`,
           ""
         )}
+        onClick={() => {
+          box && modalClose("box");
+        }}
       >
         <div className="flex w-full h-screen relative">
           <div className="sr-only">레코드판</div>
@@ -128,9 +130,7 @@ export default function MainLayout() {
             onClick={() => func.openBox()}
           >
             <img
-              src={`/assets/images/${
-                box ? `openBox_${iconTheme}` : `closeBox_${iconTheme}`
-              }.png`}
+              src={`/assets/images/openBox_${iconTheme}.png`}
               alt="boxIcon"
               className={cn(
                 `bg-no-repeat bg-transparent bg-center object-cover`
