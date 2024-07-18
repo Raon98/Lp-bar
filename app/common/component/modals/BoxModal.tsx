@@ -7,12 +7,14 @@ import { useEffect, useRef, useState } from "react";
 
 const BoxModal = () => {
   const { modalState, modalClose } = useModalStore();
-  const { setLp } = useMotionStore();
+  const { getLp,setLp } = useMotionStore();
   const { dragState, setDragState } = useDragStore();
 
   const dropRef = useRef<HTMLDivElement | null>(null);
 
   const [isAnimating, setIsAnimating] = useState(false);
+  
+  const lp = getLp();
 
   const func = {
     onDrop: (e: React.DragEvent<HTMLDivElement>) => {
@@ -76,7 +78,7 @@ const BoxModal = () => {
                   >
                     <div className="w-[15%] relative translate-x-[-20%]">
                       <img
-                        src={`/assets/images/takeBox2.png`}
+                        src={`/assets/images/${lp.img}.png`}
                         alt="boxIcon"
                         className={cn(
                           `bg-no-repeat bg-transparent bg-center object-cover translate-x-[40%]`,
@@ -85,7 +87,7 @@ const BoxModal = () => {
                       />
                       <div className=" absolute  top-0 right-0 w-full h-full">
                         <img
-                          src={`/assets/images/takeBox1.png`}
+                          src={`/assets/images/takeBox.png`}
                           alt="boxIcon"
                           className={cn(
                             `bg-no-repeat bg-transparent bg-center object-cover`
