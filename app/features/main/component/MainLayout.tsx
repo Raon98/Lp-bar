@@ -2,6 +2,7 @@
 import { Modals } from "@/app/common/component/Modals";
 import { cn } from "@/app/common/utils/cn";
 import { useTheme } from "@/app/hooks/themeContext";
+import useDragStore from "@/app/store/useDragStore";
 import useLpStore from "@/app/store/useLpStore";
 import useModalStore from "@/app/store/useModalStore";
 import useMotionStore from "@/app/store/useMotionStore";
@@ -9,10 +10,11 @@ import { useEffect, useRef, useState } from "react";
 
 
 export default function MainLayout() {
-  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } = useMotionStore();
   const { theme, iconTheme, toggleTheme } = useTheme();
+  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } = useMotionStore();
   const { getKeyLp } = useLpStore();
   const { modalOpen } = useModalStore();
+  const { setDragState } = useDragStore();
 
   const play = getState("main", "play");
   const box = getState("main", "boxState");
@@ -22,11 +24,13 @@ export default function MainLayout() {
   const [mount, setMount] = useState(false);
   const lpRef = useRef<HTMLDivElement | null>(null);
   const [spinHover,setSpinHover] = useState(true)
-
+  
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData("text/plain", "dragging");
       setSpinHover(false)
+      setDragState(true)
+      modalOpen("box");
     },
     recodePlay: () => {
       setChangeState("main", "play");
@@ -91,7 +95,10 @@ export default function MainLayout() {
                     draggable={true}
                     ref={lpRef}
                     onDragStart={(e) => func.onDragStart(e)}
-                    onDragEnd={()=> setSpinHover(true)}
+                    onDragEnd={()=> {
+                      setSpinHover(true)
+                      setDragState(false)
+                    }}
                   >
                     <img
                       src={`/assets/images/${lp.img}.png`}
