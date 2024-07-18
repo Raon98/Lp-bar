@@ -3,13 +3,17 @@ import { cn } from "@/app/common/utils/cn";
 import useDragStore from "@/app/store/useDragStore";
 import useModalStore from "@/app/store/useModalStore";
 import useMotionStore from "@/app/store/useMotionStore";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const BoxModal = () => {
   const { modalState, modalClose } = useModalStore();
   const { setLp } = useMotionStore();
-  const dropRef = useRef<HTMLDivElement | null>(null);
   const { dragState, setDragState } = useDragStore();
+
+  const dropRef = useRef<HTMLDivElement | null>(null);
+
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const func = {
     onDrop: (e: React.DragEvent<HTMLDivElement>) => {
       e.preventDefault();
@@ -22,6 +26,20 @@ const BoxModal = () => {
       }
     },
   };
+
+  useEffect(() => {
+    if (dragState) {
+      const animate = () => {
+        setIsAnimating(true);
+        setTimeout(() => {
+          setIsAnimating(false);
+          setTimeout(animate, 1500);
+        }, 3000); 
+      };
+      animate();
+      
+    }
+  }, [dragState]);
   return (
     <>
       {modalState("box") && (
@@ -39,7 +57,9 @@ const BoxModal = () => {
                     className=" flex justify-end items-center h-[3rem]  mr-[3rem]"
                     onClick={() => modalClose("box")}
                   >
-                    <div className="h-[2.5rem] w-[2.5rem]  content-center text-center">X</div>
+                    <div className="h-[2.5rem] w-[2.5rem]  content-center text-center">
+                      X
+                    </div>
                   </div>
                   <div className="h-full m-[0.75rem_4.5rem]">안녕하세요</div>
                 </>
@@ -47,14 +67,32 @@ const BoxModal = () => {
               {dragState && (
                 <>
                   <div
-                    className=" h-full m-[0.75rem_4.5rem]"
+                    className=" h-full m-[0.75rem_4.5rem] flex justify-center items-center"
                     ref={dropRef}
                     onDrop={(e) => func.onDrop(e)}
                     onDragOver={(e) => {
                       e.preventDefault();
                     }}
                   >
-                    ICON
+                    <div className="w-[15%] relative translate-x-[-20%]">
+                      <img
+                        src={`/assets/images/takeBox2.png`}
+                        alt="boxIcon"
+                        className={cn(
+                          `bg-no-repeat bg-transparent bg-center object-cover translate-x-[40%]`,
+                          isAnimating && "animate-lpInBox"
+                        )}
+                      />
+                      <div className=" absolute  top-0 right-0 w-full h-full">
+                        <img
+                          src={`/assets/images/takeBox1.png`}
+                          alt="boxIcon"
+                          className={cn(
+                            `bg-no-repeat bg-transparent bg-center object-cover`
+                          )}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </>
               )}
