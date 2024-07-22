@@ -1,10 +1,11 @@
 "use client";
 
-import MeteorEffectLayout from "@/app/common/component/MeteorEffectLayout";
+import MeteorEffectLayout from "@/app/features/intro/component/MeteorEffectLayout";
 import { cn } from "@/app/common/utils/cn";
 import useMotionStore from "@/app/store/useMotionStore";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+
 export default function Intro() {
   const { getState, setState } = useMotionStore();
   const useSwitch = getState("intro", "switch");
