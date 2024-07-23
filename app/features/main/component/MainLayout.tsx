@@ -133,7 +133,7 @@ export default function MainLayout() {
               src={`/assets/images/openBox_${iconTheme}.png`}
               alt="boxIcon"
               className={cn(
-                `bg-no-repeat bg-transparent bg-center object-cover`
+                `bg-no-repeat bg-transparent bg-center object-cover w-[80%]`
               )}
             />
           </button>
