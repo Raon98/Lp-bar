@@ -4,10 +4,14 @@ import useDragStore from "@/app/store/useDragStore";
 import useModalStore from "@/app/store/useModalStore";
 import useMotionStore from "@/app/store/useMotionStore";
 import { useEffect, useRef, useState } from "react";
+import { EffectCoverflow } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
 
 const BoxModal = () => {
   const { modalState, modalClose } = useModalStore();
-  const { getLp,setLp } = useMotionStore();
+  const { getLp, setLp } = useMotionStore();
   const { dragState, setDragState } = useDragStore();
 
   const dropRef = useRef<HTMLDivElement | null>(null);
@@ -48,7 +52,36 @@ const BoxModal = () => {
                       X
                     </div>
                   </div>
-                  <div className="h-full m-[0.75rem_4.5rem]">안녕하세요</div>
+                  <div className="h-full m-[0.75rem_4.5rem]">
+                    
+                    <Swiper
+                      effect={"coverflow"}
+                      grabCursor={true}
+                      centeredSlides={true}
+                      slidesPerView={"auto"}
+                      coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true,
+                      }}
+                      modules={[EffectCoverflow]}
+                      className="mySwiper"
+                    >
+          
+                      <SwiperSlide className="!w-[20%]">
+                    
+                        <img src="https://swiperjs.com/demos/images/nature-1.jpg" className="bg-no-repeat bg-transparent bg-center object-cover"/>
+                      </SwiperSlide>
+                      <SwiperSlide className="!w-[20%]">
+                        <img src="https://swiperjs.com/demos/images/nature-2.jpg" className="bg-no-repeat bg-transparent bg-center object-cover" />
+                      </SwiperSlide>
+                      <SwiperSlide className="!w-[20%]">
+                        <img src="https://swiperjs.com/demos/images/nature-3.jpg" className="bg-no-repeat bg-transparent bg-center object-cover"/>
+                      </SwiperSlide>
+                    </Swiper>
+                  </div>
                 </>
               )}
               {dragState && (
