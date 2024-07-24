@@ -96,3 +96,65 @@ table {
 .rounded_block {
 	@apply border border-solid w-[4.5rem] h-[4.5rem] border-transparent rounded-[50%] shadow-custom-border-3 flex items-center justify-center
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: none
+}
+ 
+.red_scrollbar::-webkit-scrollbar-thumb {
+    background: #EF6363;
+    border-radius: 5px;
+}
+ 
+.red_scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #eb4949;
+}
+
+.green_scrollbar::-webkit-scrollbar-thumb {
+    background: #65D35D;
+    border-radius: 5px;
+}
+ 
+.green_scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #49cc40;
+}
+
+.purple_scrollbar::-webkit-scrollbar-thumb {
+    background: #8748E1;
+    border-radius: 5px;
+}
+ 
+.purple_scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b27ca;
+}
+
+.skyblue_scrollbar::-webkit-scrollbar-thumb {
+    background: #87CEEB;
+    border-radius: 5px;
+}
+ 
+.skyblue_scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #4baacf;
+}
+
+.yellow_scrollbar::-webkit-scrollbar-thumb {
+    background: #FFD700;
+    border-radius: 5px;
+}
+ 
+.yellow_scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #ccaf0a;
+}
+
+.lightGray_scrollbar::-webkit-scrollbar-thumb {
+    background: #E3E3E3;
+    border-radius: 5px;
+}
+ 
+.lightGray_scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #b3aeae;
+}
