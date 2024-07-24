@@ -10,7 +10,8 @@ export const noneLp = {
   img: "",
   theme: "lightGray",
   iconTheme: "b",
-  since: null
+  since: null,
+  coverImg: ""
 };
 
 export const lpInitState: LpStateProp[] = [
@@ -22,6 +23,7 @@ export const lpInitState: LpStateProp[] = [
     theme: "red",
     iconTheme: "w",
     since: 1998,
+    coverImg: ""
   },
   {
     key: "lp2",
@@ -31,7 +33,19 @@ export const lpInitState: LpStateProp[] = [
     theme: "green",
     iconTheme: "w",
     since: 2024,
+    coverImg : ""
   },
+  {
+    key: "lp3",
+    idx: 3,
+    state: false,
+    img: "doc_lp2",
+    theme: "blue",
+    iconTheme: "w",
+    since: 2024,
+    coverImg : ""
+  }
+ 
 ];
 
 export interface LpStateProp {
@@ -42,6 +56,7 @@ export interface LpStateProp {
   theme: string;
   iconTheme: string;
   since: number;
+  coverImg : string;
 }
 
 interface lpAction {
