@@ -13,7 +13,11 @@ const BoxModal = () => {
   const { lpList } = useLpStore();
 
   const dropRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [hasScrollbar, setHasScrollbar] = useState(false);
 
+
+  
   const lp = getLp();
 
   const func = {
@@ -31,6 +35,13 @@ const BoxModal = () => {
       console.log(item);
     },
   };
+
+  useEffect(() => {
+    const element = containerRef.current;
+    if (element) {
+      setHasScrollbar(element.scrollWidth > element.clientWidth);
+    }
+  }, []);
 
   return (
     <>
@@ -54,7 +65,7 @@ const BoxModal = () => {
                     </div>
                   </div>
                   <div className={cn(`h-[75%] m-[0.75rem_2.5rem] flex justify-center overflow-x-auto ${lp.theme}_scrollbar`,
-                  " space-x-10")}>
+                  " space-x-10", hasScrollbar && "pl-[10rem]")} ref={containerRef}>
                     {lpList.map((item, idx) => (
                       <div className={cn(`min-w-[200px] max-w-[200px] relative`
                       )} key={idx}>

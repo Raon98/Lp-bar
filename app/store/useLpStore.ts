@@ -44,47 +44,8 @@ export const lpInitState: LpStateProp[] = [
     iconTheme: "w",
     since: 2024,
     coverImg : ""
-  },
-  {
-    key: "lp3",
-    idx: 3,
-    state: false,
-    img: "doc_lp2",
-    theme: "blue",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : ""
-  },
-  {
-    key: "lp3",
-    idx: 3,
-    state: false,
-    img: "doc_lp2",
-    theme: "blue",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : ""
-  },
-  {
-    key: "lp3",
-    idx: 3,
-    state: false,
-    img: "doc_lp2",
-    theme: "blue",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : ""
-  },
-  {
-    key: "lp3",
-    idx: 3,
-    state: false,
-    img: "doc_lp2",
-    theme: "blue",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : ""
-  },
+  }
+ 
 ];
 
 export interface LpStateProp {
