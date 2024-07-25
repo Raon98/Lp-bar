@@ -124,7 +124,7 @@ const config: Config = {
         'introRecodeUp' : 'recodeUp 1.3s linear 1 0s normal forwards',
         'introScale' : 'scale 1s linear 1 0s normal forwards',
         'mainArmSpin' : 'mainArmSpin 0.5s linear 1 0s normal forwards',
-        'lpSwitch' : 'lpSwitch 1s linear 1 0s normal forwards',
+        'lpSwitch' : 'lpSwitch 0.8s linear 1 0s normal forwards',
         'lpSpin' : 'lpSpin 2s linear infinite 0.5s normal',
         'lpSpinStop' : 'lpSpinStop 4s linear infinite 0.5s normal',
         'boxOpen' : 'boxOpen 0.2s linear 1 0s normal forwards',

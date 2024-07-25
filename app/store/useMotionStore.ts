@@ -101,7 +101,7 @@ const actions = (set: any, get: any): LoadingAction => ({
         lpSwitch: false,
       },
     }));
-   },3000)
+   },1500)
 
   }
 });

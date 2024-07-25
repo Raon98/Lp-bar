@@ -8,12 +8,11 @@ import useLpStore, { LpStateProp } from "@/app/store/useLpStore";
 
 const BoxModal = () => {
   const { modalState, modalClose } = useModalStore();
-  const { getLp, setLp } = useMotionStore();
+  const { getLp, setLp,getState } = useMotionStore();
   const { dragState, setDragState } = useDragStore();
   const { lpList } = useLpStore();
-  const [isSetting, setISetting] = useState(false)
   const dropRef = useRef<HTMLDivElement | null>(null);
-
+  const lpSwitch = getState("main", "lpSwitch");
   const lp = getLp();
 
   const func = {
@@ -28,17 +27,9 @@ const BoxModal = () => {
       }
     },
     albumClick: (item: LpStateProp) => {
-      if(!isSetting){
-        
-        setISetting(true);
+      if(!lpSwitch){
         setLp(item);
-
-        setTimeout(()=> {
-          //한번클릭후 1.5초딜레이
-          setISetting(false);
-        },1500)
       }
-    
     },
   };
 
@@ -102,7 +93,7 @@ const BoxModal = () => {
                       e.preventDefault();
                     }}
                   >
-                    <div className="w-[15%] relative translate-x-[-20%]">
+                    <div className="w-[22%] relative">
                       <img
                         src={`/assets/images/${lp.img}.png`}
                         alt="boxIcon"
