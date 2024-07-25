@@ -64,10 +64,10 @@ const BoxModal = () => {
                       X
                     </div>
                   </div>
-                  <div className={cn(`h-[75%] m-[0.75rem_2.5rem] flex justify-center overflow-x-auto overflow-y-hidden ${lp.theme}_scrollbar`,
-                  " space-x-10", hasScrollbar && "pl-[10rem]")} ref={containerRef}>
+                  <div className={cn(`h-[75%] m-[0.75rem_2.5rem] flex justify-center items-center overflow-x-auto overflow-y-hidden ${lp.theme}_scrollbar space-x-10`,
+                   hasScrollbar && "pl-[12rem]")} ref={containerRef}>
                     {lpList.map((item, idx) => (
-                      <div className={cn(`min-w-[200px] max-w-[200px] relative`
+                      <div className={cn(`min-w-[200px] max-w-[200px] relative hover:animate-coverUp`
                       )} key={idx}>
                         <button onClick={() => func.albumClick(item)}>
                           <img
@@ -79,7 +79,7 @@ const BoxModal = () => {
                           />
                           <div className="absolute left-0 top-0 z-20">
                             <img
-                              src="https://swiperjs.com/demos/images/nature-1.jpg"
+                              src={`/assets/images/${item.coverImg}.png`}
                               className="bg-no-repeat bg-transparent bg-center object-cover z-20"
                             />
                           </div>
