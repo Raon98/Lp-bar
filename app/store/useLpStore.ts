@@ -39,7 +39,7 @@ export const lpInitState: LpStateProp[] = [
     key: "lp3",
     idx: 3,
     state: false,
-    img: "doc_lp2",
+    img: "doc_lp1",
     theme: "blue",
     iconTheme: "w",
     since: 2024,

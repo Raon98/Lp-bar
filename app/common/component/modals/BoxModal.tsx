@@ -64,7 +64,7 @@ const BoxModal = () => {
                       X
                     </div>
                   </div>
-                  <div className={cn(`h-[75%] m-[0.75rem_2.5rem] flex justify-center overflow-x-auto ${lp.theme}_scrollbar`,
+                  <div className={cn(`h-[75%] m-[0.75rem_2.5rem] flex justify-center overflow-x-auto overflow-y-hidden ${lp.theme}_scrollbar`,
                   " space-x-10", hasScrollbar && "pl-[10rem]")} ref={containerRef}>
                     {lpList.map((item, idx) => (
                       <div className={cn(`min-w-[200px] max-w-[200px] relative`
