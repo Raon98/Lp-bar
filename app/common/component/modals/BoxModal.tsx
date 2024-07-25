@@ -61,7 +61,7 @@ const BoxModal = () => {
                   </div>
                   <div
                     className={cn(
-                      `h-[75%] m-[0.75rem_2.5rem] flex items-center overflow-x-auto overflow-y-hidden ${lp.theme}_scrollbar space-x-10`,
+                      `h-[75%] m-[0.75rem_2.5rem] flex items-center overflow-x-auto overflow-y-hidden ${lp.theme}_scrollbar space-x-10 pt-6`,
                     )}
                   >
                     {lpList.map((item, idx) => (
@@ -72,19 +72,10 @@ const BoxModal = () => {
                         key={idx}
                       >
                         <button onClick={() => func.albumClick(item)}>
-                          <img
-                            src={`/assets/images/${item.img}.png`}
-                            alt="lp"
-                            className={cn(
-                              `bg-no-repeat bg-transparent bg-center object-cover translate-x-[5%] w-[90%]`
-                            )}
-                          />
-                          <div className="absolute left-0 top-0 z-20">
-                            <img
+                        <img
                               src={`/assets/images/${item.coverImg}.png`}
                               className="bg-no-repeat bg-transparent bg-center object-cover z-20"
                             />
-                          </div>
                         </button>
                       </div>
                     ))}

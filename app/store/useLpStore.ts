@@ -45,56 +45,6 @@ export const lpInitState: LpStateProp[] = [
     since: 2024,
     coverImg : "cover_3"
   },
-  {
-    key: "lp3",
-    idx: 3,
-    state: false,
-    img: "pj_lp2",
-    theme: "blue",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : "cover_3"
-  },
-  {
-    key: "lp3",
-    idx: 3,
-    state: false,
-    img: "pj_lp2",
-    theme: "blue",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : "cover_3"
-  },
-  {
-    key: "lp3",
-    idx: 3,
-    state: false,
-    img: "pj_lp2",
-    theme: "blue",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : "cover_3"
-  },
-  {
-    key: "lp3",
-    idx: 3,
-    state: false,
-    img: "pj_lp2",
-    theme: "blue",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : "cover_3"
-  },
-  {
-    key: "lp3",
-    idx: 3,
-    state: false,
-    img: "pj_lp2",
-    theme: "blue",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : "cover_3"
-  }
  
 ];
 
