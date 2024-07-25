@@ -11,7 +11,7 @@ const BoxModal = () => {
   const { getLp, setLp } = useMotionStore();
   const { dragState, setDragState } = useDragStore();
   const { lpList } = useLpStore();
-
+  const [isSetting, setISetting] = useState(false)
   const dropRef = useRef<HTMLDivElement | null>(null);
 
   const lp = getLp();
@@ -28,7 +28,17 @@ const BoxModal = () => {
       }
     },
     albumClick: (item: LpStateProp) => {
-      console.log(item);
+      if(!isSetting){
+        
+        setISetting(true);
+        setLp(item);
+
+        setTimeout(()=> {
+          //한번클릭후 1.5초딜레이
+          setISetting(false);
+        },1500)
+      }
+    
     },
   };
 

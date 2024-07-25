@@ -40,7 +40,7 @@ export const lpInitState: LpStateProp[] = [
     idx: 3,
     state: false,
     img: "pj_lp2",
-    theme: "blue",
+    theme: "skyblue",
     iconTheme: "w",
     since: 2024,
     coverImg : "cover_3"
