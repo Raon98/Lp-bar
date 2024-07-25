@@ -6,6 +6,7 @@ import useDragStore from "@/app/store/useDragStore";
 import useLpStore from "@/app/store/useLpStore";
 import useModalStore from "@/app/store/useModalStore";
 import useMotionStore from "@/app/store/useMotionStore";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 export default function MainLayout() {
@@ -15,7 +16,8 @@ export default function MainLayout() {
   const { getKeyLp } = useLpStore();
   const { modalState, modalOpen, modalClose } = useModalStore();
   const { setDragState } = useDragStore();
-
+  const router = useRouter();
+  
   const play = getState("main", "play");
   const box = modalState("box");
   const lpSwitch = getState("main", "lpSwitch");
@@ -33,10 +35,14 @@ export default function MainLayout() {
     },
     recodePlay: () => {
       if (lp.key === "") {
+        console.log('빈 lp판')
       } else {
+        console.log('재생 시작')
         setChangeState("main", "play");
+
         if (play) {
           //재생
+          router.push(`/detail/${lp.idx}`)
         } else {
           //중지
         }

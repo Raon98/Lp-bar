@@ -44,7 +44,7 @@ const BoxModal = () => {
                 modalState("box") && "animate-boxOpen"
               )}
             >
-              {dragState && (
+              {!dragState && (
                 <>
                   <div
                     className="flex justify-end items-center h-[3rem] mr-[3rem]"
@@ -83,7 +83,7 @@ const BoxModal = () => {
                   </div>
                 </>
               )}
-              {!dragState && (
+              {dragState && (
                 <>
                   <div
                     className="h-full m-[0.75rem_4.5rem] flex justify-center items-center"
