@@ -13,11 +13,7 @@ const BoxModal = () => {
   const { lpList } = useLpStore();
 
   const dropRef = useRef<HTMLDivElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [hasScrollbar, setHasScrollbar] = useState(false);
 
-
-  
   const lp = getLp();
 
   const func = {
@@ -35,13 +31,6 @@ const BoxModal = () => {
       console.log(item);
     },
   };
-
-  useEffect(() => {
-    const element = containerRef.current;
-    if (element) {
-      setHasScrollbar(element.scrollWidth > element.clientWidth);
-    }
-  }, []);
 
   return (
     <>
@@ -61,14 +50,27 @@ const BoxModal = () => {
                     onClick={() => modalClose("box")}
                   >
                     <div className="h-[2.5rem] w-[2.5rem] content-center text-center">
-                      X
+                      
+                      <button className="w-[50%] mt-6">
+                        <img
+                          src={`/assets/images/backIcon.png`}
+                          className="bg-no-repeat bg-transparent bg-center object-cover z-20"
+                        />
+                      </button>
                     </div>
                   </div>
-                  <div className={cn(`h-[75%] m-[0.75rem_2.5rem] flex justify-center items-center overflow-x-auto overflow-y-hidden ${lp.theme}_scrollbar space-x-10`,
-                   hasScrollbar && "pl-[12rem]")} ref={containerRef}>
+                  <div
+                    className={cn(
+                      `h-[75%] m-[0.75rem_2.5rem] flex items-center overflow-x-auto overflow-y-hidden ${lp.theme}_scrollbar space-x-10`,
+                    )}
+                  >
                     {lpList.map((item, idx) => (
-                      <div className={cn(`min-w-[200px] max-w-[200px] relative hover:animate-coverUp`
-                      )} key={idx}>
+                      <div
+                        className={cn(
+                          `min-w-[200px] max-w-[200px] relative hover:animate-coverUp`
+                        )}
+                        key={idx}
+                      >
                         <button onClick={() => func.albumClick(item)}>
                           <img
                             src={`/assets/images/${item.img}.png`}
@@ -104,13 +106,13 @@ const BoxModal = () => {
                         src={`/assets/images/${lp.img}.png`}
                         alt="boxIcon"
                         className={cn(
-                          `bg-no-repeat bg-transparent bg-center object-cover translate-x-[40%]`,
+                          `bg-no-repeat bg-transparent bg-center object-cover translate-x-[40%] w-[98%]`,
                           "animate-lpInBox"
                         )}
                       />
                       <div className="absolute top-0 right-0 w-full h-full">
                         <img
-                          src={`/assets/images/takeBox.png`}
+                          src={`/assets/images/${lp.coverImg}.png`}
                           alt="boxIcon"
                           className={cn(
                             `bg-no-repeat bg-transparent bg-center object-cover`

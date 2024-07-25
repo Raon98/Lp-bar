@@ -107,7 +107,7 @@ const config: Config = {
         },
         lpInBox : {
           '0%' : {transform : 'translate(40%, 0)',transformOrigin: 'center center' } , 
-          '100%' : {transform : 'translate(0, 0)',transformOrigin: 'center center'} 
+          '100%' : {transform : 'translate(5%, 0)',transformOrigin: 'center center'} 
         },
         coverUp : {
           '0%' : {transform : 'translate(0, 0)',transformOrigin: 'center center' } , 
