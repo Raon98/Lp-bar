@@ -23,7 +23,7 @@ export const lpInitState: LpStateProp[] = [
     theme: "red",
     iconTheme: "w",
     since: 1998,
-    coverImg: ""
+    coverImg: "cover_1"
   },
   {
     key: "lp2",
@@ -33,18 +33,18 @@ export const lpInitState: LpStateProp[] = [
     theme: "green",
     iconTheme: "w",
     since: 2024,
-    coverImg : ""
+    coverImg : "cover_2"
   },
   {
     key: "lp3",
     idx: 3,
     state: false,
-    img: "doc_lp2",
-    theme: "blue",
+    img: "pj_lp2",
+    theme: "skyblue",
     iconTheme: "w",
     since: 2024,
-    coverImg : ""
-  }
+    coverImg : "cover_3"
+  },
  
 ];
 

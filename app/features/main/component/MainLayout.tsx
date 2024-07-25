@@ -6,40 +6,46 @@ import useDragStore from "@/app/store/useDragStore";
 import useLpStore from "@/app/store/useLpStore";
 import useModalStore from "@/app/store/useModalStore";
 import useMotionStore from "@/app/store/useMotionStore";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-
 
 export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
-  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } = useMotionStore();
+  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } =
+    useMotionStore();
   const { getKeyLp } = useLpStore();
-  const { modalState, modalOpen ,modalClose } = useModalStore();
+  const { modalState, modalOpen, modalClose } = useModalStore();
   const { setDragState } = useDragStore();
-
+  const router = useRouter();
+  
   const play = getState("main", "play");
-  const box = modalState("box")
+  const box = modalState("box");
   const lpSwitch = getState("main", "lpSwitch");
   const lp = getLp();
 
-  const [mount, setMount] = useState(false);
   const lpRef = useRef<HTMLDivElement | null>(null);
-  const [spinHover,setSpinHover] = useState(true)
-  
+  const [spinHover, setSpinHover] = useState(true);
+
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData("text/plain", "dragging");
-      setSpinHover(false)
-      setDragState(true)
+      setSpinHover(false);
+      setDragState(true);
       modalOpen("box");
     },
     recodePlay: () => {
-      setChangeState("main", "play");
-      const testLp = getKeyLp("lp2");
-      setLp(testLp);
-      if (play) {
-        //재생
+      if (lp.key === "") {
+        console.log('빈 lp판')
       } else {
-        //중지
+        console.log('재생 시작')
+        setChangeState("main", "play");
+
+        if (play) {
+          //재생
+          router.push(`/detail/${lp.idx}`)
+        } else {
+          //중지
+        }
       }
     },
     openBox: () => {
@@ -48,15 +54,11 @@ export default function MainLayout() {
   };
 
   useEffect(() => {
-    if (lp.key && mount) {
+    if (lp.key) {
       LpAnimationSwitch();
     }
     toggleTheme(lp);
   }, [lp]);
-
-  useEffect(() => {
-    setMount(true);
-  }, []);
 
   return (
     <>
@@ -78,40 +80,39 @@ export default function MainLayout() {
           >
             {lp.since}
           </div>
-          {mount && (
-            <div className="w-full h-full flex items-center justify-center ">
-              <div className="relative w-[55%] animate-fadeIn x-1100:w-full">
-                <img
-                  src="/assets/images/turnTable.png"
-                  alt="recode"
-                  className="bg-no-repeat bg-transparent bg-center object-cover w-full"
-                />
-                <span className="before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain"></span>
-                {lp.key && (
-                  <div
-                    className={cn(
-                      "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item ",
-                      lpSwitch && "animate-lpSwitch",
-                      spinHover && "hover:animate-lpSpin"
-                    )}
-                    draggable={true}
-                    ref={lpRef}
-                    onDragStart={(e) => func.onDragStart(e)}
-                    onDragEnd={()=> {
-                      setSpinHover(true)
-                      setDragState(false)
-                    }}
-                  >
-                    <img
-                      src={`/assets/images/${lp.img}.png`}
-                      alt="lp"
-                      className="bg-no-repeat bg-transparent bg-center object-cover w-full"
-                    />
-                  </div>
-                )}
-              </div>
+
+          <div className="w-full h-full flex items-center justify-center ">
+            <div className="relative w-[55%] animate-fadeIn x-1100:w-full">
+              <img
+                src="/assets/images/turnTable.png"
+                alt="recode"
+                className="bg-no-repeat bg-transparent bg-center object-cover w-full"
+              />
+              <span className="before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain"></span>
+              {lp.key && (
+                <div
+                  className={cn(
+                    "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item ",
+                    lpSwitch && "animate-lpSwitch",
+                    spinHover && "hover:animate-lpSpin"
+                  )}
+                  draggable={true}
+                  ref={lpRef}
+                  onDragStart={(e) => func.onDragStart(e)}
+                  onDragEnd={() => {
+                    setSpinHover(true);
+                    setDragState(false);
+                  }}
+                >
+                  <img
+                    src={`/assets/images/${lp.img}.png`}
+                    alt="lp"
+                    className="bg-no-repeat bg-transparent bg-center object-cover w-full"
+                  />
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
       <div className="bg-transparent font-bold px-[3.5rem] py-[1rem] fixed  w-full z-[20] bottom-0 left-0">
@@ -125,10 +126,7 @@ export default function MainLayout() {
               className="bg-no-repeat bg-transparent bg-center object-cover w-2/3"
             />
           </button>
-          <button
-            className="rounded_block"
-            onClick={() => func.openBox()}
-          >
+          <button className="rounded_block" onClick={() => func.openBox()}>
             <img
               src={`/assets/images/openBox_${iconTheme}.png`}
               alt="boxIcon"
