@@ -119,9 +119,7 @@ export default function MainLayout() {
         <div className="mx-[2rem] mb-[3rem] my-auto flex items-end justify-between text-white ">
           <button className="rounded_block" onClick={() => func.recodePlay()}>
             <img
-              src={`/assets/images/${
-                play ? `stop_${iconTheme}` : `play_${iconTheme}`
-              }.png`}
+              src={`/assets/images/play_${iconTheme}.png`}
               alt="soundIcon"
               className="bg-no-repeat bg-transparent bg-center object-cover w-2/3"
             />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/app/hooks/themeContext";
+import Link from "next/link";
 
 const DetailHeader = () => {
   const { iconTheme } = useTheme();
@@ -14,7 +15,7 @@ const DetailHeader = () => {
           }`}
         >
           <div className="text-[1.25rem] flex self-start">Polariod</div>
-          <button className="flex flex-col w-[5%] justify-center items-center">
+          <Link className="flex flex-col w-[5%] justify-center items-center" href={'/main'}>
             <div className="w-[35%]">
               <img
                 src={`/assets/images/stop_${iconTheme}.png`}
@@ -24,7 +25,7 @@ const DetailHeader = () => {
          
             </div>
             <div className="text-[0.75rem]">CLOSE</div>
-          </button>
+          </Link>
         </div>
       </header>
     </>

@@ -8,7 +8,6 @@ interface State {
   switch?: boolean;
   spinStop?: boolean;
   recode?: boolean;
-  sound?: number;
   play?: boolean;
   lp?: object;
   lpSwitch? : boolean;
@@ -41,7 +40,6 @@ const initialState: LoadingState = {
   main: {
     lp: lpInitState[0],
     lpSwitch : false,
-    sound: 30,
     play: false,
   },
 };
