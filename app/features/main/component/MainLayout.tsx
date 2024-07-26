@@ -8,6 +8,7 @@ import useModalStore from "@/app/store/useModalStore";
 import useMotionStore from "@/app/store/useStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
@@ -35,7 +36,7 @@ export default function MainLayout() {
     },
     recodePlay: () => {
       if (lp.key === "") {
-        console.log('빈 lp판')
+        toast.info("LP판이 비어있어요!",{autoClose : 3000})
       } else {
         console.log('재생 시작')
         setChangeState("main", "play");
