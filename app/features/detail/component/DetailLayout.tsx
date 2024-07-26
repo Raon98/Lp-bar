@@ -4,21 +4,27 @@ import { useTheme } from "@/app/hooks/themeContext";
 import DetailHeader from "./DetailHeader";
 import useMotionStore from "@/app/store/useStore";
 import VolumeSlider from "../../main/component/VolumeSlider";
+import IndexComponent from "../../index/component/IndexComponent";
 
 interface DetailLayoutProps {
   children: React.ReactNode;
+  id : string
 }
 
-const DetailLayout = ({ children }: DetailLayoutProps) => {
+const DetailLayout = ({ children,id }: DetailLayoutProps) => {
   const { theme } = useTheme();
   const { getLp } = useMotionStore();
   const lp = getLp();
+
+  console.log(id)
   return (
     <>
       <DetailHeader />
       <div className={`w-full h-screen flex ${theme} overflow-y-auto`}>
-        <div className="fixed w-[20%] h-screen flex justify-center items-center">
-          목록
+        <div className="fixed w-[18%] h-screen flex justify-center items-center">
+          <div className="px-5 w-full">
+            <IndexComponent id={id}/>
+          </div>
         </div>
         <div className="w-[30%]"></div>
         <div className="bg-white shadow-custom-border-2 w-full h-screen mt-[4.5rem] mx-6 overflow-y-auto p-[1.5rem_2rem]">

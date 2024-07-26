@@ -14,7 +14,7 @@ const DetailHeader = () => {
             iconTheme === "w" ? "text-white" : "text-black"
           }`}
         >
-          <div className="text-[1.25rem] flex self-start">Polariod</div>
+          <div className="text-[1.15rem] flex self-start">Polariod</div>
           <Link className="flex flex-col w-[5%] justify-center items-center" href={'/main'}>
             <div className="w-[35%]">
               <img
