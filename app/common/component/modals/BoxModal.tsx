@@ -2,7 +2,7 @@
 import { cn } from "@/app/common/utils/cn";
 import useDragStore from "@/app/store/useDragStore";
 import useModalStore from "@/app/store/useModalStore";
-import useMotionStore from "@/app/store/useMotionStore";
+import useMotionStore from "@/app/store/useStore";
 import { useEffect, useRef, useState } from "react";
 import useLpStore, { LpStateProp } from "@/app/store/useLpStore";
 

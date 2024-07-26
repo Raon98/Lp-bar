@@ -5,7 +5,7 @@ import { useTheme } from "@/app/hooks/themeContext";
 import useDragStore from "@/app/store/useDragStore";
 import useLpStore from "@/app/store/useLpStore";
 import useModalStore from "@/app/store/useModalStore";
-import useMotionStore from "@/app/store/useMotionStore";
+import useMotionStore from "@/app/store/useStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 

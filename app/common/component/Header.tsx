@@ -2,7 +2,7 @@
 
 import VolumeSlider from "@/app/features/main/component/VolumeSlider";
 import { useTheme } from "@/app/hooks/themeContext";
-import useMotionStore from "@/app/store/useMotionStore";
+import useMotionStore from "@/app/store/useStore";
 
 const Header = () => {
 

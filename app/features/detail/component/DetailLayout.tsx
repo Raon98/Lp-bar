@@ -2,7 +2,7 @@
 
 import { useTheme } from "@/app/hooks/themeContext";
 import DetailHeader from "./DetailHeader";
-import useMotionStore from "@/app/store/useMotionStore";
+import useMotionStore from "@/app/store/useStore";
 import VolumeSlider from "../../main/component/VolumeSlider";
 
 interface DetailLayoutProps {
