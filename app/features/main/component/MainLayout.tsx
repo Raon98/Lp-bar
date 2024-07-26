@@ -5,19 +5,20 @@ import { useTheme } from "@/app/hooks/themeContext";
 import useDragStore from "@/app/store/useDragStore";
 import useLpStore from "@/app/store/useLpStore";
 import useModalStore from "@/app/store/useModalStore";
-import useMotionStore from "@/app/store/useMotionStore";
+import useMotionStore from "@/app/store/useStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
-  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } =
+  const { getState, setChangeState, getLp, setState, LpAnimationSwitch } =
     useMotionStore();
   const { getKeyLp } = useLpStore();
   const { modalState, modalOpen, modalClose } = useModalStore();
   const { setDragState } = useDragStore();
   const router = useRouter();
-  
+
   const play = getState("main", "play");
   const box = modalState("box");
   const lpSwitch = getState("main", "lpSwitch");
@@ -25,7 +26,8 @@ export default function MainLayout() {
 
   const lpRef = useRef<HTMLDivElement | null>(null);
   const [spinHover, setSpinHover] = useState(true);
-
+  const [lpSpin, setLpSpin] = useState(false);
+  const [imgMount, setImgMount] = useState(true)
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData("text/plain", "dragging");
@@ -34,17 +36,19 @@ export default function MainLayout() {
       modalOpen("box");
     },
     recodePlay: () => {
-      if (lp.key === "") {
-        console.log('빈 lp판')
+      if (lp.key === "" ) {
+        toast.info("LP판이 비어있어요!", { autoClose: 3000 });
+        modalOpen("box");
       } else {
-        console.log('재생 시작')
-        setChangeState("main", "play");
-
-        if (play) {
-          //재생
-          router.push(`/detail/${lp.idx}`)
-        } else {
-          //중지
+        if(!play){
+          setChangeState("main", "play");
+          setTimeout(() => {
+            setLpSpin(true);
+          }, 500);
+          setTimeout(() => {
+            router.push(`/detail/${lp.idx}`);
+            
+          }, 2500);
         }
       }
     },
@@ -54,11 +58,23 @@ export default function MainLayout() {
   };
 
   useEffect(() => {
-    if (lp.key) {
+    if (lp.key ) {
+      setImgMount(false)
       LpAnimationSwitch();
+      setTimeout(()=>{
+        setImgMount(true)
+      },200)
     }
     toggleTheme(lp);
   }, [lp]);
+
+  useEffect(()=>{
+    setImgMount(false)
+      setTimeout(()=>{
+        setImgMount(true)
+      },200)
+    setState("main", "play",false);
+  },[])
 
   return (
     <>
@@ -88,13 +104,19 @@ export default function MainLayout() {
                 alt="recode"
                 className="bg-no-repeat bg-transparent bg-center object-cover w-full"
               />
-              <span className="before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain"></span>
-              {lp.key && (
+              <span
+                className={cn(
+                  `before:z-[60] before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain`,
+                  play && "before:animate-mainArmSpin"
+                )}
+              ></span>
+              {lp.key && imgMount && (
                 <div
                   className={cn(
-                    "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item ",
+                    "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item z-20",
                     lpSwitch && "animate-lpSwitch",
-                    spinHover && "hover:animate-lpSpin"
+                    spinHover && "hover:animate-lpSpin",
+                    lpSpin && "animate-lpSpin"
                   )}
                   draggable={true}
                   ref={lpRef}
@@ -119,9 +141,7 @@ export default function MainLayout() {
         <div className="mx-[2rem] mb-[3rem] my-auto flex items-end justify-between text-white ">
           <button className="rounded_block" onClick={() => func.recodePlay()}>
             <img
-              src={`/assets/images/${
-                play ? `stop_${iconTheme}` : `play_${iconTheme}`
-              }.png`}
+              src={`/assets/images/play_${iconTheme}.png`}
               alt="soundIcon"
               className="bg-no-repeat bg-transparent bg-center object-cover w-2/3"
             />

@@ -2,7 +2,7 @@
 import { cn } from "@/app/common/utils/cn";
 import useDragStore from "@/app/store/useDragStore";
 import useModalStore from "@/app/store/useModalStore";
-import useMotionStore from "@/app/store/useMotionStore";
+import useMotionStore from "@/app/store/useStore";
 import { useEffect, useRef, useState } from "react";
 import useLpStore, { LpStateProp } from "@/app/store/useLpStore";
 
@@ -14,7 +14,8 @@ const BoxModal = () => {
   const dropRef = useRef<HTMLDivElement | null>(null);
   const lpSwitch = getState("main", "lpSwitch");
   const lp = getLp();
-
+  
+  const [mount, setMount] = useState(false)
   const func = {
     onDrop: (e: React.DragEvent<HTMLDivElement>) => {
       e.preventDefault();
@@ -33,6 +34,9 @@ const BoxModal = () => {
     },
   };
 
+  useEffect(()=> {
+    setMount(true)
+  },[])
   return (
     <>
       {modalState("box") && (
@@ -44,7 +48,7 @@ const BoxModal = () => {
                 modalState("box") && "animate-boxOpen"
               )}
             >
-              {!dragState && (
+              {!dragState && mount && (
                 <>
                   <div
                     className="flex justify-end items-center h-[3rem] mr-[3rem]"
@@ -83,7 +87,7 @@ const BoxModal = () => {
                   </div>
                 </>
               )}
-              {dragState && (
+              {dragState && mount && (
                 <>
                   <div
                     className="h-full m-[0.75rem_4.5rem] flex justify-center items-center"

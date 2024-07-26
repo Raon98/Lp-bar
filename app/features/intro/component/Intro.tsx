@@ -2,7 +2,7 @@
 
 import MeteorEffectLayout from "@/app/features/intro/component/MeteorEffectLayout";
 import { cn } from "@/app/common/utils/cn";
-import useMotionStore from "@/app/store/useMotionStore";
+import useMotionStore from "@/app/store/useStore";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 

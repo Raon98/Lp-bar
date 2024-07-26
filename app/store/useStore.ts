@@ -8,7 +8,6 @@ interface State {
   switch?: boolean;
   spinStop?: boolean;
   recode?: boolean;
-  sound?: boolean;
   play?: boolean;
   lp?: object;
   lpSwitch? : boolean;
@@ -41,7 +40,6 @@ const initialState: LoadingState = {
   main: {
     lp: lpInitState[0],
     lpSwitch : false,
-    sound: true,
     play: false,
   },
 };
@@ -106,9 +104,9 @@ const actions = (set: any, get: any): LoadingAction => ({
   }
 });
 
-const useMotionStore = create<Store>((set, get) => ({
+const useStore = create<Store>((set, get) => ({
   ...initialState,
   ...actions(set, get),
 }));
 
-export default useMotionStore;
+export default useStore;
