@@ -17,12 +17,15 @@ const DetailLayout = ({ children,id }: DetailLayoutProps) => {
   const { theme } = useTheme();
   const { getLp } = useMotionStore();
   const [mount, setMount] = useState(false)
+  const [imgMount,setImgMount] = useState(true)
   const lp = getLp();
-
-  console.log(id)
 
   useEffect(()=> {
     setMount(true)
+    setImgMount(false)
+      setTimeout(()=>{
+        setImgMount(true)
+      },200)
   },[])
   return (
     <>
@@ -45,13 +48,13 @@ const DetailLayout = ({ children,id }: DetailLayoutProps) => {
           mount && "animate-fadeIn"
         )}>
           <div className="w-full h-[35%] p-5">
-            <div className="shadow-custom-border-2 p-3 bg-gray-rgba-0.5 rounded-md">
+            {imgMount && <div className="shadow-custom-border-2 p-3 bg-gray-rgba-0.5 rounded-md">
               <img
                 src={`/assets/images/shadow-${lp.img}.png`}
                 alt="lp"
                 className="bg-no-repeat bg-transparent bg-center object-cover w-full animate-lpSpin"
               />
-            </div>
+            </div>}
           </div>
           <div className="w-full h-[5%] mt-5 p-5 flex justify-center">
             <VolumeSlider />

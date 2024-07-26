@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 
 export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
-  const { getState, setChangeState, getLp, setLp, LpAnimationSwitch } =
+  const { getState, setChangeState, getLp, setState, LpAnimationSwitch } =
     useMotionStore();
   const { getKeyLp } = useLpStore();
   const { modalState, modalOpen, modalClose } = useModalStore();
@@ -36,17 +36,20 @@ export default function MainLayout() {
       modalOpen("box");
     },
     recodePlay: () => {
-      if (lp.key === "") {
+      if (lp.key === "" ) {
         toast.info("LP판이 비어있어요!", { autoClose: 3000 });
         modalOpen("box");
       } else {
-        setChangeState("main", "play");
-        setTimeout(() => {
-          setLpSpin(true);
-        }, 500);
-        setTimeout(() => {
-          router.push(`/detail/${lp.idx}`);
-        }, 2500);
+        if(!play){
+          setChangeState("main", "play");
+          setTimeout(() => {
+            setLpSpin(true);
+          }, 500);
+          setTimeout(() => {
+            router.push(`/detail/${lp.idx}`);
+            
+          }, 2500);
+        }
       }
     },
     openBox: () => {
@@ -65,6 +68,13 @@ export default function MainLayout() {
     toggleTheme(lp);
   }, [lp]);
 
+  useEffect(()=>{
+    setImgMount(false)
+      setTimeout(()=>{
+        setImgMount(true)
+      },200)
+    setState("main", "play",false);
+  },[])
 
   return (
     <>
