@@ -39,10 +39,10 @@ export default function MainLayout() {
       } else {
         console.log('재생 시작')
         setChangeState("main", "play");
-
+        router.push(`/detail/${lp.idx}`)
         if (play) {
           //재생
-          router.push(`/detail/${lp.idx}`)
+          
         } else {
           //중지
         }
