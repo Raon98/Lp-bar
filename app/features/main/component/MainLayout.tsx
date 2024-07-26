@@ -18,7 +18,7 @@ export default function MainLayout() {
   const { modalState, modalOpen, modalClose } = useModalStore();
   const { setDragState } = useDragStore();
   const router = useRouter();
-  
+
   const play = getState("main", "play");
   const box = modalState("box");
   const lpSwitch = getState("main", "lpSwitch");
@@ -26,7 +26,8 @@ export default function MainLayout() {
 
   const lpRef = useRef<HTMLDivElement | null>(null);
   const [spinHover, setSpinHover] = useState(true);
-
+  const [lpSpin, setLpSpin] = useState(false);
+  const [imgMount, setImgMount] = useState(true)
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData("text/plain", "dragging");
@@ -36,17 +37,16 @@ export default function MainLayout() {
     },
     recodePlay: () => {
       if (lp.key === "") {
-        toast.info("LP판이 비어있어요!",{autoClose : 3000})
+        toast.info("LP판이 비어있어요!", { autoClose: 3000 });
+        modalOpen("box");
       } else {
-        console.log('재생 시작')
         setChangeState("main", "play");
-        router.push(`/detail/${lp.idx}`)
-        if (play) {
-          //재생
-          
-        } else {
-          //중지
-        }
+        setTimeout(() => {
+          setLpSpin(true);
+        }, 500);
+        setTimeout(() => {
+          router.push(`/detail/${lp.idx}`);
+        }, 2500);
       }
     },
     openBox: () => {
@@ -55,11 +55,16 @@ export default function MainLayout() {
   };
 
   useEffect(() => {
-    if (lp.key) {
+    if (lp.key ) {
+      setImgMount(false)
       LpAnimationSwitch();
+      setTimeout(()=>{
+        setImgMount(true)
+      },200)
     }
     toggleTheme(lp);
   }, [lp]);
+
 
   return (
     <>
@@ -89,13 +94,19 @@ export default function MainLayout() {
                 alt="recode"
                 className="bg-no-repeat bg-transparent bg-center object-cover w-full"
               />
-              <span className="before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain"></span>
-              {lp.key && (
+              <span
+                className={cn(
+                  `before:z-[60] before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain`,
+                  play && "before:animate-mainArmSpin"
+                )}
+              ></span>
+              {lp.key && imgMount && (
                 <div
                   className={cn(
-                    "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item ",
+                    "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item z-20",
                     lpSwitch && "animate-lpSwitch",
-                    spinHover && "hover:animate-lpSpin"
+                    spinHover && "hover:animate-lpSpin",
+                    lpSpin && "animate-lpSpin"
                   )}
                   draggable={true}
                   ref={lpRef}

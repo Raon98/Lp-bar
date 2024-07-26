@@ -1,8 +1,8 @@
 import "./globals.css";
 import 'react-toastify/dist/ReactToastify.css';
+
 import { ThemeProvider } from "./hooks/themeContext";
 import { ToastContainer } from "react-toastify";
-
 export default function RootLayout({
   children,
 }: {

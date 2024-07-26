@@ -86,8 +86,8 @@ const config: Config = {
           '100%' : {transform :'scale(10)'}, 
         },
         mainArmSpin : {
-          '0%' : { transform : 'translate(-120%, -12%)'},
-          '100%' : { transform : 'translate(-120%, -12%) rotate(45deg)'},
+          '0%' : { transform : 'translate(-120%, -15%)'},
+          '100%' : { transform : 'translate(-155%, -15%) rotate(40deg)'},
         },
         lpSwitch : {
           '0%' : {opacity : '0', top : '15%'}, 
@@ -102,7 +102,7 @@ const config: Config = {
           '100%' : {transform : 'rotate(0)',transformOrigin: 'center center'} 
         },
         boxOpen : {
-          '0%' : { heigth : "0%"}, 
+          '0%' : { height : "0%"}, 
           '100%' : {height: "100%"}  
         },
         lpInBox : {
@@ -112,7 +112,7 @@ const config: Config = {
         coverUp : {
           '0%' : {transform : 'translate(0, 0)',transformOrigin: 'center center' } , 
           '100%' : {transform : 'translate(0, -20px)',transformOrigin: 'center center'} 
-        }
+        },
       },
       animation : {
         'meteorAnimate' : 'meteorKeyframes 4s ease-in infinite',
