@@ -17,7 +17,7 @@ const ResumeDetail = () => {
         setTimeout(() => {
           setChangeNm(false);
         }, 1000);
-      }, 5000);
+      }, 6000);
     }
   }, [name]);
   return (
@@ -36,7 +36,7 @@ const ResumeDetail = () => {
 
         <div>
           <div className="mt-3">
-            <div className="text-[1.15rem]">평범한에 김성철 더하기</div>
+            <div className="text-[1.15rem]">평범함에 김성철 더하기</div>
             <div>안녕하세요. 3년차 프론트엔드 개발자 김성철입니다.</div>
             <div>
               누구에게나 잘하는것아 한가지씩은 있다고 어른들은 말씀하셨습니다.
