@@ -1,4 +1,4 @@
-export * from "./IndexComponent"
 export * from "./AccompenyIndex"
+export * from "./IndexComponent"
 export * from "./PolaroidIndex"
-export * from "./ResumeIndex"
+
