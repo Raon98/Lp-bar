@@ -1,8 +1,8 @@
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
-import 'react-toastify/dist/ReactToastify.css';
 
-import { ThemeProvider } from "./hooks/themeContext";
 import { ToastContainer } from "react-toastify";
+import { ThemeProvider } from "./hooks/themeContext";
 export default function RootLayout({
   children,
 }: {
@@ -12,7 +12,7 @@ export default function RootLayout({
     <html lang="kr">
       <body>
         <ThemeProvider>
-          <div className="h-screen overflow-y-auto">{children}</div>
+          <div className=" overflow-y-auto">{children}</div>
           <ToastContainer />
         </ThemeProvider>
       </body>
