@@ -14,7 +14,7 @@ interface DetailLayoutProps {
 }
 
 const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
-  const { theme, textTheme } = useTheme();
+  const { theme , textTheme} = useTheme();
   const { getLp } = useMotionStore();
   const [mount, setMount] = useState(true);
   const [imgMount, setImgMount] = useState(true);
@@ -26,8 +26,6 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
     setTimeout(() => {
       setImgMount(true);
     }, 200);
-
-    console.log(textTheme);
   }, []);
   return (
     <>
@@ -36,13 +34,14 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
         <div
           className={`absolute left-0 top-0 ${theme} w-full h-[20%] flex items-end justify-center z-30`}
         >
-          <div className="w-[80%] flex gap-x-1">
-            <div className={`tab_item !bg-white !${textTheme} !text-[1rem]`}>
+          <div className="w-[60%] flex">
+            
+            <button className={`tab_item  !bg-white !text-[0.85rem] !${textTheme}`}>
               소개
-            </div>
-            <div className="tab_item">내용</div>
-            <div className="tab_item">기술</div>
-            <div className="tab_item">트러블슈팅</div>
+            </button>
+            <button className="tab_item">내용</button>
+            <button className="tab_item">기술</button>
+            <button className="tab_item">트러블슈팅</button>
           </div>
         </div>
         <div
@@ -82,7 +81,7 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
             )}
           </div>
           <div className="w-full h-[5%] mt-5 p-5 flex justify-center">
-            <VolumeSlider />
+            <VolumeSlider option='b' />
           </div>
         </div>
         <div className="w-[30%]"></div>

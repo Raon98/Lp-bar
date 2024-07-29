@@ -43,7 +43,7 @@ const config: Config = {
         'custom-border-1' : '1px 2px 10px rgba(0,0,0,0.7)',
         'custom-border-2': '1px 1px 10px rgba(0,0,0,0.7)',
         'custom-border-3': '1px 2px 5px rgba(0,0,0,0.5)',
-        'custom-border-4': ' 0px -2px 2px 0px rgba(0,0,0,0.5)',
+        'custom-border-4': ' 0px -1px 1px 0px rgba(0,0,0,0.5)',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
