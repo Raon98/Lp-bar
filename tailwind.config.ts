@@ -26,6 +26,11 @@ const config: Config = {
           yellow: '#FFD700',
           lightGray : '#E3E3E3'
         },
+        light : {
+          red: '#e88a8a',
+          green: '#86e57f',
+          skyblue :'#a2d6ea'
+        }
       },
       backdropFilter : {
         '30' : '30px'
