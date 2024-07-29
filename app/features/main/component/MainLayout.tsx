@@ -97,7 +97,7 @@ export default function MainLayout() {
           </div>
 
           <div className="w-full h-full flex items-center justify-center ">
-            <div className="relative w-[55%] animate-fadeIn x-1100:w-full">
+            <div className="relative w-[55%] animate-fadeIn x-1100:w-[60%] x-750:w-[70%]">
               <img
                 src="/assets/images/turnTable.png"
                 alt="recode"

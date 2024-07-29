@@ -11,6 +11,7 @@ const config: Config = {
       screens: {
         'xs': {'max': '440px'},
         'x-1100': {'max': '1100px'},
+        'x-750': {'max': '750px'},
       },
       colors: {
         'gray-rgba-0.3': 'rgba(255,255,255,0.3)',
