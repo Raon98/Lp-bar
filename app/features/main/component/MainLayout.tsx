@@ -27,7 +27,7 @@ export default function MainLayout() {
   const lpRef = useRef<HTMLDivElement | null>(null);
   const [spinHover, setSpinHover] = useState(true);
   const [lpSpin, setLpSpin] = useState(false);
-  const [imgMount, setImgMount] = useState(true)
+  const [imgMount, setImgMount] = useState(true);
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData("text/plain", "dragging");
@@ -36,18 +36,17 @@ export default function MainLayout() {
       modalOpen("box");
     },
     recodePlay: () => {
-      if (lp.key === "" ) {
+      if (lp.key === "") {
         toast.info("LP판이 비어있어요!", { autoClose: 3000 });
         modalOpen("box");
       } else {
-        if(!play){
+        if (!play) {
           setChangeState("main", "play");
           setTimeout(() => {
             setLpSpin(true);
           }, 500);
           setTimeout(() => {
             router.push(`/detail/${lp.idx}`);
-            
           }, 2500);
         }
       }
@@ -58,29 +57,29 @@ export default function MainLayout() {
   };
 
   useEffect(() => {
-    if (lp.key ) {
-      setImgMount(false)
+    if (lp.key) {
+      setImgMount(false);
       LpAnimationSwitch();
-      setTimeout(()=>{
-        setImgMount(true)
-      },200)
+      setTimeout(() => {
+        setImgMount(true);
+      }, 200);
     }
     toggleTheme(lp);
   }, [lp]);
 
-  useEffect(()=>{
-    setImgMount(false)
-      setTimeout(()=>{
-        setImgMount(true)
-      },200)
-    setState("main", "play",false);
-  },[])
+  useEffect(() => {
+    setImgMount(false);
+    setTimeout(() => {
+      setImgMount(true);
+    }, 200);
+    setState("main", "play", false);
+  }, []);
 
   return (
     <>
       <div
         className={cn(
-          `w-full h-full overflow-hidden relative px-8 py-5 ${theme}`,
+          `w-full h-full overflow-hidden relative px-8 py-5 bg-${theme}`,
           ""
         )}
         onClick={() => {

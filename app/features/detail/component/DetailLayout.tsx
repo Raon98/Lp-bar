@@ -30,7 +30,7 @@ const DetailLayout = ({ children, id }: DetailLayoutProps) => {
   return (
     <>
       <DetailHeader />
-      <div className={`w-full  flex ${theme} overflow-y-auto`}>
+      <div className={`w-full  flex bg-${theme} overflow-y-auto`}>
         <div
           className={cn(
             "fixed w-[18%]  flex justify-center items-center",
