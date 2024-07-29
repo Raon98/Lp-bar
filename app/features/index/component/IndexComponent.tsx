@@ -6,7 +6,6 @@ interface IndexComponentProp {
 }
 
 const IndexComponent = ({ id }: IndexComponentProp) => {
-  console.log(id);
   return (
     <>
       {id === "2" && <AccompenyIndex />}

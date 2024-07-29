@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 interface SoundState {
     sound : {
@@ -60,7 +60,7 @@ const useSoundStore = create<Store>()(
       }),
       {
         name: 'sound-storage', 
-        getStorage: () => localStorage,
+        storage: createJSONStorage(() => localStorage),
       }
     )
   );

@@ -11,6 +11,7 @@ const config: Config = {
       screens: {
         'xs': {'max': '440px'},
         'x-1100': {'max': '1100px'},
+        'x-750': {'max': '750px'},
       },
       colors: {
         'gray-rgba-0.3': 'rgba(255,255,255,0.3)',
@@ -26,6 +27,11 @@ const config: Config = {
           yellow: '#FFD700',
           lightGray : '#E3E3E3'
         },
+        light : {
+          red: '#e88a8a',
+          green: '#86e57f',
+          skyblue :'#a2d6ea'
+        }
       },
       backdropFilter : {
         '30' : '30px'
@@ -43,7 +49,7 @@ const config: Config = {
         'custom-border-1' : '1px 2px 10px rgba(0,0,0,0.7)',
         'custom-border-2': '1px 1px 10px rgba(0,0,0,0.7)',
         'custom-border-3': '1px 2px 5px rgba(0,0,0,0.5)',
-        
+        'custom-border-4': ' 0px -1px 1px 0px rgba(0,0,0,0.5)',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

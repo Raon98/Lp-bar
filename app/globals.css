@@ -107,7 +107,7 @@ table {
 }
  
 .red_scrollbar::-webkit-scrollbar-thumb {
-    background: #EF6363;
+    background: #d57878;
     border-radius: 5px;
 }
  
@@ -158,4 +158,26 @@ table {
  
 .lightGray_scrollbar::-webkit-scrollbar-thumb:hover {
     background: #b3aeae;
+}
+.tab__block {
+	@apply w-[6.7rem] h-[2.375rem] rounded-t-sm shadow-custom-border-4 flex justify-center items-center text-[0.785rem] !font-['Pretend'] text-white
+}
+.bg_light-skyblue {
+	background : #a2d6ea	
+}
+.bg_light-red {
+	background : #eb4949
+}
+.bg_light-green {
+	background : #86e57f
+}
+
+.text_dark-skyblue {
+	color : #4baacf	
+}
+.text_dark-red {
+	color : #d57878
+}
+.text_dark-green {
+	color : #49cc40
 }

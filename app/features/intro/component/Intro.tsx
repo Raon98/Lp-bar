@@ -1,7 +1,8 @@
 "use client";
 
-import MeteorEffectLayout from "@/app/features/intro/component/MeteorEffectLayout";
 import { cn } from "@/app/common/utils/cn";
+import MeteorEffectLayout from "@/app/features/intro/component/MeteorEffectLayout";
+import useLpStore from "@/app/store/useLpStore";
 import useMotionStore from "@/app/store/useStore";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -12,13 +13,18 @@ export default function Intro() {
   const useSpinStop = getState("intro", "spinStop");
   const useRecode = getState("intro", "recode");
   const router = useRouter();
-
+  const { getKeyLp } = useLpStore();
+  const { setLp } = useMotionStore();
+  const initLp = getKeyLp("lp1");
   const func = {
     onclick: () => {
       setState("intro", "switch");
     },
   };
 
+  useEffect(() => {
+    setLp(initLp);
+  }, [initLp]);
   useEffect(() => {
     if (useSwitch) {
       setState("intro", "spinStop");
