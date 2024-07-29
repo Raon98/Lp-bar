@@ -13,19 +13,19 @@ interface DetailLayoutProps {
 }
 
 const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
-  const { theme, lightTheme, darkTheme } = useTheme();
+  const { theme, lightTheme, darkTheme, toggleTheme } = useTheme();
   const { getLp } = useMotionStore();
   const [mount, setMount] = useState(true);
   const [imgMount, setImgMount] = useState(true);
   const lp = getLp();
 
   useEffect(() => {
+    toggleTheme(lp);
     setMount(true);
     setImgMount(false);
     setTimeout(() => {
       setImgMount(true);
     }, 200);
-    console.log(lightTheme);
   }, []);
   return (
     <>

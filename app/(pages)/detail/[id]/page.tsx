@@ -12,10 +12,6 @@ export default function Page({ params }: { params: { id: string } }) {
   const doc = ["1"];
   const pj = ["2", "3"];
 
-  useEffect(() => {
-    console.log(params.id === "1");
-  }, []);
-
   return (
     <>
       {doc.includes(params.id) && (

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import useLpStore, { LpStateProp, lpInitState, noneLp } from "./useLpStore";
+import { LpStateProp, lpInitState, noneLp } from "./useLpStore";
 
 type Store = LoadingState & LoadingAction;
 
@@ -104,9 +104,17 @@ const actions = (set: any, get: any): LoadingAction => ({
   }
 });
 
-const useStore = create<Store>((set, get) => ({
-  ...initialState,
-  ...actions(set, get),
-}));
+const useStore = create<Store>()(
+  persist(
+    (set, get) => ({
+      ...initialState,
+      ...actions(set, get),
+    }),
+    {
+      name: "main-store", 
+      partialize: (state) => ({ main: { lp: state.main.lp } }), 
+    }
+  )
+);
 
 export default useStore;

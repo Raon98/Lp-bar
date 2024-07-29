@@ -14,13 +14,14 @@ interface DetailLayoutProps {
 }
 
 const DetailLayout = ({ children, id }: DetailLayoutProps) => {
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const { getLp } = useMotionStore();
   const [mount, setMount] = useState(false);
   const [imgMount, setImgMount] = useState(true);
   const lp = getLp();
 
   useEffect(() => {
+    toggleTheme(lp);
     setMount(true);
     setImgMount(false);
     setTimeout(() => {
@@ -30,49 +31,51 @@ const DetailLayout = ({ children, id }: DetailLayoutProps) => {
   return (
     <>
       <DetailHeader />
-      <div className={`w-full  flex bg-${theme} overflow-y-auto`}>
-        <div
-          className={cn(
-            "fixed w-[18%]  flex justify-center items-center",
-            mount && "animate-fadeIn"
-          )}
-        >
-          <div className="px-5 w-full">
-            <IndexComponent id={id} />
-          </div>
-        </div>
-        <div className="w-[30%]"></div>
-        <div
-          className={cn(
-            "bg-white shadow-custom-border-2 w-full  mt-[4.5rem] mb-[2rem] mx-6 overflow-y-auto p-[1.5rem_2rem] min-h-screen",
-            mount && "animate-fadeIn"
-          )}
-        >
-          {children}
-        </div>
-        <div
-          className={cn(
-            "fixed w-[20%] h-screen flex justify-center items-center right-0 flex-col",
-            mount && "animate-fadeIn"
-          )}
-        >
-          <div className="w-full h-[35%] p-5">
-            {imgMount && (
-              <div className="shadow-custom-border-2 p-3 bg-gray-rgba-0.5 rounded-md">
-                <img
-                  src={`/assets/images/shadow-${lp.img}.png`}
-                  alt="lp"
-                  className="bg-no-repeat bg-transparent bg-center object-cover w-full animate-lpSpin"
-                />
-              </div>
+      {mount && (
+        <div className={`w-full  flex bg-${theme} overflow-y-auto`}>
+          <div
+            className={cn(
+              "fixed w-[18%]  flex justify-center items-center",
+              mount && "animate-fadeIn"
             )}
+          >
+            <div className="px-5 w-full">
+              <IndexComponent id={id} />
+            </div>
           </div>
-          <div className="w-full h-[5%] mt-5 p-5 flex justify-center">
-            <VolumeSlider />
+          <div className="w-[30%]"></div>
+          <div
+            className={cn(
+              "bg-white shadow-custom-border-2 w-full  mt-[4.5rem] mb-[2rem] mx-6 overflow-y-auto p-[1.5rem_2rem] min-h-screen",
+              mount && "animate-fadeIn"
+            )}
+          >
+            {children}
           </div>
+          <div
+            className={cn(
+              "fixed w-[20%] h-screen flex justify-center items-center right-0 flex-col",
+              mount && "animate-fadeIn"
+            )}
+          >
+            <div className="w-full h-[35%] p-5">
+              {imgMount && (
+                <div className="shadow-custom-border-2 p-3 bg-gray-rgba-0.5 rounded-md">
+                  <img
+                    src={`/assets/images/shadow-${lp.img}.png`}
+                    alt="lp"
+                    className="bg-no-repeat bg-transparent bg-center object-cover w-full animate-lpSpin"
+                  />
+                </div>
+              )}
+            </div>
+            <div className="w-full h-[5%] mt-5 p-5 flex justify-center">
+              <VolumeSlider />
+            </div>
+          </div>
+          <div className="w-[30%]"></div>
         </div>
-        <div className="w-[30%]"></div>
-      </div>
+      )}
     </>
   );
 };
