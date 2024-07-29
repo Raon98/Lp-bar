@@ -6,6 +6,7 @@ import { LpStateProp } from "../store/useLpStore";
 type ThemeContextType = {
   theme: string;
   iconTheme: string;
+  textTheme : string;
   volumeColor : "primary" | "secondary" | "error" | "info" | "success" | "warning";
   toggleTheme: (lp: LpStateProp) => void;
 };
@@ -26,11 +27,13 @@ interface ThemeProps {
 export const ThemeProvider = ({ children }: ThemeProps) => {
   const [theme, setTheme] = useState(`bg-matte-red`);
   const [iconTheme, setIconTheme] = useState("w");
+  const [textTheme, setTextTheme] = useState("text-matte-red");
   const [volumeColor, setVolumeColor] = useState<"primary" | "secondary" | "error" | "info" | "success" | "warning">("error");
   let color:"primary" | "secondary" | "error" | "info" | "success" | "warning" = 'error';
 
   const toggleTheme = (lp: LpStateProp) => {
     setTheme(`bg-matte-${lp.theme}`);
+    setTextTheme(`text-matte-${lp.theme}`);
     setIconTheme(lp.iconTheme);
     switch (lp.theme) {
       case "red":
@@ -58,7 +61,7 @@ export const ThemeProvider = ({ children }: ThemeProps) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, iconTheme, volumeColor, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, iconTheme, textTheme, volumeColor, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
