@@ -1,4 +1,5 @@
 export * from "./AccompanyDetail"
 export * from "./DetailLayout"
+export * from "./ProjectDetailLayout"
 export * from "./PolaroidDetail"
 export * from "./ResumeDetail"

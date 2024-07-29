@@ -159,3 +159,8 @@ table {
 .lightGray_scrollbar::-webkit-scrollbar-thumb:hover {
     background: #b3aeae;
 }
+
+
+.tab_item {
+	@apply w-[6.7rem] bg-white h-[2.375rem] rounded-t-sm shadow-custom-border-4 flex justify-center items-center text-[0.875rem] bg-transparent text-black
+}

@@ -13,10 +13,10 @@ interface DetailLayoutProps {
   id: string;
 }
 
-const DetailLayout = ({ children, id }: DetailLayoutProps) => {
-  const { theme } = useTheme();
+const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
+  const { theme, textTheme } = useTheme();
   const { getLp } = useMotionStore();
-  const [mount, setMount] = useState(false);
+  const [mount, setMount] = useState(true);
   const [imgMount, setImgMount] = useState(true);
   const lp = getLp();
 
@@ -26,30 +26,44 @@ const DetailLayout = ({ children, id }: DetailLayoutProps) => {
     setTimeout(() => {
       setImgMount(true);
     }, 200);
+
+    console.log(textTheme);
   }, []);
   return (
     <>
       <DetailHeader />
-      <div className={`w-full  flex ${theme} overflow-y-auto`}>
+      <div className={`w-full  flex overflow-y-auto`}>
+        <div
+          className={`absolute left-0 top-0 ${theme} w-full h-[20%] flex items-end justify-center z-30`}
+        >
+          <div className="w-[80%] flex gap-x-1">
+            <div className={`tab_item !bg-white !${textTheme} !text-[1rem]`}>
+              소개
+            </div>
+            <div className="tab_item">내용</div>
+            <div className="tab_item">기술</div>
+            <div className="tab_item">트러블슈팅</div>
+          </div>
+        </div>
         <div
           className={cn(
             "fixed w-[18%]  flex justify-center items-center",
             mount && "animate-fadeIn"
           )}
-        >
-          <div className="px-5 w-full">
-            <IndexComponent id={id} />
-          </div>
-        </div>
+        ></div>
         <div className="w-[30%]"></div>
+        <div className="h-screen w-full flex flex-col">
+          <div className="min-h-[25%]"></div>
         <div
           className={cn(
-            "bg-white shadow-custom-border-2 w-full  mt-[4.5rem] mb-[2rem] mx-6 overflow-y-auto p-[1.5rem_2rem] min-h-screen",
+            "bg-white w-full  mb-[2rem] mx-6 overflow-y-auto p-[1.5rem_2rem] min-h-screen",
             mount && "animate-fadeIn"
           )}
         >
           {children}
         </div>
+        </div>
+       
         <div
           className={cn(
             "fixed w-[20%] h-screen flex justify-center items-center right-0 flex-col",
@@ -77,4 +91,4 @@ const DetailLayout = ({ children, id }: DetailLayoutProps) => {
   );
 };
 
-export default DetailLayout;
+export default ProjectDetailLayout;
