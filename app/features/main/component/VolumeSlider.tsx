@@ -6,7 +6,10 @@ import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 
-export default function VolumeSlider() {
+interface VolumeSliderProps {
+  option? : string
+}
+export default function VolumeSlider({option}:VolumeSliderProps) {
   const { sound, volumeControl, muteVolume, maxVolume } = useSoundStore();
   const { iconTheme, volumeColor } = useTheme();
   const [isClient, setIsClient] = useState(false);
@@ -34,7 +37,7 @@ export default function VolumeSlider() {
           <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
             <button className="w-[15%]" onClick={() => muteVolume()}>
               <img
-                src={`/assets/images/soundMute_${iconTheme}.png`}
+                src={`/assets/images/soundMute_${option ? option : iconTheme}.png`}
                 alt="soundIcon"
                 className="bg-no-repeat bg-transparent bg-center object-cover"
               ></img>
@@ -47,7 +50,7 @@ export default function VolumeSlider() {
             />
             <button className="w-[17%]" onClick={() => maxVolume()}>
               <img
-                src={`/assets/images/soundOn_${iconTheme}.png`}
+                src={`/assets/images/soundOn_${option ? option : iconTheme}.png`}
                 alt="soundIcon"
                 className="bg-no-repeat bg-transparent bg-center object-cover"
               ></img>
