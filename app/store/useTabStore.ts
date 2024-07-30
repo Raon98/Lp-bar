@@ -11,7 +11,7 @@ type Store = {
   tab : Tab[];
   setTabActive: (idx: number) => void;
   setInitTab : () => void;
-  getTabList  : (exceptIdx : number[]) => Tab[]
+  getTabList  : (exceptIdx? : number[]) => Tab[]
 }
 
 const initTab = [{idx : 1 , tabNm : 'intro', active : true},
@@ -29,8 +29,8 @@ const useTabStore = create<Store>()(persist((set,get) => ({
     }))
   },
   setInitTab : () => set({ tab : initTab}),
-  getTabList : (exceptIdx : number[]) => {
-    return get().tab.filter((tab) => !exceptIdx.includes(tab.idx));
+  getTabList : (exceptIdx? : number[]) => {
+    return exceptIdx && exceptIdx.length > 0 ? get().tab.filter((tab) => !exceptIdx.includes(tab.idx)) : get().tab
   } 
 }),
   {
