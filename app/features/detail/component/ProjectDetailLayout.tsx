@@ -41,8 +41,8 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
         <>
           <DetailHeader />
           <div className={`w-full flex `}>
-          <div
-              className={`fixed left-0 top-0 w-full h-[23%] flex items-end justify-center z-[29]`}
+            <div
+              className={`fixed left-0 top-0 w-full h-[23%] flex items-end justify-center z-[29] bg-white`}
             ></div>
             <div
               className={`fixed left-0 top-0 bg-${theme} w-full h-[20%] flex items-end justify-center z-30`}
@@ -54,14 +54,17 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
                     `text-[0.85rem !bg-white text_${darkTheme}`
                   )}
                 >
-                  소개
+                  Intro
                 </button>
                 <button className={cn(`tab__block bg_${lightTheme}`, ``)}>
-                  내용
+                  Features
                 </button>
-                <button className={`tab__block bg_${lightTheme}`}>기술</button>
+                <button className={`tab__block bg_${lightTheme}`}>Tech</button>
                 <button className={`tab__block bg_${lightTheme}`}>
-                  트러블슈팅
+                  Troubles
+                </button>
+                <button className={`tab__block bg_${lightTheme}`}>
+                  Insights
                 </button>
               </div>
             </div>
