@@ -6,6 +6,7 @@ import useDragStore from "@/app/store/useDragStore";
 import useLpStore from "@/app/store/useLpStore";
 import useModalStore from "@/app/store/useModalStore";
 import useMotionStore from "@/app/store/useStore";
+import useTabStore from "@/app/store/useTabStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
@@ -14,7 +15,7 @@ export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
   const { getState, setChangeState, getLp, setState, LpAnimationSwitch } =
     useMotionStore();
-  const { getKeyLp } = useLpStore();
+  const { setInitTab } = useTabStore();
   const { modalState, modalOpen, modalClose } = useModalStore();
   const { setDragState } = useDragStore();
   const router = useRouter();
@@ -75,6 +76,8 @@ export default function MainLayout() {
       setImgMount(true);
     }, 200);
     setState("main", "play", false);
+    /*20240730 tab초기화 */
+    setInitTab()
   }, []);
 
   return (
