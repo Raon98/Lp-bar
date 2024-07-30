@@ -1,50 +1,39 @@
-'use client'
+"use client";
 import { useTheme } from "@/app/hooks/themeContext";
-import TabSectionContainer from "./TabSectionContainer";
+import useSectionStore from "@/app/store/useSectionStore";
 import { useEffect, useRef } from "react";
+import TabSectionContainer from "./TabSectionContainer";
 
 const PolaroidDetail = () => {
-    const { theme} = useTheme();
-    const sectionRef1 = useRef<HTMLDivElement | null >(null);
-    const sectionRef2 = useRef<HTMLDivElement | null >(null);
-    const sectionRef3 = useRef<HTMLDivElement | null >(null);
-    const sectionRef4 = useRef<HTMLDivElement | null >(null);
-    const sectionRef5 = useRef<HTMLDivElement | null >(null);
+  const { theme } = useTheme();
+  const { getTabList, setSectionHeight } = useSectionStore();
+  const sectionRefs = useRef<HTMLDivElement[]>([]);
 
+  useEffect(() => {
+    if (sectionRefs.current) {
+      sectionRefs.current.forEach((ref, idx) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const elBottom = rect.bottom + window.scrollY;
+          setSectionHeight(idx + 1, elBottom);
 
-    useEffect(()=>{
-      console.log("실행" + sectionRef1.current)
-  
-        if(sectionRef1.current){
-          console.log(sectionRef1.current.getBoundingClientRect())
-
-          const rect = sectionRef1.current.getBoundingClientRect();
-          const elementBottom = rect.bottom + window.scrollY; 
-  
-  
-          console.log("바텀값1입니다." + elementBottom)
-  
-    
-      }
-  
-      if(sectionRef2.current){
-        console.log(sectionRef2.current.getBoundingClientRect())
-
-        const rect = sectionRef2.current.getBoundingClientRect();
-        const elementBottom = rect.bottom + window.scrollY; 
-
-
-        console.log("바텀값2입니다." + elementBottom)
-
-      }
-  
-    },[])
+          console.log(idx + "번 : " + elBottom);
+        }
+      });
+      console.log(getTabList());
+    }
+  }, []);
 
   return (
     <>
       <div className="w-full">
-        <TabSectionContainer sectionIdx={1} >
-          <div className="flex flex-col text-[5rem] min-h-[500px]" ref={sectionRef1}>
+        <TabSectionContainer sectionIdx={1}>
+          <div
+            className="flex flex-col text-[5rem] min-h-[500px]"
+            ref={(e) => {
+              if (e) sectionRefs.current[0] = e;
+            }}
+          >
             <div>소개화면입니다.</div>
             <div>소개화면입니다.</div>
             <div>소개화면입니다.</div>
@@ -62,11 +51,48 @@ const PolaroidDetail = () => {
             <div>소개화면입니다.</div>
             <div>소개화면입니다.</div>
             <div>소개화면입니다.</div>
-          </div></TabSectionContainer>
-        <TabSectionContainer sectionIdx={2}><div className="min-h-[700px] " ref={sectionRef2}>기능화면입니다.</div></TabSectionContainer>
-        <TabSectionContainer sectionIdx={3}>기술화면입니다.</TabSectionContainer>
-        <TabSectionContainer sectionIdx={4}>트러블슈팅화면입니다.</TabSectionContainer>
-        <TabSectionContainer sectionIdx={5}>인사이트화면입니다.</TabSectionContainer>
+          </div>
+        </TabSectionContainer>
+        <TabSectionContainer sectionIdx={2}>
+          <div
+            className="min-h-[700px] "
+            ref={(e) => {
+              if (e) sectionRefs.current[1] = e;
+            }}
+          >
+            기능화면입니다.
+          </div>
+        </TabSectionContainer>
+        <TabSectionContainer sectionIdx={3}>
+          <div
+            className="min-h-[700px] "
+            ref={(e) => {
+              if (e) sectionRefs.current[2] = e;
+            }}
+          >
+            기술화면입니다.
+          </div>
+        </TabSectionContainer>
+        <TabSectionContainer sectionIdx={4}>
+          <div
+            className="min-h-[700px] "
+            ref={(e) => {
+              if (e) sectionRefs.current[3] = e;
+            }}
+          >
+            트러블슈팅화면입니다.
+          </div>
+        </TabSectionContainer>
+        <TabSectionContainer sectionIdx={5}>
+          <div
+            className="min-h-[700px] "
+            ref={(e) => {
+              if (e) sectionRefs.current[4] = e;
+            }}
+          >
+            인사이트화면입니다.
+          </div>
+        </TabSectionContainer>
       </div>
     </>
   );
