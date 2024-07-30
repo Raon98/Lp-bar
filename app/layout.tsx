@@ -12,7 +12,7 @@ export default function RootLayout({
     <html lang="kr">
       <body>
         <ThemeProvider>
-          <div className=" overflow-y-auto">{children}</div>
+          {children}
           <ToastContainer />
         </ThemeProvider>
       </body>

@@ -40,9 +40,12 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
       {lpMount && (
         <>
           <DetailHeader />
-          <div className={`w-full  flex overflow-y-auto`}>
+          <div className={`w-full flex `}>
+          <div
+              className={`fixed left-0 top-0 w-full h-[23%] flex items-end justify-center z-[29]`}
+            ></div>
             <div
-              className={`absolute left-0 top-0 bg-${theme} w-full h-[20%] flex items-end justify-center z-30`}
+              className={`fixed left-0 top-0 bg-${theme} w-full h-[20%] flex items-end justify-center z-30`}
             >
               <div className="w-[60%] flex">
                 <button
@@ -73,7 +76,7 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
               <div className="min-h-[25%]"></div>
               <div
                 className={cn(
-                  "bg-white w-full  mb-[2rem] mx-6 overflow-y-auto p-[1.5rem_2rem] min-h-screen",
+                  "bg-white w-full  mb-[2rem] mx-6 p-[1.5rem_2rem]",
                   animationMount && "animate-fadeIn"
                 )}
               >
@@ -83,11 +86,11 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
 
             <div
               className={cn(
-                "fixed w-[20%] h-screen flex justify-center items-center right-0 flex-col",
+                "fixed w-[20%] h-full flex justify-center items-center right-0 flex-col",
                 animationMount && "animate-fadeIn"
               )}
             >
-              <div className="w-full h-[35%] p-5">
+              <div className="w-full h-[30%] p-[2.25rem]">
                 {imgMount && (
                   <div className="shadow-custom-border-2 p-3 bg-gray-rgba-0.5 rounded-md">
                     <img
@@ -98,7 +101,7 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
                   </div>
                 )}
               </div>
-              <div className="w-full h-[5%] mt-5 p-5 flex justify-center">
+              <div className="w-full h-[5%] mt-[20%] p-5 flex justify-center">
                 <VolumeSlider option="b" />
               </div>
             </div>
