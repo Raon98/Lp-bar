@@ -6,6 +6,7 @@ import useMotionStore from "@/app/store/useStore";
 import { useEffect, useState } from "react";
 import VolumeSlider from "../../main/component/VolumeSlider";
 import DetailHeader from "./DetailHeader";
+import useSectionStore from "@/app/store/useSectionStore";
 
 interface DetailLayoutProps {
   children: React.ReactNode;
@@ -14,16 +15,23 @@ interface DetailLayoutProps {
 
 const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
   const { theme, lightTheme, darkTheme, toggleTheme } = useTheme();
+  const { getTabList , setSectionActive } = useSectionStore();
   const { getLp } = useMotionStore();
   const [animationMount, setAnimationMount] = useState(true);
   const [imgMount, setImgMount] = useState(false);
   const [lpMount, setLpMount] = useState(false);
   const lp = getLp();
 
+
+  const func = {
+    clickTab : (idx : number) => {
+      setSectionActive(idx)
+      const topHeight = getTabList()[idx].startHeight
+      window.scrollTo({top:topHeight,behavior: "smooth"})
+    }
+  }
   useEffect(() => {
     setAnimationMount(true);
-
-    // toggleTheme(lp);
   }, []);
 
   useEffect(() => {
@@ -35,34 +43,32 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
     toggleTheme(lp);
   }, [lp]);
 
+
   return (
     <>
       {lpMount && (
         <>
           <DetailHeader />
           <div className={`w-full flex `}>
-          <div
-              className={`fixed left-0 top-0 w-full h-[23%] flex items-end justify-center z-[29]`}
+            <div
+              className={`fixed left-0 top-0 w-full h-[23%] flex items-end justify-center z-[29] bg-white`}
             ></div>
             <div
               className={`fixed left-0 top-0 bg-${theme} w-full h-[20%] flex items-end justify-center z-30`}
             >
               <div className="w-[60%] flex">
-                <button
-                  className={cn(
-                    `tab__block bg_${lightTheme}`,
-                    `text-[0.85rem !bg-white text_${darkTheme}`
-                  )}
-                >
-                  소개
-                </button>
-                <button className={cn(`tab__block bg_${lightTheme}`, ``)}>
-                  내용
-                </button>
-                <button className={`tab__block bg_${lightTheme}`}>기술</button>
-                <button className={`tab__block bg_${lightTheme}`}>
-                  트러블슈팅
-                </button>
+                {getTabList(lp.exceptTab).map((v, idx) => (
+                  <button 
+                    key={idx}
+                    className={cn(
+                      `tab__block bg_${lightTheme}`,
+                      v.active && `text-[0.85rem !bg-white text_${darkTheme}`
+                    )}
+                    onClick={()=> func.clickTab(v.idx)}
+                  >
+                    {v.tabNm}
+                  </button>
+                ))}
               </div>
             </div>
             <div

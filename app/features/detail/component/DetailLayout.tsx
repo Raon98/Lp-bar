@@ -4,7 +4,6 @@ import { cn } from "@/app/common/utils/cn";
 import { useTheme } from "@/app/hooks/themeContext";
 import useMotionStore from "@/app/store/useStore";
 import { useEffect, useState } from "react";
-import IndexComponent from "../../index/component/IndexComponent";
 import VolumeSlider from "../../main/component/VolumeSlider";
 import DetailHeader from "./DetailHeader";
 
@@ -39,9 +38,6 @@ const DetailLayout = ({ children, id }: DetailLayoutProps) => {
               mount && "animate-fadeIn"
             )}
           >
-            <div className="px-5 w-full">
-              <IndexComponent id={id} />
-            </div>
           </div>
           <div className="w-[30%]"></div>
           <div
