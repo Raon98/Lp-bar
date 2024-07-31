@@ -22,6 +22,14 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
   const [lpMount, setLpMount] = useState(false);
   const lp = getLp();
 
+
+  const func = {
+    clickTab : (idx : number) => {
+      setSectionActive(idx)
+      const topHeight = getTabList()[idx].startHeight
+      window.scrollTo({top:topHeight,behavior: "smooth"})
+    }
+  }
   useEffect(() => {
     setAnimationMount(true);
   }, []);
@@ -56,7 +64,7 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
                       `tab__block bg_${lightTheme}`,
                       v.active && `text-[0.85rem !bg-white text_${darkTheme}`
                     )}
-                    onClick={()=> setSectionActive(v.idx)}
+                    onClick={()=> func.clickTab(v.idx)}
                   >
                     {v.tabNm}
                   </button>

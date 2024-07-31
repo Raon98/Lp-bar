@@ -9,24 +9,22 @@ import PolaroidTechStack from "../../section/polaroid/PolaroidTechStack";
 import PolaroidInSight from "../../section/polaroid/PolaroidInSight";
 
 const PolaroidDetail = () => {
-  const { theme } = useTheme();
   const { getTabList, setSectionHeight,setInitTab } = useSectionStore();
   const sectionRefs = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     setInitTab(()=> {
-      console.log("초기화완료")
 
       if (sectionRefs.current) {
         sectionRefs.current.forEach((ref, idx) => {
           if (ref) {
             const rect = ref.getBoundingClientRect();
             const elBottom = rect.bottom + window.scrollY;
-            setSectionHeight(idx, elBottom);
+            const elTop = ref.offsetTop - 325;
+            setSectionHeight(idx, elTop,elBottom);
           }
         });
       }
-      console.log(getTabList())
     });
  
 

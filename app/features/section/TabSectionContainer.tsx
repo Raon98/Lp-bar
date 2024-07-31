@@ -21,7 +21,6 @@ const TabSectionContainer = ({
   useEffect(() => {
 
     if(currentIdx ){
-      console.log(getTabList()[currentIdx].height)
       setSectionActive(getTabList()[currentIdx].idx);      
     }
 
@@ -29,7 +28,7 @@ const TabSectionContainer = ({
       if (sectionRef.current) {
         const scrollPosition = window.scrollY + window.innerHeight;
 
-        if (scrollPosition > getTabList()[currentIdx].height) {
+        if (scrollPosition > getTabList()[currentIdx].endHeight) {
           if(getTabList(lp.exceptTab).length > currentIdx ){
             setCurrentState(currentIdx+1)
           }

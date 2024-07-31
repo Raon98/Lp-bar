@@ -5,23 +5,25 @@ type Tab = {
   idx: number;
   tabNm: string;
   active: boolean;
-  height : number;
+  startHeight : number;
+  endHeight : number;
 };
 
 type Store = {
   tab : Tab[];
   setSectionActive: (idx: number) => void;
-  setSectionHeight: (idx : number, height : number) => void;
+  setSectionHeight: (idx : number, startHeight : number, endHeight : number) => void;
   setInitTab : (callback? : () => void) => void;
   getTabList  : (exceptIdx? : number[]) => Tab[];
   
 }
 
-const initTab = [{idx : 0 , tabNm : 'introduce', active : true, height : 0},
-  {idx : 1 , tabNm : 'Features',active : false,height : 0},
-  {idx : 2 , tabNm : 'Tech Stack',active : false,height : 0},
-  {idx : 3 , tabNm : 'Troubles',active : false,height : 0},
-  {idx : 4 , tabNm : 'Insight',active : false,height : 0}
+const initTab = 
+[{idx : 0 , tabNm : 'introduce', active : true, startHeight : 0,endHeight : 0},
+  {idx : 1 , tabNm : 'Features',active : false,startHeight : 0,endHeight : 0},
+  {idx : 2 , tabNm : 'Tech Stack',active : false,startHeight : 0,endHeight : 0},
+  {idx : 3 , tabNm : 'Troubles',active : false,startHeight : 0,endHeight : 0},
+  {idx : 4 , tabNm : 'Insight',active : false,startHeight : 0,endHeight : 0}
 ]
 
 const useSectionStore = create<Store>()(persist((set,get) => ({
@@ -31,9 +33,9 @@ const useSectionStore = create<Store>()(persist((set,get) => ({
       tab : state.tab.map(tab => tab.idx === idx ? {...tab, active : true} : {...tab, active :false})
     }))
   },
-  setSectionHeight : (idx : number, height : number) => {
+  setSectionHeight : (idx : number, startHeight : number, endHeight : number) => {
     set((state) => ({
-      tab : state.tab.map(tab => tab.idx === idx ? {...tab, height : height} : {...tab})
+      tab : state.tab.map(tab => tab.idx === idx ? {...tab, startHeight : startHeight, endHeight : endHeight} : {...tab})
     }))
   },
   setInitTab : (callback? : () => void) => {
