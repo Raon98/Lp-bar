@@ -43,6 +43,7 @@ export default function MainLayout() {
       } else {
         if (!play) {
           setChangeState("main", "play");
+
           setTimeout(() => {
             setLpSpin(true);
           }, 500);
