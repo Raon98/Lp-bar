@@ -17,9 +17,9 @@ type Store = {
   
 }
 
-const initTab = [{idx : 1 , tabNm : 'intro', active : true, height : 0},
+const initTab = [{idx : 1 , tabNm : 'introduce', active : true, height : 0},
   {idx : 2 , tabNm : 'Features',active : false,height : 0},
-  {idx : 3 , tabNm : 'Tech',active : false,height : 0},
+  {idx : 3 , tabNm : 'Tech Stack',active : false,height : 0},
   {idx : 4 , tabNm : 'Troubles',active : false,height : 0},
   {idx : 5 , tabNm : 'Insight',active : false,height : 0}
 ]

@@ -6,6 +6,7 @@ import useMotionStore from "@/app/store/useStore";
 import { useEffect, useState } from "react";
 import VolumeSlider from "../../main/component/VolumeSlider";
 import DetailHeader from "./DetailHeader";
+import useSectionStore from "@/app/store/useSectionStore";
 
 interface DetailLayoutProps {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ interface DetailLayoutProps {
 
 const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
   const { theme, lightTheme, darkTheme, toggleTheme } = useTheme();
+  const { getTabList , setSectionActive } = useSectionStore();
   const { getLp } = useMotionStore();
   const [animationMount, setAnimationMount] = useState(true);
   const [imgMount, setImgMount] = useState(false);
@@ -23,7 +25,6 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
   useEffect(() => {
     setAnimationMount(true);
 
-    // toggleTheme(lp);
   }, []);
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
 
     toggleTheme(lp);
   }, [lp]);
+
 
   return (
     <>
@@ -48,24 +50,18 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
               className={`fixed left-0 top-0 bg-${theme} w-full h-[20%] flex items-end justify-center z-30`}
             >
               <div className="w-[60%] flex">
-                <button
-                  className={cn(
-                    `tab__block bg_${lightTheme}`,
-                    `text-[0.85rem !bg-white text_${darkTheme}`
-                  )}
-                >
-                  Intro
-                </button>
-                <button className={cn(`tab__block bg_${lightTheme}`, ``)}>
-                  Features
-                </button>
-                <button className={`tab__block bg_${lightTheme}`}>Tech</button>
-                <button className={`tab__block bg_${lightTheme}`}>
-                  Troubles
-                </button>
-                <button className={`tab__block bg_${lightTheme}`}>
-                  Insights
-                </button>
+                {getTabList(lp.exceptTab).map((v, idx) => (
+                  <button 
+                    key={idx}
+                    className={cn(
+                      `tab__block bg_${lightTheme}`,
+                      v.active && `text-[0.85rem !bg-white text_${darkTheme}`
+                    )}
+                    onClick={()=> setSectionActive(v.idx)}
+                  >
+                    {v.tabNm}
+                  </button>
+                ))}
               </div>
             </div>
             <div
