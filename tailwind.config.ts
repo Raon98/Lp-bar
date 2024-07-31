@@ -123,6 +123,7 @@ const config: Config = {
       animation : {
         'meteorAnimate' : 'meteorKeyframes 4s ease-in infinite',
         'fadeIn' : 'fadeIn 1s linear 1 0s normal forwards',
+        'DelayfadeIn' : 'fadeIn 1.5s linear 1 0s normal forwards',
         'fadeOut' : 'fadeOut 1s linear 1 0.2s normal forwards',
         'spin' : 'spin 2.5s linear infinite 0.5s normal',
         'spinStop' : 'spinStop 3s ease-out 1 0s normal forwards',

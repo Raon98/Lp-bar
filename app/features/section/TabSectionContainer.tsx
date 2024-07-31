@@ -47,8 +47,8 @@ const TabSectionContainer = ({
           v.idx === sectionIdx && (
             <section
               className={cn(
-                ` bg-slate-400 mb-20 ${className}`,
-                v.active && "animate-fadeIn",
+                ` bg-slate-400 mb-[10rem] ${className}`,
+                v.active && "animate-DelayfadeIn",
               )}
               key={v.idx}
               ref={sectionRef}
