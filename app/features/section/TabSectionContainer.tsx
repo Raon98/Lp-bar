@@ -16,12 +16,11 @@ const TabSectionContainer = ({
   const { getTabList, setSectionActive } = useSectionStore();
   const { getLp } = useMotionStore();
   const sectionRef = useRef<HTMLElement | null>(null);
-  const [currentIdx,setCurrentState] = useState(0)
+  const [currentIdx, setCurrentState] = useState(0);
   const lp = getLp();
   useEffect(() => {
-
-    if(currentIdx ){
-      setSectionActive(getTabList()[currentIdx].idx);      
+    if (currentIdx) {
+      setSectionActive(getTabList()[currentIdx].idx);
     }
 
     const handleScroll = () => {
@@ -29,8 +28,8 @@ const TabSectionContainer = ({
         const scrollPosition = window.scrollY + window.innerHeight;
 
         if (scrollPosition > getTabList()[currentIdx].endHeight) {
-          if(getTabList(lp.exceptTab).length > currentIdx ){
-            setCurrentState(currentIdx+1)
+          if (getTabList(lp.exceptTab).length > currentIdx) {
+            setCurrentState(currentIdx + 1);
           }
         }
       }
@@ -38,7 +37,7 @@ const TabSectionContainer = ({
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [sectionRef,currentIdx]);
+  }, [sectionRef, currentIdx]);
 
   return (
     <>
@@ -47,8 +46,8 @@ const TabSectionContainer = ({
           v.idx === sectionIdx && (
             <section
               className={cn(
-                ` bg-slate-400 mb-[10rem] ${className}`,
-                v.active && "animate-DelayfadeIn",
+                ` bg-slate-50 mb-[10rem] ${className}`,
+                v.active && "animate-DelayfadeIn"
               )}
               key={v.idx}
               ref={sectionRef}
