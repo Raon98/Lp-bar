@@ -16,36 +16,31 @@ const TabSectionContainer = ({
   const { getTabList, setSectionActive } = useSectionStore();
   const { getLp } = useMotionStore();
   const sectionRef = useRef<HTMLElement | null>(null);
-  const [currentIdx,setCurrentState] = useState(getTabList()[0].idx)
+  const [currentIdx,setCurrentState] = useState(0)
   const lp = getLp();
   useEffect(() => {
+
+    if(currentIdx ){
+      console.log(getTabList()[currentIdx].height)
+      setSectionActive(getTabList()[currentIdx].idx);      
+    }
+
     const handleScroll = () => {
       if (sectionRef.current) {
         const scrollPosition = window.scrollY + window.innerHeight;
 
-        console.log("현재 스크롤값입니다." + getTabList());
-
         if (scrollPosition > getTabList()[currentIdx].height) {
-          console.log("체인지1" + getTabList()[currentIdx].idx);
-          setCurrentState(getTabList()[currentIdx].idx+1)
-          console.log("체인지" + currentIdx);
-          setSectionActive(currentIdx);
-        }
-        console.log("[currentIdx]" + currentIdx)
-        console.log("getTabList()[currentIdx].idx" + getTabList()[currentIdx].idx)
-        if(currentIdx !== getTabList()[0].idx && scrollPosition < getTabList()[currentIdx].height){
-            
-          setCurrentState(getTabList()[currentIdx].idx)
-          setSectionActive(currentIdx);
-          console.log("아웃체인지")
+          if(getTabList(lp.exceptTab).length > currentIdx ){
+            setCurrentState(currentIdx+1)
+          }
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [sectionRef]);
+  }, [sectionRef,currentIdx]);
+
   return (
     <>
       {getTabList().map(
@@ -53,9 +48,8 @@ const TabSectionContainer = ({
           v.idx === sectionIdx && (
             <section
               className={cn(
-                ` bg-slate-400 mb-20  ${className}`,
+                ` bg-slate-400 mb-20 ${className}`,
                 v.active && "animate-fadeIn",
-                !v.active && "animate-fadeOut",
               )}
               key={v.idx}
               ref={sectionRef}
