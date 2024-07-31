@@ -24,7 +24,6 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
 
   useEffect(() => {
     setAnimationMount(true);
-
   }, []);
 
   useEffect(() => {

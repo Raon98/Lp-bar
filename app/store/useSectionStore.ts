@@ -12,16 +12,16 @@ type Store = {
   tab : Tab[];
   setSectionActive: (idx: number) => void;
   setSectionHeight: (idx : number, height : number) => void;
-  setInitTab : () => void;
+  setInitTab : (callback? : () => void) => void;
   getTabList  : (exceptIdx? : number[]) => Tab[];
   
 }
 
-const initTab = [{idx : 1 , tabNm : 'introduce', active : true, height : 0},
-  {idx : 2 , tabNm : 'Features',active : false,height : 0},
-  {idx : 3 , tabNm : 'Tech Stack',active : false,height : 0},
-  {idx : 4 , tabNm : 'Troubles',active : false,height : 0},
-  {idx : 5 , tabNm : 'Insight',active : false,height : 0}
+const initTab = [{idx : 0 , tabNm : 'introduce', active : true, height : 0},
+  {idx : 1 , tabNm : 'Features',active : false,height : 0},
+  {idx : 2 , tabNm : 'Tech Stack',active : false,height : 0},
+  {idx : 3 , tabNm : 'Troubles',active : false,height : 0},
+  {idx : 4 , tabNm : 'Insight',active : false,height : 0}
 ]
 
 const useSectionStore = create<Store>()(persist((set,get) => ({
@@ -36,7 +36,12 @@ const useSectionStore = create<Store>()(persist((set,get) => ({
       tab : state.tab.map(tab => tab.idx === idx ? {...tab, height : height} : {...tab})
     }))
   },
-  setInitTab : () => set({ tab : initTab}),
+  setInitTab : (callback? : () => void) => {
+    set({ tab : initTab});
+    if(callback){
+      callback();
+    } 
+  },
   getTabList : (exceptIdx? : number[]) => {
     return exceptIdx && exceptIdx.length > 0 ? get().tab.filter((tab) => !exceptIdx.includes(tab.idx)) : get().tab
   } 
