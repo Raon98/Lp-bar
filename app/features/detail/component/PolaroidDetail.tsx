@@ -20,13 +20,12 @@ const PolaroidDetail = () => {
           if (ref) {
             const rect = ref.getBoundingClientRect();
 
-            const elBottom = rect.bottom + window.scrollY;
+            const elBottom = rect.bottom + window.scrollY - firstTop;
             const elTop = ref.offsetTop - firstTop;
             setSectionHeight(idx, elTop, elBottom);
           }
         });
       }
-      console.log(getTabList());
     });
   }, []);
 

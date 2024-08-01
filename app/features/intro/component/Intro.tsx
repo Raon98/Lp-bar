@@ -15,7 +15,6 @@ export default function Intro() {
   const router = useRouter();
   const { getKeyLp } = useLpStore();
   const { setLp } = useMotionStore();
-
   const func = {
     onclick: () => {
       setState("intro", "switch");
@@ -23,8 +22,9 @@ export default function Intro() {
   };
 
   useEffect(() => {
-    getKeyLp("lp1");
+    setLp(getKeyLp("lp1"));
   }, []);
+  
   useEffect(() => {
     if (useSwitch) {
       setState("intro", "spinStop");

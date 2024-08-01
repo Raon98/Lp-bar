@@ -16,18 +16,15 @@ const AccompanyDetail = () => {
     setInitTab(() => {
       if (sectionRefs.current) {
         const firstTop = sectionRefs.current[0].getBoundingClientRect().top;
-
         sectionRefs.current.forEach((ref, idx) => {
           if (ref) {
             const rect = ref.getBoundingClientRect();
-
-            const elBottom = rect.bottom + window.scrollY;
+            const elBottom = rect.bottom + window.scrollY - firstTop;
             const elTop = ref.offsetTop - firstTop;
             setSectionHeight(idx, elTop, elBottom);
           }
         });
       }
-      console.log(getTabList());
     });
   }, []);
 
