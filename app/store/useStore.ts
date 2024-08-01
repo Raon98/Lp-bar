@@ -29,6 +29,7 @@ interface LoadingAction {
   getState: (option: keyof LoadingState, key: keyof State) => boolean;
   getLp: () => LpStateProp;
   LpAnimationSwitch: () => void;
+  resetState: () => void
 }
 
 const initialState: LoadingState = {
@@ -101,6 +102,9 @@ const actions = (set: any, get: any): LoadingAction => ({
     }));
    },1500)
 
+  },
+  resetState : () => {
+    set(initialState)
   }
 });
 
