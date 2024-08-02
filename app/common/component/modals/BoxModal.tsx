@@ -16,6 +16,8 @@ const BoxModal = () => {
   const lp = getLp();
   
   const [mount, setMount] = useState(false)
+  const [imgMount, setImgMount] = useState(true);
+
   const func = {
     onDrop: (e: React.DragEvent<HTMLDivElement>) => {
       e.preventDefault();
@@ -36,6 +38,10 @@ const BoxModal = () => {
 
   useEffect(()=> {
     setMount(true)
+    setImgMount(false);
+    setTimeout(() => {
+      setImgMount(true);
+    }, 100);
   },[])
   return (
     <>
@@ -77,10 +83,10 @@ const BoxModal = () => {
                         key={idx}
                       >
                         <button onClick={() => func.albumClick(item)}>
-                        <img
+                        { imgMount  && <img
                               src={`/assets/images/${item.coverImg}.png`}
                               className="bg-no-repeat bg-transparent bg-center object-cover z-20"
-                            />
+                            />}
                         </button>
                       </div>
                     ))}

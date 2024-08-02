@@ -13,7 +13,7 @@ const TabSectionContainer = ({
   sectionIdx: number;
   className?: string;
 }) => {
-  const { getTabList, setSectionActive } = useSectionStore();
+  const { getTabList, setSectionActive,setScreenSectionActive } = useSectionStore();
   const { getLp } = useMotionStore();
   const sectionRef = useRef<HTMLElement | null>(null);
   const [currentIdx, setCurrentState] = useState(0);
@@ -21,16 +21,18 @@ const TabSectionContainer = ({
   useEffect(() => {
     if (currentIdx) {
       setSectionActive(getTabList()[currentIdx].idx);
+      setScreenSectionActive(getTabList()[currentIdx].idx);
     }
 
     const handleScroll = () => {
       if (sectionRef.current) {
-        const scrollPosition = window.scrollY + window.innerHeight;
-
+        const scrollPosition = window.scrollY + window.innerHeight*0.3
+        
         if (scrollPosition > getTabList()[currentIdx].endHeight) {
-          if (getTabList(lp.exceptTab).length > currentIdx) {
+          if (getTabList(lp.exceptTab).length > currentIdx+1) {
             setCurrentState(currentIdx + 1);
           }
+          
         }
       }
     };
@@ -46,8 +48,9 @@ const TabSectionContainer = ({
           v.idx === sectionIdx && (
             <section
               className={cn(
-                ` bg-slate-50 mb-[10rem] ${className}`,
-                v.active && "animate-DelayfadeIn"
+                ` bg-slate-50 mb-[10rem] opacity-0 bg-slate-600 ${className}`,
+                v.screenActive && "animate-DelayfadeIn"
+                
               )}
               key={v.idx}
               ref={sectionRef}

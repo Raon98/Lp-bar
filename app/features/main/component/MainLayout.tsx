@@ -65,7 +65,7 @@ export default function MainLayout() {
       LpAnimationSwitch();
       setTimeout(() => {
         setImgMount(true);
-      }, 200);
+      }, 100);
     }
     toggleTheme(lp);
   }, [lp]);
@@ -74,7 +74,7 @@ export default function MainLayout() {
     setImgMount(false);
     setTimeout(() => {
       setImgMount(true);
-    }, 200);
+    }, 100);
     setState("main", "play", false);
     /*20240730 tab초기화 */
     setInitTab();
@@ -113,7 +113,7 @@ export default function MainLayout() {
                 {lp.since}
               </div>
               <div className="w-full h-full flex items-center justify-center ">
-                <div className="relative w-[55%] animate-fadeIn x-1100:w-[60%] x-750:w-[70%]">
+                {imgMount && <div className="relative w-[55%] animate-fadeIn x-1100:w-[60%] x-750:w-[70%]">
                   <img
                     src="/assets/images/turnTable.png"
                     alt="recode"
@@ -125,7 +125,7 @@ export default function MainLayout() {
                       play && "before:animate-mainArmSpin"
                     )}
                   ></span>
-                  {lp.key && imgMount && (
+                  {lp.key &&  (
                     <div
                       className={cn(
                         "absolute left-[19%] top-[26%] w-[45%] hover:cursor-pointer drag_item z-20",
@@ -148,7 +148,7 @@ export default function MainLayout() {
                       />
                     </div>
                   )}
-                </div>
+                </div>}
               </div>
             </div>
           </div>
