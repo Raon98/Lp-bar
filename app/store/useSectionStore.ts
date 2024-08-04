@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type Tab = {
+export type Tab = {
   idx: number;
   tabNm: string;
   active: boolean;
@@ -12,15 +12,17 @@ type Tab = {
 
 type Store = {
   tab : Tab[];
+  tabChange : boolean;
   setSectionActive: (idx: number) => void;
   setScreenSectionActive: (idx: number) => void;
   setSectionHeight: (idx : number, startHeight : number, endHeight : number) => void;
+  setTabChange : ()=> void;
   setInitTab : (callback? : () => void) => void;
   getTabList  : (exceptIdx? : number[]) => Tab[];
   
 }
 
-const initTab = 
+export const initTab = 
 [{idx : 0 , tabNm : 'introduce', active : true, screenActive : true, startHeight : 0,endHeight : 0},
   {idx : 1 , tabNm : 'Features',active : false,screenActive : false, startHeight : 0,endHeight : 0},
   {idx : 2 , tabNm : 'Tech Stack',active : false,screenActive : false, startHeight : 0,endHeight : 0},
@@ -30,6 +32,7 @@ const initTab =
 
 const useSectionStore = create<Store>()(persist((set,get) => ({
   tab : initTab,
+  tabChange : false,
   setSectionActive : (idx : number) => {
     set((state) => ({
       tab : state.tab.map(tab => tab.idx === idx ? {...tab, active : true} : {...tab, active :false})
@@ -50,6 +53,12 @@ const useSectionStore = create<Store>()(persist((set,get) => ({
     if(callback){
       callback();
     } 
+  },
+  setTabChange : () => {
+    set({ tabChange : true});
+    setTimeout(()=> {
+      set({ tabChange : false});
+    },1000)
   },
   getTabList : (exceptIdx? : number[]) => {
     return exceptIdx && exceptIdx.length > 0 ? get().tab.filter((tab) => !exceptIdx.includes(tab.idx)) : get().tab
