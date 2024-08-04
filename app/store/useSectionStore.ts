@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type Tab = {
+export type Tab = {
   idx: number;
   tabNm: string;
   active: boolean;
@@ -20,7 +20,7 @@ type Store = {
   
 }
 
-const initTab = 
+export const initTab = 
 [{idx : 0 , tabNm : 'introduce', active : true, screenActive : true, startHeight : 0,endHeight : 0},
   {idx : 1 , tabNm : 'Features',active : false,screenActive : false, startHeight : 0,endHeight : 0},
   {idx : 2 , tabNm : 'Tech Stack',active : false,screenActive : false, startHeight : 0,endHeight : 0},
