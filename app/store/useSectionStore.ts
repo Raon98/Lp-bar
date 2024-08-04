@@ -58,7 +58,7 @@ const useSectionStore = create<Store>()(persist((set,get) => ({
     set({ tabChange : true});
     setTimeout(()=> {
       set({ tabChange : false});
-    },1000)
+    },3000)
   },
   getTabList : (exceptIdx? : number[]) => {
     return exceptIdx && exceptIdx.length > 0 ? get().tab.filter((tab) => !exceptIdx.includes(tab.idx)) : get().tab
