@@ -13,7 +13,7 @@ const TabSectionContainer = ({
   sectionIdx: number;
   className?: string;
 }) => {
-  const { getTabList, setSectionActive, setScreenSectionActive } =
+  const { getTabList, setSectionActive, setScreenSectionActive, tabChange } =
     useSectionStore();
   const { getLp } = useMotionStore();
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -46,7 +46,7 @@ const TabSectionContainer = ({
       }
     };
 
-    if (changeTime) {
+    if (changeTime && !tabChange) {
       setSectionActive(getTabList(lp.exceptTab)[currentIdx].idx);
       setScreenSectionActive(getTabList(lp.exceptTab)[currentIdx].idx);
     }

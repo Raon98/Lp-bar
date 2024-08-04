@@ -2,11 +2,11 @@
 
 import { cn } from "@/app/common/utils/cn";
 import { useTheme } from "@/app/hooks/themeContext";
+import useSectionStore from "@/app/store/useSectionStore";
 import useMotionStore from "@/app/store/useStore";
 import { useEffect, useState } from "react";
 import VolumeSlider from "../../main/component/VolumeSlider";
 import DetailHeader from "./DetailHeader";
-import useSectionStore from "@/app/store/useSectionStore";
 
 interface DetailLayoutProps {
   children: React.ReactNode;
@@ -15,21 +15,21 @@ interface DetailLayoutProps {
 
 const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
   const { theme, lightTheme, darkTheme, toggleTheme } = useTheme();
-  const { getTabList , setSectionActive } = useSectionStore();
+  const { getTabList, setSectionActive, setTabChange } = useSectionStore();
   const { getLp } = useMotionStore();
   const [animationMount, setAnimationMount] = useState(true);
   const [imgMount, setImgMount] = useState(false);
   const [lpMount, setLpMount] = useState(false);
   const lp = getLp();
 
-
   const func = {
-    clickTab : (idx : number) => {
-      setSectionActive(idx)
-      const topHeight = getTabList()[idx].startHeight
-      window.scrollTo({top:topHeight,behavior: "smooth"})
-    }
-  }
+    clickTab: (idx: number) => {
+      setTabChange();
+      setSectionActive(idx);
+      const topHeight = getTabList()[idx].startHeight;
+      window.scrollTo({ top: topHeight, behavior: "smooth" });
+    },
+  };
   useEffect(() => {
     setAnimationMount(true);
   }, []);
@@ -42,7 +42,6 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
 
     toggleTheme(lp);
   }, [lp]);
-
 
   return (
     <>
@@ -58,13 +57,13 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
             >
               <div className="w-[60%] flex">
                 {getTabList(lp.exceptTab).map((v, idx) => (
-                  <button 
+                  <button
                     key={idx}
                     className={cn(
                       `tab__block bg_${lightTheme}`,
                       v.active && `text-[0.85rem !bg-white text_${darkTheme}`
                     )}
-                    onClick={()=> func.clickTab(v.idx)}
+                    onClick={() => func.clickTab(v.idx)}
                   >
                     {v.tabNm}
                   </button>
