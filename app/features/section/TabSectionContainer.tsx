@@ -28,7 +28,7 @@ const TabSectionContainer = ({
 
         if (currentIdx !== 0) {
           setBeforeList(getTabList(lp.exceptTab)[currentIdx - 1]);
-          if (scrollPosition < beforeList.endHeight) {
+          if (scrollPosition < beforeList.endHeight * 0.9) {
             setCurrentState(getTabList(lp.exceptTab)[currentIdx].idx - 1);
             setChangeTime(false);
           }
@@ -67,8 +67,9 @@ const TabSectionContainer = ({
           v.idx === sectionIdx && (
             <section
               className={cn(
-                ` bg-slate-50 mb-[10rem] opacity-0 ${className}`,
-                v.screenActive && "animate-DelayfadeIn"
+                ` bg-slate-50 mt-[3rem] mb-[5rem] ${className}`,
+                v.active && "animate-DelayfadeIn",
+                !v.active && "animate-fadeOut"
               )}
               key={v.idx}
               ref={sectionRef}
