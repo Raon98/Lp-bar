@@ -67,7 +67,7 @@ const TabSectionContainer = ({
           v.idx === sectionIdx && (
             <section
               className={cn(
-                ` bg-slate-50 mt-[3rem] mb-[5rem] ${className}`,
+                `mt-[3rem] mb-[5rem] ${className}`,
                 v.active && "animate-DelayfadeIn",
                 !v.active && "animate-fadeOut"
               )}
