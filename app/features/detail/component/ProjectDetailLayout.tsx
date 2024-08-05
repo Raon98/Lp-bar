@@ -15,7 +15,7 @@ interface DetailLayoutProps {
 
 const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
   const { theme, lightTheme, darkTheme, toggleTheme } = useTheme();
-  const { getTabList, setSectionActive, setTabChange } = useSectionStore();
+  const { getTabList, setSectionActive, setTabChange ,tabChange} = useSectionStore();
   const { getLp } = useMotionStore();
   const [animationMount, setAnimationMount] = useState(true);
   const [imgMount, setImgMount] = useState(false);
@@ -24,10 +24,12 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
 
   const func = {
     clickTab: (idx: number) => {
-      setTabChange();
-      setSectionActive(idx);
-      const topHeight = getTabList()[idx].startHeight;
-      window.scrollTo({ top: topHeight, behavior: "smooth" });
+      if(!tabChange){
+        setTabChange();
+        setSectionActive(idx);
+        const topHeight = getTabList()[idx].startHeight;
+        window.scrollTo({ top: topHeight, behavior: "smooth" });
+      }
     },
   };
   useEffect(() => {
@@ -91,7 +93,7 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
 
             <div
               className={cn(
-                "fixed w-[20%] h-full flex justify-center items-center right-0 flex-col",
+                "fixed w-[15%] h-full flex justify-center items-center right-0 flex-col mr-12",
                 animationMount && "animate-fadeIn"
               )}
             >
