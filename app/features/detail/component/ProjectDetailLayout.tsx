@@ -93,7 +93,7 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
 
             <div
               className={cn(
-                "fixed w-[20%] h-full flex justify-center items-center right-0 flex-col",
+                "fixed w-[15%] h-full flex justify-center items-center right-0 flex-col mr-12",
                 animationMount && "animate-fadeIn"
               )}
             >
