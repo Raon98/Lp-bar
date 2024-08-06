@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import VolumeSlider from "../../main/component/VolumeSlider";
 import DetailHeader from "./DetailHeader";
 import useLpStore from "@/app/store/useLpStore";
-
+import Image from 'next/image'
 interface DetailLayoutProps {
   children: React.ReactNode;
   id: string;
@@ -84,18 +84,20 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
                 animationMount && "animate-fadeIn"
               )}
             ></div>
-            <div className="w-[30%]"></div>
-            <div className="h-screen w-full flex flex-col">
+            <div className="min-w-[20%]"></div>
+            <div className="h-screen flex w-[60%] flex-col">
               <div className="min-h-[25%]"></div>
               <div
                 className={cn(
-                  "bg-white w-full  mb-[2rem] mx-6 p-[1.5rem_2rem]",
+                  "bg-white w-full  mb-[2rem] mx-6",
                   animationMount && "animate-fadeIn"
                 )}
               >
                 {children}
               </div>
             </div>
+            <div className="min-w-[20%]"></div>
+            
 
             <div
               className={cn(
@@ -106,19 +108,22 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
               <div className="w-full h-[30%] p-[2.25rem]">
                 {imgMount && (
                   <div className="shadow-custom-border-2 p-3 bg-gray-rgba-0.5 rounded-md">
-                    <img
-                      src={`/assets/images/shadow-${lp.img}.png`}
+                    
+                    <Image
+                       src={`/assets/images/shadow-${lp.img}.png`}
+                      width={300}
+                      height={300}
                       alt="lp"
-                      className="bg-no-repeat bg-transparent bg-center object-cover w-full animate-lpSpin"
+                    className="animate-lpSpin object-cover"
                     />
                   </div>
                 )}
               </div>
-              <div className="w-full h-[5%] mt-[20%] p-5 flex justify-center">
+              <div className="w-full h-[5%]  p-5 flex justify-center">
                 <VolumeSlider option="b" />
               </div>
             </div>
-            <div className="w-[30%]"></div>
+            <div className="min-w-[20%]"></div>
           </div>
         </>
       )}
