@@ -3,6 +3,7 @@ import { Modals } from "@/app/common/component/Modals";
 import { cn } from "@/app/common/utils/cn";
 import { useTheme } from "@/app/hooks/themeContext";
 import useDragStore from "@/app/store/useDragStore";
+import useLpStore, { LpStateProp } from "@/app/store/useLpStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSectionStore from "@/app/store/useSectionStore";
 import useMotionStore from "@/app/store/useStore";
@@ -12,11 +13,12 @@ import { toast } from "react-toastify";
 
 export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
-  const { getState, setChangeState, getLp, setState, LpAnimationSwitch } =
+  const { getState, setChangeState, getLp, setLp, setState, LpAnimationSwitch } =
     useMotionStore();
   const { setInitTab } = useSectionStore();
   const { modalState, modalOpen, modalClose } = useModalStore();
   const { setDragState } = useDragStore();
+  const { lpList } = useLpStore()
   const router = useRouter();
 
   const play = getState("main", "play");
@@ -29,6 +31,7 @@ export default function MainLayout() {
   const [lpSpin, setLpSpin] = useState(false);
   const [imgMount, setImgMount] = useState(true);
   const [mount, setMount] = useState(false);
+  // const [filterList, setFilterList] = useState<LpStateProp[]>([])
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData("text/plain", "dragging");
@@ -66,6 +69,7 @@ export default function MainLayout() {
       setTimeout(() => {
         setImgMount(true);
       }, 100);
+
     }
     toggleTheme(lp);
   }, [lp]);
@@ -78,6 +82,11 @@ export default function MainLayout() {
     setState("main", "play", false);
     /*20240730 tab초기화 */
     setInitTab();
+
+    let filterList = lpList.filter(v=> v.key === lp.key)
+    filterList?.length> 0 ? setLp(filterList[0]) : setLp(lpList[0]) 
+
+
   }, []);
 
   return (

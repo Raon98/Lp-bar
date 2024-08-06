@@ -7,6 +7,7 @@ import useMotionStore from "@/app/store/useStore";
 import { useEffect, useState } from "react";
 import VolumeSlider from "../../main/component/VolumeSlider";
 import DetailHeader from "./DetailHeader";
+import useLpStore from "@/app/store/useLpStore";
 
 interface DetailLayoutProps {
   children: React.ReactNode;
@@ -16,7 +17,8 @@ interface DetailLayoutProps {
 const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
   const { theme, lightTheme, darkTheme, toggleTheme } = useTheme();
   const { getTabList, setSectionActive, setTabChange ,tabChange} = useSectionStore();
-  const { getLp } = useMotionStore();
+  const { getLp, setLp } = useMotionStore();
+  const { lpList } = useLpStore();
   const [animationMount, setAnimationMount] = useState(true);
   const [imgMount, setImgMount] = useState(false);
   const [lpMount, setLpMount] = useState(false);
@@ -34,6 +36,10 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
   };
   useEffect(() => {
     setAnimationMount(true);
+
+    let filterList = lpList.filter(v=> v.key === lp.key)
+    filterList?.length> 0 ? setLp(filterList[0]) : setLp(lpList[0]) 
+
   }, []);
 
   useEffect(() => {
