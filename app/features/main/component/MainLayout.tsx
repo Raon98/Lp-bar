@@ -122,7 +122,7 @@ export default function MainLayout() {
                 {lp.since}
               </div>
               <div className="w-full h-full flex items-center justify-center ">
-                {imgMount && <div className="relative w-[55%] animate-fadeIn x-1100:w-[60%] x-750:w-[70%]">
+                {imgMount && <div className="relative w-[45%] animate-fadeIn x-1100:w-[50%] x-750:w-[60%]">
                     <Image
                       src="/assets/images/turnTable.png"
                       width={1300}
