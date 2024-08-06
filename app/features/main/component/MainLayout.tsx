@@ -10,7 +10,7 @@ import useMotionStore from "@/app/store/useStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-
+import Image from 'next/image'
 export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
   const { getState, setChangeState, getLp, setLp, setState, LpAnimationSwitch } =
@@ -123,11 +123,12 @@ export default function MainLayout() {
               </div>
               <div className="w-full h-full flex items-center justify-center ">
                 {imgMount && <div className="relative w-[55%] animate-fadeIn x-1100:w-[60%] x-750:w-[70%]">
-                  <img
-                    src="/assets/images/turnTable.png"
-                    alt="recode"
-                    className="bg-no-repeat bg-transparent bg-center object-cover w-full"
-                  />
+                    <Image
+                      src="/assets/images/turnTable.png"
+                      width={1300}
+                      height={1600}
+                      alt="recode"
+                    />
                   <span
                     className={cn(
                       `before:z-[60] before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain`,
@@ -150,11 +151,12 @@ export default function MainLayout() {
                         setDragState(false);
                       }}
                     >
-                      <img
-                        src={`/assets/images/${lp.img}.png`}
-                        alt="lp"
-                        className="bg-no-repeat bg-transparent bg-center object-cover w-full"
-                      />
+                    <Image
+                      src={`/assets/images/${lp.img}.png`}
+                      width={1000}
+                      height={1000}
+                      alt="lp"
+                    />
                     </div>
                   )}
                 </div>}

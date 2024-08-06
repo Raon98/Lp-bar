@@ -5,7 +5,7 @@ import useModalStore from "@/app/store/useModalStore";
 import useMotionStore from "@/app/store/useStore";
 import { useEffect, useRef, useState } from "react";
 import useLpStore, { LpStateProp } from "@/app/store/useLpStore";
-
+import Image from 'next/image'
 const BoxModal = () => {
   const { modalState, modalClose } = useModalStore();
   const { getLp, setLp,getState } = useMotionStore();
@@ -67,6 +67,7 @@ const BoxModal = () => {
                           src={`/assets/images/backIcon.png`}
                           className="bg-no-repeat bg-transparent bg-center object-cover z-20"
                         />
+                        
                       </button>
                     </div>
                   </div>
@@ -83,10 +84,13 @@ const BoxModal = () => {
                         key={idx}
                       >
                         <button onClick={() => func.albumClick(item)}>
-                        { imgMount  && <img
-                              src={`/assets/images/${item.coverImg}.png`}
-                              className="bg-no-repeat bg-transparent bg-center object-cover z-20"
-                            />}
+                        { imgMount  && <Image
+                            src={`/assets/images/${item.coverImg}.png`}
+                            width={1000}
+                            height={1000}
+                            alt="lp"
+                          />
+                          }
                         </button>
                       </div>
                     ))}
