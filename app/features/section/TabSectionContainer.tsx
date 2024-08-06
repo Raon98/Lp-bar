@@ -29,7 +29,7 @@ const TabSectionContainer = ({
         if (currentIdx !== 0) {
           setBeforeList(getTabList(lp.exceptTab)[currentIdx - 1]);
           if (scrollPosition < beforeList.endHeight * 0.9) {
-            setCurrentState(getTabList(lp.exceptTab)[currentIdx].idx - 1);
+            setCurrentState(currentIdx-1);
             setChangeTime(false);
           }
         }
@@ -39,7 +39,7 @@ const TabSectionContainer = ({
             scrollPosition >
             getTabList(lp.exceptTab)[currentIdx + 1].startHeight
           ) {
-            setCurrentState(getTabList(lp.exceptTab)[currentIdx].idx + 1);
+            setCurrentState(currentIdx+1);
             setChangeTime(false);
           }
         }

@@ -3,20 +3,22 @@ import { Modals } from "@/app/common/component/Modals";
 import { cn } from "@/app/common/utils/cn";
 import { useTheme } from "@/app/hooks/themeContext";
 import useDragStore from "@/app/store/useDragStore";
+import useLpStore, { LpStateProp } from "@/app/store/useLpStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSectionStore from "@/app/store/useSectionStore";
 import useMotionStore from "@/app/store/useStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-
+import Image from 'next/image'
 export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
-  const { getState, setChangeState, getLp, setState, LpAnimationSwitch } =
+  const { getState, setChangeState, getLp, setLp, setState, LpAnimationSwitch } =
     useMotionStore();
   const { setInitTab } = useSectionStore();
   const { modalState, modalOpen, modalClose } = useModalStore();
   const { setDragState } = useDragStore();
+  const { lpList } = useLpStore()
   const router = useRouter();
 
   const play = getState("main", "play");
@@ -29,6 +31,7 @@ export default function MainLayout() {
   const [lpSpin, setLpSpin] = useState(false);
   const [imgMount, setImgMount] = useState(true);
   const [mount, setMount] = useState(false);
+  // const [filterList, setFilterList] = useState<LpStateProp[]>([])
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData("text/plain", "dragging");
@@ -66,6 +69,7 @@ export default function MainLayout() {
       setTimeout(() => {
         setImgMount(true);
       }, 100);
+
     }
     toggleTheme(lp);
   }, [lp]);
@@ -78,6 +82,11 @@ export default function MainLayout() {
     setState("main", "play", false);
     /*20240730 tab초기화 */
     setInitTab();
+
+    let filterList = lpList.filter(v=> v.key === lp.key)
+    filterList?.length> 0 ? setLp(filterList[0]) : setLp(lpList[0]) 
+
+
   }, []);
 
   return (
@@ -113,12 +122,13 @@ export default function MainLayout() {
                 {lp.since}
               </div>
               <div className="w-full h-full flex items-center justify-center ">
-                {imgMount && <div className="relative w-[55%] animate-fadeIn x-1100:w-[60%] x-750:w-[70%]">
-                  <img
-                    src="/assets/images/turnTable.png"
-                    alt="recode"
-                    className="bg-no-repeat bg-transparent bg-center object-cover w-full"
-                  />
+                {imgMount && <div className="relative w-[45%] animate-fadeIn x-1100:w-[50%] x-750:w-[60%]">
+                    <Image
+                      src="/assets/images/turnTable.png"
+                      width={1300}
+                      height={1600}
+                      alt="recode"
+                    />
                   <span
                     className={cn(
                       `before:z-[60] before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain`,
@@ -141,11 +151,12 @@ export default function MainLayout() {
                         setDragState(false);
                       }}
                     >
-                      <img
-                        src={`/assets/images/${lp.img}.png`}
-                        alt="lp"
-                        className="bg-no-repeat bg-transparent bg-center object-cover w-full"
-                      />
+                    <Image
+                      src={`/assets/images/${lp.img}.png`}
+                      width={1000}
+                      height={1000}
+                      alt="lp"
+                    />
                     </div>
                   )}
                 </div>}
