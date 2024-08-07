@@ -128,13 +128,15 @@ export default function MainLayout() {
                       width={1300}
                       height={1600}
                       alt="recode"
+                      priority
                     />
                   <span
                     className={cn(
                       `before:z-[60] before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain`,
                       play && "before:animate-mainArmSpin"
                     )}
-                  ></span>
+                  >
+                  </span>
                   {lp.key &&  (
                     <div
                       className={cn(
@@ -168,12 +170,16 @@ export default function MainLayout() {
               <button
                 className="rounded_block"
                 onClick={() => func.recodePlay()}
+                
               >
-                <img
-                  src={`/assets/images/play_${iconTheme}.png`}
-                  alt="soundIcon"
-                  className="bg-no-repeat bg-transparent bg-center object-cover w-2/3"
-                />
+                <Image
+                      src={`/assets/images/play_${iconTheme}.png`}
+                      width={100}
+                      height={100}
+                      alt="soundIcon"
+                      className="w-[80%]"
+                    />
+
               </button>
               <button className="rounded_block" onClick={() => func.openBox()}>
                 <img
