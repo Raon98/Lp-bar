@@ -6,7 +6,11 @@ const AccompanyIntroduce = forwardRef<HTMLDivElement>((_, sectionRefs) => {
   return (
     <>
       <div className="flex flex-col" ref={sectionRefs}>
-        <div className="text-[2.275rem]">동행하다</div>
+        <div className="flex justify-between items-center">
+          <div className="text-[2.275rem]">동행하다</div>
+          <div className="text-[1.175rem] text-gray-500">2024.05 ~ 진행중</div>
+        </div>
+    
         <div className="text-[1.275rem]">태어난 순간부터 나와 늘 동행하는 사람</div>
         <div className="flex  mt-[7.5rem] items-center  justify-center gap-x-12">
           <div className="w-[20.5rem] h-[20.5rem]  shadow-custom-border-3 flex items-center justify-center flex-col rounded-md bg-white">

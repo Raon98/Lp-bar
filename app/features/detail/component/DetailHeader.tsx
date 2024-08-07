@@ -17,10 +17,10 @@ const DetailHeader = () => {
         >
           <div className="text-[1.15rem] flex self-start">Polariod</div>
           <Link className="flex flex-col w-[5%] justify-center items-center" href={'/main'}>
-            <div className="w-[35%]">
+            <div className="w-[25%]">
             
                <Image
-                    src={`/assets/images/close_${iconTheme}.png`}
+                  src={`/assets/images/close_${iconTheme}.png`}
                   width={30}
                   height={30}
                   alt="close"
