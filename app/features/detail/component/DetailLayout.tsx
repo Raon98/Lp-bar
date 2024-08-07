@@ -50,7 +50,7 @@ const DetailLayout = ({ children, id }: DetailLayoutProps) => {
               mount && "animate-fadeIn"
             )}
           >
-            <div className="w-full h-[35%] p-5">
+            <div className=" p-5">
                 <div className="shadow-custom-border-2 p-3 bg-gray-rgba-0.5 rounded-md">
                       <Image
                             src={`/assets/images/shadow-${lp.img}.png`}
