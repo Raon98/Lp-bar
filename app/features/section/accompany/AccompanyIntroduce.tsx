@@ -48,8 +48,10 @@ const AccompanyIntroduce = forwardRef<HTMLDivElement>((_, sectionRefs) => {
                       className={cn('mt-3')}
                     />
             </div>
-            <div>당신의 가장 가까운사람이 떠나갈때</div>
-            <div>어떤 분들이 곁에서 위로를 해주었나요?</div>
+            <div className="px-2">
+            <div>당신의 소중한 사람이 떠나갈때</div>
+            <div>어떤 분들이 위로를 해주었나요?</div>
+            </div>
           </div>
 
         </div>
