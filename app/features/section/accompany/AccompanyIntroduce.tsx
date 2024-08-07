@@ -8,7 +8,7 @@ const AccompanyIntroduce = forwardRef<HTMLDivElement>((_, sectionRefs) => {
       <div className="flex flex-col" ref={sectionRefs}>
         <div className="flex justify-between items-center">
           <div className="text-[2.275rem]">동행하다</div>
-          <div className="text-[1.175rem] text-gray-500">2024.05 ~ 진행중</div>
+          <div className="text-[1.175rem] text-gray-500 pr-10 pt-10">2024.05 ~ 진행중</div>
         </div>
     
         <div className="text-[1.275rem]">태어난 순간부터 나와 늘 동행하는 사람</div>
@@ -55,11 +55,11 @@ const AccompanyIntroduce = forwardRef<HTMLDivElement>((_, sectionRefs) => {
           </div>
 
         </div>
-        <div className="mt-[5rem] w-full text-center text-[1.45rem]">태어난 순간부터 당신의 인생을 함께 동행하겠습니다</div>
+        <div className="mt-[5rem] w-full text-center text-[1.35rem]">태어난 순간부터 당신의 인생을 함께 동행하겠습니다</div>
       </div>
 
-      <div className="text-[1.575rem] mt-[5rem]" >개발취지</div>
-      <div className="text-[1.375rem] mt-[2rem]">
+      <div className="text-[1.275rem] mt-[5rem]" >개발취지</div>
+      <div className="text-[1.175rem] mt-[1.25rem]">
       <div>
       • 많은것이 변환하는 세상속에서 아직까지 경조사관리는 수기로 이루어지고
         있습니다. 
