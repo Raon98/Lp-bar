@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
+import Image from 'next/image'
 
 interface VolumeSliderProps {
   option? : string
@@ -36,11 +37,12 @@ export default function VolumeSlider({option}:VolumeSliderProps) {
         <Box sx={{ width: 200 }}>
           <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
             <button className="w-[15%]" onClick={() => muteVolume()}>
-              <img
-                src={`/assets/images/soundMute_${option ? option : iconTheme}.png`}
-                alt="soundIcon"
-                className="bg-no-repeat bg-transparent bg-center object-cover"
-              ></img>
+               <Image
+                      src={`/assets/images/soundMute_${option ? option : iconTheme}.png`}
+                      width={100}
+                      height={100}
+                      alt="soundIcon"
+                    />
             </button>
             <Slider
               aria-label="Volume"
@@ -49,11 +51,12 @@ export default function VolumeSlider({option}:VolumeSliderProps) {
               onChange={func.handleChange}
             />
             <button className="w-[17%]" onClick={() => maxVolume()}>
-              <img
-                src={`/assets/images/soundOn_${option ? option : iconTheme}.png`}
-                alt="soundIcon"
-                className="bg-no-repeat bg-transparent bg-center object-cover"
-              ></img>
+                <Image
+                      src={`/assets/images/soundOn_${option ? option : iconTheme}.png`}
+                      width={100}
+                      height={100}
+                      alt="soundIcon"
+                    />
             </button>
           </Stack>
         </Box>

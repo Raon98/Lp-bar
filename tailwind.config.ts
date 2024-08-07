@@ -74,12 +74,12 @@ const config: Config = {
           '100%' : {transform : 'rotate(0)'} 
         },
         spin : {
-          '0%' : {transform : 'rotate(0) scale(1.2)',transformOrigin: 'center center' } , 
-          '100%' : {transform : 'rotate(360deg) scale(1.2)',transformOrigin: 'center center'} 
+          '0%' : {transform : 'rotate(0)',transformOrigin: 'center center' } , 
+          '100%' : {transform : 'rotate(360deg)',transformOrigin: 'center center'} 
         },
         spinStop : {
-          '0%' : {transform : 'rotate(-360deg) scale(1.2)',transformOrigin: 'center center' } , 
-          '100%' : {transform : 'rotate(0) scale(1.2)',transformOrigin: 'center center'} 
+          '0%' : {transform : 'rotate(-360deg) ',transformOrigin: 'center center' } , 
+          '100%' : {transform : 'rotate(0) ',transformOrigin: 'center center'} 
         },
       
         recodeUp : {

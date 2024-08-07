@@ -14,9 +14,7 @@ const BoxModal = () => {
   const dropRef = useRef<HTMLDivElement | null>(null);
   const lpSwitch = getState("main", "lpSwitch");
   const lp = getLp();
-  
-  const [mount, setMount] = useState(false)
-  const [imgMount, setImgMount] = useState(true);
+
 
   const func = {
     onDrop: (e: React.DragEvent<HTMLDivElement>) => {
@@ -36,13 +34,6 @@ const BoxModal = () => {
     },
   };
 
-  useEffect(()=> {
-    setMount(true)
-    setImgMount(false);
-    setTimeout(() => {
-      setImgMount(true);
-    }, 100);
-  },[])
   return (
     <>
       {modalState("box") && (
@@ -54,7 +45,7 @@ const BoxModal = () => {
                 modalState("box") && "animate-boxOpen"
               )}
             >
-              {!dragState && mount && (
+              {!dragState  && (
                 <>
                   <div
                     className="flex justify-end items-center h-[3rem] mr-[3rem]"
@@ -63,11 +54,12 @@ const BoxModal = () => {
                     <div className="h-[2.5rem] w-[2.5rem] content-center text-center">
                       
                       <button className="w-[50%] mt-6">
-                        <img
-                          src={`/assets/images/backIcon.png`}
-                          className="bg-no-repeat bg-transparent bg-center object-cover z-20"
-                        />
-                        
+                         <Image
+                              src={`/assets/images/backIcon.png`}
+                              width={30}
+                              height={30}
+                              alt="close"
+                              />
                       </button>
                     </div>
                   </div>
@@ -84,20 +76,21 @@ const BoxModal = () => {
                         key={idx}
                       >
                         <button onClick={() => func.albumClick(item)}>
-                        { imgMount  && <Image
+                        <Image
                             src={`/assets/images/${item.coverImg}.png`}
-                            width={1000}
-                            height={1000}
-                            alt="lp"
-                          />
-                          }
+                            width={300}
+                            height={300}
+                            alt="lpBoard"
+                            priority
+                           />
+                          
                         </button>
                       </div>
                     ))}
                   </div>
                 </>
               )}
-              {dragState && mount && (
+              {dragState && (
                 <>
                   <div
                     className="h-full m-[0.75rem_4.5rem] flex justify-center items-center"
@@ -108,22 +101,22 @@ const BoxModal = () => {
                     }}
                   >
                     <div className="w-[15%] relative translate-x-[-20%]">
-                      <img
-                        src={`/assets/images/${lp.img}.png`}
-                        alt="boxIcon"
-                        className={cn(
-                          `bg-no-repeat bg-transparent bg-center object-cover translate-x-[40%] w-[98%]`,
-                          "animate-lpInBox"
-                        )}
-                      />
+                      <Image
+                            src={`/assets/images/${lp.img}.png`}
+                            width={300}
+                            height={300}
+                            alt="lpBoard"
+                         
+                            className={cn('translate-x-[40%] w-[98%] animate-lpInBox')}
+                           />
+
                       <div className="absolute top-0 right-0 w-full h-full">
-                        <img
-                          src={`/assets/images/${lp.coverImg}.png`}
-                          alt="boxIcon"
-                          className={cn(
-                            `bg-no-repeat bg-transparent bg-center object-cover`
-                          )}
-                        />
+                        <Image
+                            src={`/assets/images/${lp.coverImg}.png`}
+                            width={300}
+                            height={300}
+                            alt="lpBoard"
+                           />
                       </div>
                     </div>
                   </div>

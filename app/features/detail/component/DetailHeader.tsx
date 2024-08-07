@@ -2,6 +2,7 @@
 
 import { useTheme } from "@/app/hooks/themeContext";
 import Link from "next/link";
+import Image from 'next/image'
 
 const DetailHeader = () => {
   const { iconTheme } = useTheme();
@@ -17,14 +18,14 @@ const DetailHeader = () => {
           <div className="text-[1.15rem] flex self-start">Polariod</div>
           <Link className="flex flex-col w-[5%] justify-center items-center" href={'/main'}>
             <div className="w-[35%]">
-              <img
-                src={`/assets/images/stop_${iconTheme}.png`}
-                alt="soundIcon"
-                className="bg-no-repeat bg-transparent bg-center object-cover"
-              />
-         
+            
+               <Image
+                    src={`/assets/images/close_${iconTheme}.png`}
+                  width={30}
+                  height={30}
+                  alt="close"
+                  />
             </div>
-            <div className="text-[0.75rem]">CLOSE</div>
           </Link>
         </div>
       </header>
