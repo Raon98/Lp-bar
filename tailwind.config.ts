@@ -92,8 +92,8 @@ const config: Config = {
           '100%' : {transform :'scale(10)'}, 
         },
         mainArmSpin : {
-          '0%' : { transform : 'translate(-120%, -15%)'},
-          '100%' : { transform : 'translate(-155%, -15%) rotate(40deg)'},
+          '0%' : { transform : 'translate(-80%, 55%)'},
+          '100%' : { transform : 'translate(-105%, 62%) rotate(40deg)'},
         },
         lpSwitch : {
           '0%' : {opacity : '0', top : '15%'}, 

@@ -130,13 +130,24 @@ export default function MainLayout() {
                       alt="recode"
                       priority
                     />
-                  <span
+                  {/* <span
                     className={cn(
                       `before:z-[60] before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain`,
                       play && "before:animate-mainArmSpin"
                     )}
                   >
-                  </span>
+                  </span> */}
+                  <div className={cn('absolute z-[60] top-0 right-0  w-[25%] transform translate-x-[-80%] translate-y-[55%]',
+                    play && "animate-mainArmSpin"
+                  )}>
+                  <Image
+                      src={`/assets/images/toneArm.png`}
+                      width={100}
+                      height={100}
+                      alt="soundIcon"
+                      className="w-[80%]"
+                    />
+                  </div>
                   {lp.key &&  (
                     <div
                       className={cn(
