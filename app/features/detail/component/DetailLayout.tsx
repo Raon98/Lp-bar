@@ -6,6 +6,7 @@ import useMotionStore from "@/app/store/useStore";
 import { useEffect, useState } from "react";
 import VolumeSlider from "../../main/component/VolumeSlider";
 import DetailHeader from "./DetailHeader";
+import Image from 'next/image'
 
 interface DetailLayoutProps {
   children: React.ReactNode;
@@ -16,16 +17,11 @@ const DetailLayout = ({ children, id }: DetailLayoutProps) => {
   const { theme, toggleTheme } = useTheme();
   const { getLp } = useMotionStore();
   const [mount, setMount] = useState(false);
-  const [imgMount, setImgMount] = useState(true);
   const lp = getLp();
 
   useEffect(() => {
     toggleTheme(lp);
-    setMount(true);
-    setImgMount(false);
-    setTimeout(() => {
-      setImgMount(true);
-    }, 200);
+    setMount(true)
   }, []);
   return (
     <>
@@ -55,15 +51,16 @@ const DetailLayout = ({ children, id }: DetailLayoutProps) => {
             )}
           >
             <div className="w-full h-[35%] p-5">
-              {imgMount && (
                 <div className="shadow-custom-border-2 p-3 bg-gray-rgba-0.5 rounded-md">
-                  <img
-                    src={`/assets/images/shadow-${lp.img}.png`}
-                    alt="lp"
-                    className="bg-no-repeat bg-transparent bg-center object-cover w-full animate-lpSpin"
-                  />
+                      <Image
+                            src={`/assets/images/shadow-${lp.img}.png`}
+                            width={200}
+                            height={200}
+                            alt="lpBoard"
+                         
+                            className={cn('animate-lpSpin')}
+                           />
                 </div>
-              )}
             </div>
             <div className="w-full h-[5%] mt-5 p-5 flex justify-center">
               <VolumeSlider />

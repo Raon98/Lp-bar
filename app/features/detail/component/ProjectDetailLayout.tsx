@@ -20,7 +20,6 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
   const { getLp, setLp } = useMotionStore();
   const { lpList } = useLpStore();
   const [animationMount, setAnimationMount] = useState(true);
-  const [imgMount, setImgMount] = useState(false);
   const [lpMount, setLpMount] = useState(false);
   const lp = getLp();
 
@@ -44,10 +43,6 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
 
   useEffect(() => {
     setLpMount(true);
-    setTimeout(() => {
-      setImgMount(true);
-    }, 100);
-
     toggleTheme(lp);
   }, [lp]);
 
@@ -106,9 +101,7 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
               )}
             >
               <div className="w-full h-[30%] p-[2.25rem]">
-                {imgMount && (
                   <div className="shadow-custom-border-2 p-3 bg-gray-rgba-0.5 rounded-md">
-                    
                     <Image
                        src={`/assets/images/shadow-${lp.img}.png`}
                       width={300}
@@ -116,8 +109,7 @@ const ProjectDetailLayout = ({ children, id }: DetailLayoutProps) => {
                       alt="lp"
                     className="animate-lpSpin object-cover"
                     />
-                  </div>
-                )}
+                  </div>    
               </div>
               <div className="w-full h-[5%]  p-5 flex justify-center">
                 <VolumeSlider option="b" />

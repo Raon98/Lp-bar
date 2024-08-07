@@ -5,7 +5,8 @@ import MeteorEffectLayout from "@/app/features/intro/component/MeteorEffectLayou
 import useLpStore from "@/app/store/useLpStore";
 import useMotionStore from "@/app/store/useStore";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Image from 'next/image'
 
 export default function Intro() {
   const { getState, setState } = useMotionStore();
@@ -54,16 +55,17 @@ export default function Intro() {
       <div className="relative flex items-center justify-center h-full overflow-hidden">
         <div className="flex items-center justify-center bg-transparent rotate-180 relative z-30">
           <div className="sr-only">레코드판</div>
-          <img
-            src="/assets/images/recode.png"
-            alt="recode"
-            className={cn(
-              "bg-no-repeat bg-transparent bg-center object-cover w-full mt-[100%] scale-[1.2]",
-              !useRecode && !useSpinStop && "animate-spin",
-              useSpinStop && "animate-spinStop",
-              useRecode && "animate-introRecodeUp"
-            )}
-          ></img>
+          <Image
+              src={`/assets/images/recode.png`}
+              width={1100}
+              height={1080}
+              alt="soundIcon"
+              className={cn('mt-[100%]',
+                !useRecode && !useSpinStop && "animate-spin",
+                useSpinStop && "animate-spinStop",
+                useRecode && "animate-introRecodeUp"
+              )}
+            />
         </div>
         <div
           className={cn(
@@ -84,15 +86,18 @@ export default function Intro() {
         </div>
         <div
           className={cn(
-            "absolute z-20 bottom-0 mb-[8rem] xs:mb-[27.5rem]",
+            "absolute z-20 bottom-0 mb-[13rem] xs:mb-[27.5rem]",
             useRecode && "animate-fadeOut"
           )}
         >
-          <img
-            src="/assets/images/intro-text.png"
-            alt="recode"
-            className="bg-no-repeat bg-transparent bg-center object-cover w-full mt-[100%]"
-          ></img>
+          <Image
+              src={`/assets/images/intro-text.png`}
+              width={1100}
+              height={1080}
+              alt="soundIcon"
+              className={cn('mt-[50%]',
+              )}
+            />
         </div>
         <div
           className={cn(

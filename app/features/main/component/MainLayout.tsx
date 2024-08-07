@@ -15,6 +15,8 @@ export default function MainLayout() {
   const { theme, iconTheme, toggleTheme } = useTheme();
   const { getState, setChangeState, getLp, setLp, setState, LpAnimationSwitch } =
     useMotionStore();
+  const lp = getLp();
+
   const { setInitTab } = useSectionStore();
   const { modalState, modalOpen, modalClose } = useModalStore();
   const { setDragState } = useDragStore();
@@ -24,14 +26,12 @@ export default function MainLayout() {
   const play = getState("main", "play");
   const box = modalState("box");
   const lpSwitch = getState("main", "lpSwitch");
-  const lp = getLp();
-
+  
   const lpRef = useRef<HTMLDivElement | null>(null);
   const [spinHover, setSpinHover] = useState(true);
   const [lpSpin, setLpSpin] = useState(false);
-  const [imgMount, setImgMount] = useState(true);
-  const [mount, setMount] = useState(false);
-  // const [filterList, setFilterList] = useState<LpStateProp[]>([])
+
+  const [imgMount,setImgMount] = useState(false)
   const func = {
     onDragStart: (e: React.DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData("text/plain", "dragging");
@@ -63,22 +63,16 @@ export default function MainLayout() {
 
   useEffect(() => {
     if (lp.key) {
-      setImgMount(false);
-      setMount(true);
       LpAnimationSwitch();
-      setTimeout(() => {
-        setImgMount(true);
-      }, 100);
-
+      setImgMount(false)
+      setTimeout(()=> {
+        setImgMount(true)
+      },100)
     }
     toggleTheme(lp);
   }, [lp]);
 
   useEffect(() => {
-    setImgMount(false);
-    setTimeout(() => {
-      setImgMount(true);
-    }, 100);
     setState("main", "play", false);
     /*20240730 tab초기화 */
     setInitTab();
@@ -90,17 +84,6 @@ export default function MainLayout() {
   }, []);
 
   return (
-    <>
-      {!mount && (
-        <div
-          className={cn(
-            `w-full h-full overflow-hidden relative px-8 py-5 bg-${theme}`,
-            ""
-          )}
-        ></div>
-      )}
-
-      {mount && (
         <>
           <div
             className={cn(
@@ -122,19 +105,26 @@ export default function MainLayout() {
                 {lp.since}
               </div>
               <div className="w-full h-full flex items-center justify-center ">
-                {imgMount && <div className="relative w-[45%] animate-fadeIn x-1100:w-[50%] x-750:w-[60%]">
+                {<div className="relative w-[45%] animate-fadeIn x-1100:w-[50%] x-750:w-[60%]">
                     <Image
                       src="/assets/images/turnTable.png"
                       width={1300}
                       height={1600}
                       alt="recode"
+                      priority
                     />
-                  <span
-                    className={cn(
-                      `before:z-[60] before:absolute before:top-0 before:right-0 before:content-[' '] before:bg-[url('/assets/images/toneArm.png')] before:bg-center before:bg-no-repeat before:w-[20%] before:h-full before:transform before:translate-x-[-120%] before:translate-y-[-15%] before:bg-contain`,
-                      play && "before:animate-mainArmSpin"
-                    )}
-                  ></span>
+            
+                  <div className={cn('absolute z-[60] top-0 right-0  w-[25%] transform translate-x-[-80%] translate-y-[55%]',
+                    play && "animate-mainArmSpin"
+                  )}>
+                  <Image
+                      src={`/assets/images/toneArm.png`}
+                      width={100}
+                      height={100}
+                      alt="soundIcon"
+                      className="w-[80%]"
+                    />
+                  </div>
                   {lp.key &&  (
                     <div
                       className={cn(
@@ -151,12 +141,13 @@ export default function MainLayout() {
                         setDragState(false);
                       }}
                     >
-                    <Image
+                    {imgMount && <Image
                       src={`/assets/images/${lp.img}.png`}
-                      width={1000}
-                      height={1000}
+                      width={500}
+                      height={500}
                       alt="lp"
-                    />
+                      priority
+                    />}
                     </div>
                   )}
                 </div>}
@@ -168,27 +159,31 @@ export default function MainLayout() {
               <button
                 className="rounded_block"
                 onClick={() => func.recodePlay()}
+                
               >
-                <img
-                  src={`/assets/images/play_${iconTheme}.png`}
-                  alt="soundIcon"
-                  className="bg-no-repeat bg-transparent bg-center object-cover w-2/3"
-                />
+                <Image
+                      src={`/assets/images/play_${iconTheme}.png`}
+                      width={100}
+                      height={100}
+                      alt="soundIcon"
+                      className="w-[80%]"
+                    
+                    />
+
               </button>
               <button className="rounded_block" onClick={() => func.openBox()}>
-                <img
-                  src={`/assets/images/openBox_${iconTheme}.png`}
-                  alt="boxIcon"
-                  className={cn(
-                    `bg-no-repeat bg-transparent bg-center object-cover w-[80%]`
-                  )}
-                />
+                <Image
+                      src={`/assets/images/openBox_${iconTheme}.png`}
+                      width={100}
+                      height={100}
+                      alt="soundIcon"
+                      className="w-[80%]"
+                    
+                    />
               </button>
             </div>
           </div>
-        </>
-      )}
       <Modals />
-    </>
-  );
-}
+      </>
+
+)}
