@@ -9,7 +9,7 @@ const AccompanyTechStack = forwardRef<HTMLDivElement>((_, sectionRefs) => {
     >
       <div className="flex">
         <TechIconComponent title="FRONTEND" icon={["React", "Typescript"]} />
-        <TechIconComponent title="BACKEND" icon={["java"]} />
+        <TechIconComponent title="BACKEND" icon={["Java"]} />
       </div>
     </div>
   );

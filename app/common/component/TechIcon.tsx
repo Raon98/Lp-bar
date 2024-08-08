@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 type FrontnedIcon = "React" | "Typescript";
-type BackendIcon = "java";
+type BackendIcon = "Java";
 
 export type IconType = (FrontnedIcon | BackendIcon)[];
 
