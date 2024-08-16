@@ -10,7 +10,7 @@ const TechIconComponent = ({ title, icon, extension }: TechProps) => {
       <div className=" absolute left-0 top-0 text-[1.215rem] translate-x-[2rem] translate-y-[-0.85rem] bg-white ">
         {title}
       </div>
-      <div className="py-8 px-6 flex items-center h-full gap-x-3 gap-y-2 flex-wrap">
+      <div className="py-8 px-6 flex items-center h-full gap-x-3 gap-y-2">
         <TechIcon icon={icon} extension={extension}/>
       </div>
     </div>
