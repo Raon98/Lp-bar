@@ -5,7 +5,7 @@ type Frontned = "React" | "Typescript" |"Javascript" | "Next" | "Vue";
 type Backend = "Java" 
 type Database = "MariaDB" | "Mybatis";
 type Styling = "Sass" | "Tailwind" | "Css" | "Styled-component"
-type State = "Recoil" | "Zustend" | "ReactQuery"
+type State = "Recoil" | "Zustand" | "ReactQuery"
 type Cloud = "AwsEc2" | "GoogleCloud"
 type CiCd = "Docker" | "Vercel" | "GitAction"
 
