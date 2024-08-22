@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 const AccompanyTroubles = forwardRef<HTMLDivElement>((_, sectionRefs) => {
   return (
     <div
-      className="flex flex-col text-[5rem] min-h-[800px]"
+      className="flex flex-col text-[5rem]"
       ref={sectionRefs}
     ></div>
   );
