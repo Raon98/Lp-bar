@@ -28,17 +28,6 @@ export const lpInitState: LpStateProp[] = [
     exceptTab : []
   },
   {
-    key: "lp2",
-    idx: 2,
-    state: false,
-    img: "pj_lp1",
-    theme: "green",
-    iconTheme: "w",
-    since: 2024,
-    coverImg : "cover_2",
-    exceptTab : [1]
-  },
-  {
     key: "lp3",
     idx: 3,
     state: false,
@@ -47,8 +36,20 @@ export const lpInitState: LpStateProp[] = [
     iconTheme: "w",
     since: 2024,
     coverImg : "cover_3",
-    exceptTab : [3]
+    exceptTab : [1,3,4]
   },
+  {
+    key: "lp2",
+    idx: 2,
+    state: false,
+    img: "pj_lp1",
+    theme: "green",
+    iconTheme: "w",
+    since: 2024,
+    coverImg : "cover_2",
+    exceptTab : [1,3,4]
+  },
+
  
 ];
 
