@@ -149,7 +149,7 @@ const ResumeDetail = () => {
               <div>언어 : Typescript, Javascript , java</div>
               <div>프레임워크 : Vue3, Reactjs, Nextjs</div>
               <div>상태관리 : Vuex, Recoil, Zustand</div>
-              <div>디자인 : Css, Scss(Sass), TailwindCss, Figma</div>
+              <div>디자인 : Css, Scss(Sass), TailwindCss, StyledComponent, Figma</div>
               <div>배포 : Aws Ec2, Docker, GitAction</div>
             </div>
           </div>
