@@ -66,7 +66,7 @@ const PolaroidIntroduce = forwardRef<HTMLDivElement>((_, sectionRefs) => {
             <div className="flex items-center flex-col justify-center mt-4">
                 <div>각각의 색상이 잘 어우러지기도 하지만 그렇다고 각각 색상의 대한
                 매력이 떨어지지 않듯이</div>
-                <div >LP판 또한 다양하고 매력적인 LP를 경험하실 수 있으십니다.</div>
+                <div >다양하고 매력적인 LP를 경험하실 수 있으십니다.</div>
              
             </div>
         
