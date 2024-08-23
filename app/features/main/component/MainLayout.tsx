@@ -146,7 +146,7 @@ export default function MainLayout() {
                       width={500}
                       height={500}
                       alt="lp"
-                      priority
+                      
                     />}
                     </div>
                   )}
