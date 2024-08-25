@@ -89,12 +89,12 @@ const PolaroidTroubles = forwardRef<HTMLDivElement>((_, sectionRefs) => {
 
       <div className="mt-2 text-[rgba(0,0,0,0.7)] text-[0.975rem]">
         · 하지만 이러한 방법 또한 이미지가 늘어나면서 여러 이미지의 대한 처리로
-        인한 코드 복잡성 및 성능저하등 문제를 겪음
+        인한 코드 복잡성 및 성능저하 등 문제를 겪음
       </div>
       <div className="mt-2 text-[rgba(0,0,0,0.7)] text-[0.975rem]">
-        · 그리하여 다른 lazy를 사용할것인지 Next에서 제공되는 NextImage
+        · 해결방법으로 다른 lazy를 사용할것인지 Next에서 제공되는 NextImage
         컴포넌트를 사용할 것인지 선택의 갈림길에서 NextImage 컴포넌트는
-        Lazy-loading뿐만아니라 이미지 리사이징 또한 된다고하여 전체적인 이미지
+        Lazy-loading뿐만아니라 ImageResize 또한 된다고하여 전체적인 이미지
         컴포넌트 변환작업을 실시하였음
       </div>
     </div>
