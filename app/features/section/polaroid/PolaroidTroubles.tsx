@@ -75,7 +75,7 @@ const PolaroidTroubles = forwardRef<HTMLDivElement>((_, sectionRefs) => {
           이미지 사이즈 조절에 어려움을 느낌
         </div>
         <div>
-          · 그리하여 기본 Img태그를 구현하였으나 SSR환경에서의 이미지는 별도의
+          · 기본 Img태그로 구현하였으나 SSR환경에서의 이미지는 별도의
           lazy-loading 라이브러리를 사용하지않을때 해당 이미지 불러오는 속도가
           너무 느려서 불편함을 느낌
         </div>
