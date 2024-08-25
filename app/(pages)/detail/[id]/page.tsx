@@ -1,11 +1,9 @@
 "use client";
-import AccompanyDetail from "@/app/features/detail/component/AccompanyDetail";
 import DetailLayout from "@/app/features/detail/component/DetailLayout";
-import PolaroidDetail from "@/app/features/detail/component/PolaroidDetail";
 import ProjectDetailLayout from "@/app/features/detail/component/ProjectDetailLayout";
 import ResumeDetail from "@/app/features/detail/component/ResumeDetail";
-
-import { useEffect } from "react";
+import AccompanyDetail from "@/app/features/section/accompany/AccompanyDetail";
+import PolaroidDetail from "@/app/features/section/polaroid/PolaroidDetail";
 
 export default function Page({ params }: { params: { id: string } }) {
   // const router = useRouter();

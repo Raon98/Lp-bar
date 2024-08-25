@@ -2,12 +2,13 @@
 import useSectionStore from "@/app/store/useSectionStore";
 import { useEffect, useRef } from "react";
 import TabSectionContainer from "../../section/TabSectionContainer";
-import PolaroidFeatures from "../../section/polaroid/PolaroidFeatures";
-import PolaroidInSight from "../../section/polaroid/PolaroidInSight";
-import PolaroidIntroduce from "../../section/polaroid/PolaroidIntroduce";
-import PolaroidTechStack from "../../section/polaroid/PolaroidTechStack";
+import AccompanyFeatures from "../../section/accompany/AccompanyFeatures";
+import AccompanyIntroduce from "../../section/accompany/AccompanyIntroduce";
+import AccompanySight from "../../section/accompany/AccompanySight";
+import AccompanyTechStack from "../../section/accompany/AccompanyTechStack";
+import AccompanyTroubles from "../../section/accompany/AccompanyTroubles";
 
-const PolaroidDetail = () => {
+const AccompanyDetail = () => {
   const { getTabList, setSectionHeight, setInitTab } = useSectionStore();
   const sectionRefs = useRef<HTMLDivElement[]>([]);
 
@@ -15,11 +16,9 @@ const PolaroidDetail = () => {
     setInitTab(() => {
       if (sectionRefs.current) {
         const firstTop = sectionRefs.current[0].getBoundingClientRect().top;
-
         sectionRefs.current.forEach((ref, idx) => {
           if (ref) {
             const rect = ref.getBoundingClientRect();
-
             const elBottom = rect.bottom + window.scrollY;
             const elTop = ref.offsetTop - firstTop;
             setSectionHeight(idx, elTop, elBottom);
@@ -33,7 +32,7 @@ const PolaroidDetail = () => {
     <>
       <div className="w-full">
         <TabSectionContainer sectionIdx={0}>
-          <PolaroidIntroduce
+          <AccompanyIntroduce
             ref={(e) => {
               if (e) sectionRefs.current[0] = e;
             }}
@@ -41,7 +40,7 @@ const PolaroidDetail = () => {
         </TabSectionContainer>
 
         <TabSectionContainer sectionIdx={1}>
-          <PolaroidFeatures
+          <AccompanyFeatures
             ref={(e) => {
               if (e) sectionRefs.current[1] = e;
             }}
@@ -49,15 +48,23 @@ const PolaroidDetail = () => {
         </TabSectionContainer>
 
         <TabSectionContainer sectionIdx={2}>
-          <PolaroidTechStack
+          <AccompanyTechStack
             ref={(e) => {
               if (e) sectionRefs.current[2] = e;
             }}
           />
         </TabSectionContainer>
 
+        <TabSectionContainer sectionIdx={3}>
+          <AccompanyTroubles
+            ref={(e) => {
+              if (e) sectionRefs.current[3] = e;
+            }}
+          />
+        </TabSectionContainer>
+
         <TabSectionContainer sectionIdx={4}>
-          <PolaroidInSight
+          <AccompanySight
             ref={(e) => {
               if (e) sectionRefs.current[4] = e;
             }}
@@ -68,4 +75,4 @@ const PolaroidDetail = () => {
   );
 };
 
-export default PolaroidDetail;
+export default AccompanyDetail;
