@@ -36,7 +36,7 @@ export const lpInitState: LpStateProp[] = [
     iconTheme: "w",
     since: 2024,
     coverImg : "cover_3",
-    exceptTab : [1,3,4]
+    exceptTab : [4]
   },
   {
     key: "lp2",

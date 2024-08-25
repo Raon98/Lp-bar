@@ -56,6 +56,14 @@ const PolaroidDetail = () => {
           />
         </TabSectionContainer>
 
+        <TabSectionContainer sectionIdx={3}>
+          <PolaroidInSight
+            ref={(e) => {
+              if (e) sectionRefs.current[3] = e;
+            }}
+          />
+        </TabSectionContainer>
+
         <TabSectionContainer sectionIdx={4}>
           <PolaroidInSight
             ref={(e) => {
