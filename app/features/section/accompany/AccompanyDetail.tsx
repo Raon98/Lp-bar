@@ -24,7 +24,6 @@ const AccompanyDetail = () => {
             setSectionHeight(idx, elTop, elBottom);
           }
         });
-
       }
     });
   }, []);
@@ -40,13 +39,13 @@ const AccompanyDetail = () => {
           />
         </TabSectionContainer>
 
-        {/* <TabSectionContainer sectionIdx={1}>
+        <TabSectionContainer sectionIdx={1}>
           <AccompanyFeatures
             ref={(e) => {
               if (e) sectionRefs.current[1] = e;
             }}
           />
-        </TabSectionContainer> */}
+        </TabSectionContainer>
 
         <TabSectionContainer sectionIdx={2}>
           <AccompanyTechStack

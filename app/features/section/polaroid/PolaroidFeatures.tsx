@@ -30,8 +30,8 @@ const PolaroidFeatures = forwardRef<HTMLDivElement>((_, sectionRefs) => {
         </div>
         <div className="mt-2">
           3. 상세페이지의 탭 내용이 마다 길수도 작을수도있었는데 fadeIn-Out
-          스크롤기능[Troubles Tab에서 내용기술]을 위해 해당 컴포넌트는 최소
-          높이(min-height)값을 정하지않고 유연하게 구성하는게 목표였습니다.
+          스크롤기능을 위해 컴포넌트마다 높이값이 유연하게 대응되도록 구성하는게
+          목표였습니다.
         </div>
 
         <div className="w-full border border-solid p-4 rounded-md bg-[rgba(255,255,255,0.95)] text-[0.875rem] mt-8">

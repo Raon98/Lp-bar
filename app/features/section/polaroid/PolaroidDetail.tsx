@@ -1,11 +1,12 @@
 "use client";
 import useSectionStore from "@/app/store/useSectionStore";
 import { useEffect, useRef } from "react";
-import TabSectionContainer from "../../section/TabSectionContainer";
-import PolaroidFeatures from "../../section/polaroid/PolaroidFeatures";
-import PolaroidInSight from "../../section/polaroid/PolaroidInSight";
-import PolaroidIntroduce from "../../section/polaroid/PolaroidIntroduce";
-import PolaroidTechStack from "../../section/polaroid/PolaroidTechStack";
+import TabSectionContainer from "../TabSectionContainer";
+import PolaroidFeatures from "./PolaroidFeatures";
+import PolaroidInSight from "./PolaroidInSight";
+import PolaroidIntroduce from "./PolaroidIntroduce";
+import PolaroidTechStack from "./PolaroidTechStack";
+import PolaroidTroubles from "./PolaroidTroubles";
 
 const PolaroidDetail = () => {
   const { getTabList, setSectionHeight, setInitTab } = useSectionStore();
@@ -57,7 +58,7 @@ const PolaroidDetail = () => {
         </TabSectionContainer>
 
         <TabSectionContainer sectionIdx={3}>
-          <PolaroidInSight
+          <PolaroidTroubles
             ref={(e) => {
               if (e) sectionRefs.current[3] = e;
             }}
