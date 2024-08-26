@@ -39,11 +39,11 @@ const AccompanyIntroduce = forwardRef<HTMLDivElement>((_, sectionRefs) => {
             <div>어떤 분들이 축복해주었나요?</div>
           </div>
           <div className="w-[20.5rem] h-[20.5rem]  shadow-custom-border-3 flex items-center justify-center flex-col rounded-md bg-white">
-          <div className="w-[6.5rem] h-[6.5rem] mb-10 bg-black rounded-full">
+          <div className="w-[6.5rem] h-[6.5rem] mb-10 rounded-full">
                       <Image
                       src={`/assets/images/accompany_intro3.png`}
-                      width={100}
-                      height={100}
+                      width={200}
+                      height={200}
                       alt="accompany3"
                       className={cn('mt-3')}
                     />
