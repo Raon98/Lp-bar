@@ -71,6 +71,16 @@ const ResumeDetail = () => {
             <div className="text-[1.345rem]">(주)로텍스</div>
             <div>2022.2 ~ 현재</div>
 
+            <div className="mt-6 text-[1.015rem]">● 자사 캠퍼스 앱(상명대학교)</div>
+            <div className="flex flex-col text-[0.975rem] ">
+            <div>[기존 바닐라 캠퍼스앱 NextJs로 마이그레이션 작업]</div>
+            
+              <div>- 바닐라스크립트이다 보니 기존앱의 문제점으로 앱초기빌드속도 너무느려 사용자가 불편함을 느낌</div>
+              <div>- 여러 프레임워크중 이미지최적화/ 앱빌드속도를 생각하여 SSR 방식의 NEXTJS로 프레임워크를 선정함</div>
+              <div>- 마이그레이션 기간이 2주정도의 짧은 기간이였기 때문에 전문 퍼블을 받기보다는 기존 디자인은 유지한 상태로 Tailwind로 퍼블 작업</div>
+              <div>- Image Component를 사용한 이미지 최적화 및 ReactQuery를 이용한 Api연동 진행</div>
+            </div>
+
             <div className="mt-6 text-[1.015rem]">● 신한은행 헤이영캠퍼스</div>
             <div className="flex flex-col text-[0.875rem] ">
               <div>
