@@ -108,10 +108,11 @@ export default function MainLayout() {
                 {<div className="relative w-[45%] animate-fadeIn x-1100:w-[50%] x-750:w-[60%]">
                     <Image
                       src="/assets/images/turnTable.png"
-                      width={1300}
-                      height={1600}
+                      width={400}
+                      height={100}
                       alt="recode"
                       priority
+                      className="w-full h-full"
                     />
             
                   <div className={cn('absolute z-[60] top-0 right-0  w-[25%] transform translate-x-[-80%] translate-y-[55%]',
@@ -143,9 +144,10 @@ export default function MainLayout() {
                     >
                     {imgMount && <Image
                       src={`/assets/images/${lp.img}.png`}
-                      width={500}
-                      height={500}
+                      width={200}
+                      height={100}
                       alt="lp"
+                      className="w-full h-full"
                       
                     />}
                     </div>
@@ -163,8 +165,8 @@ export default function MainLayout() {
               >
                 <Image
                       src={`/assets/images/play_${iconTheme}.png`}
-                      width={100}
-                      height={100}
+                      width={50}
+                      height={50}
                       alt="soundIcon"
                       className="w-[80%]"
                     
@@ -174,8 +176,8 @@ export default function MainLayout() {
               <button className="rounded_block" onClick={() => func.openBox()}>
                 <Image
                       src={`/assets/images/openBox_${iconTheme}.png`}
-                      width={100}
-                      height={100}
+                      width={50}
+                      height={50}
                       alt="soundIcon"
                       className="w-[80%]"
                     
