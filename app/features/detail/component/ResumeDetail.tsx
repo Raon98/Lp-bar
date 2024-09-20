@@ -69,18 +69,19 @@ const ResumeDetail = () => {
             <div className="flex flex-col text-[0.975rem] ">
             <div>[기존 바닐라 캠퍼스앱 NextJs로 마이그레이션 작업]</div>
             
-              <div>- 바닐라스크립트이다 보니 기존앱의 문제점으로 앱초기빌드속도 너무느려 사용자가 불편함을 느낌</div>
-              <div>- 여러 프레임워크중 이미지최적화/ 앱빌드/라우팅 속도를 생각하여 SSR 방식의 NEXTJS로 프레임워크를 선정함</div>
-              <div>- 마이그레이션 기간이 2주정도의 짧은 기간이였기 때문에 전문 퍼블을 받기보다는 기존 디자인은 유지한 상태로 Tailwind로 퍼블 작업</div>
-              <div>- Image Component를 사용한 이미지 최적화 및 ReactQuery를 이용한 Api연동 진행</div>
+              <div>- {"전체적인 ui/ux 개선 -> 로그인/메인/학생증 등.."}</div>
+              <div>- ssr을 이용한 api 요청 속도 개선</div>
+              <div>- {"기존 Url인코딩 -> Jwt를 이용한 api 보안 개선"}</div>
+              <div>- 이미지 preview속도 개선 및 최적화로  페이지 변환/이동 속도 향상</div>
+              <div>- Docker를 이용한 ci/cd 구축</div>
             </div>
 
             <div className="mt-6 text-[1.015rem]">● 신한은행 헤이영캠퍼스</div>
             <div className="flex flex-col text-[0.875rem] ">
-              <div>
-                - Vue3를 이용하여 프론트엔드 개발 및 타 학교 메뉴및 SSO연동
-              </div>
-              <div>- Java 및 Mybatis를 이용하여 API 개발 및 연동</div>
+              <div className="">- Vue3를 이용하여 프론트엔드 화면 개발</div>
+              <div className="">- 타 학교/협력업체 SSO 연동 및 개발</div>
+              <div className="">- 기존 소스 컴포넌트화 및 공통화 작업 진행</div>
+              <div className="">- Java 및 Mybatis를 이용하여 백엔드 개발</div>
             </div>
 
             <div className="mt-6">
