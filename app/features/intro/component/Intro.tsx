@@ -24,6 +24,8 @@ export default function Intro() {
 
   useEffect(() => {
     setLp(getKeyLp("lp1"));
+
+    router.prefetch('/main')
   }, []);
   
   useEffect(() => {
