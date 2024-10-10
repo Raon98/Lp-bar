@@ -80,7 +80,10 @@ export default function MainLayout() {
     let filterList = lpList.filter(v=> v.key === lp.key)
     filterList?.length> 0 ? setLp(filterList[0]) : setLp(lpList[0]) 
 
-
+    for(let idx of [1,2,3]){
+      router.prefetch(`/detail/${idx}`)
+    }
+  
   }, []);
 
   return (
