@@ -39,8 +39,8 @@ const ResumeDetail = () => {
             <div className="text-[1.15rem]">평범함에 김성철 더하기</div>
             <div>안녕하세요. 3년차 프론트엔드 개발자 김성철입니다.</div>
             <div>
-            현재 직장에서는 Vue,js와 Java를 이용한 풀스택개발자로 일하고 있지만 서버,DB 등 기초지식을 기반으로두고 
-            프론트엔드개발자로서 프론트엔드를 중심으로 공부하며 나아가고있습니다.
+              현재 직장에서는 Vue,js와 Java를 이용한 풀스택개발자로 일하고 있지만 서버,DB 등 기초지식을 기반으로두고
+              프론트엔드개발자로서 프론트엔드를 중심으로 공부하며 나아가고있습니다.
             </div>
           </div>
 
@@ -65,10 +65,10 @@ const ResumeDetail = () => {
             <div className="text-[1.345rem]">(주)로텍스</div>
             <div>2022.2 ~ 현재</div>
 
-            <div className="mt-6 text-[1.015rem]">● 자사 캠퍼스 앱(상명대학교)</div>
+            <div className="mt-6 text-[1.015rem]">● 자사 캠퍼스 앱(상명대학교) 2024.09 ~ 2024.10 [배포완료]</div>
             <div className="flex flex-col text-[0.975rem] ">
-            <div>[기존 바닐라 캠퍼스앱 NextJs로 마이그레이션 작업]</div>
-            
+              <div>[기존 바닐라 캠퍼스앱 NextJs로 마이그레이션 작업]</div>
+
               <div>- {"전체적인 ui/ux 개선 -> 로그인/메인/학생증 등.."}</div>
               <div>- ssr을 이용한 api 요청 속도 개선</div>
               <div>- {"기존 Url인코딩 -> Jwt를 이용한 api 보안 개선"}</div>
@@ -76,7 +76,7 @@ const ResumeDetail = () => {
               <div>- Docker를 이용한 ci/cd 구축</div>
             </div>
 
-            <div className="mt-6 text-[1.015rem]">● 신한은행 헤이영캠퍼스</div>
+            <div className="mt-6 text-[1.015rem]">● 신한은행 헤이영캠퍼스 2022.2 ~ 현재진행중</div>
             <div className="flex flex-col text-[0.875rem] ">
               <div className="">- Vue3를 이용하여 프론트엔드 화면 개발</div>
               <div className="">- 타 학교/협력업체 SSO 연동 및 개발</div>
@@ -98,7 +98,7 @@ const ResumeDetail = () => {
                 - 신규 개발 및 운영 유지보수를 동시에 진행함에 따라 은행 특성상
                 배포를 진행하는 과정 또한 까다로워 보통 1주일이라는 기간이
                 기본으로 걸렸지만 학교의 요청사항은 실시간으로 변경해 달라는
-                요청이 많았습니다. 이의 문제를 해결하기 위해 기본 정적으로 
+                요청이 많았습니다. 이의 문제를 해결하기 위해 기본 정적으로
                 되어있던 부분을 관리자페이지를 통해서 컨트롤할 수 있도록
                 수정하였습니다. 공통코드라는 테이블을 이용하여 해당 값의 대한
                 값이나 플래그를 등록하였고 화면소스상에서 공통코드의 값을 받아
