@@ -38,9 +38,16 @@ const ResumeDetail = () => {
           <div className="mt-3">
             <div className="text-[1.15rem]">평범함에 김성철 더하기</div>
             <div>안녕하세요. 3년차 프론트엔드 개발자 김성철입니다.</div>
-            <div>
-              현재 직장에서는 Vue,js와 Java를 이용한 풀스택개발자로 일하고 있지만 서버,DB 등 기초지식을 기반으로두고
-              프론트엔드개발자로서 프론트엔드를 중심으로 공부하며 나아가고있습니다.
+            <div className="flex flex-col">
+              <div>
+                현재 직장에서는 Vue.js와 Java를 이용하여 대규모 대학교서비스를
+                운영하고있습니다.
+              </div>
+              <div>
+                기초적인 서버,DB 등 지식을 기반으로두고 프론트엔드 기술을
+                중점으로 Next.js,React.js등 여러 프레임워크를 공부하고 실제
+                프로젝트에 적용해가며 끊임없이 발전해 나아가고 있습니다.
+              </div>
             </div>
           </div>
 
@@ -65,18 +72,24 @@ const ResumeDetail = () => {
             <div className="text-[1.345rem]">(주)로텍스</div>
             <div>2022.2 ~ 현재</div>
 
-            <div className="mt-6 text-[1.015rem]">● 자사 캠퍼스 앱(상명대학교) 2024.09 ~ 2024.10 [배포완료]</div>
+            <div className="mt-6 text-[1.015rem]">
+              ● 자사 캠퍼스 앱(상명대학교) 2024.09 ~ 2024.10 [배포완료]
+            </div>
             <div className="flex flex-col text-[0.975rem] ">
               <div>[기존 바닐라 캠퍼스앱 NextJs로 마이그레이션 작업]</div>
 
               <div>- {"전체적인 ui/ux 개선 -> 로그인/메인/학생증 등.."}</div>
               <div>- ssr을 이용한 api 요청 속도 개선</div>
               <div>- {"기존 Url인코딩 -> Jwt를 이용한 api 보안 개선"}</div>
-              <div>- 이미지 preview속도 개선 및 최적화로  페이지 변환/이동 속도 향상</div>
+              <div>
+                - 이미지 preview속도 개선 및 최적화로 페이지 변환/이동 속도 향상
+              </div>
               <div>- Docker를 이용한 ci/cd 구축</div>
             </div>
 
-            <div className="mt-6 text-[1.015rem]">● 신한은행 헤이영캠퍼스 2022.2 ~ 현재진행중</div>
+            <div className="mt-6 text-[1.015rem]">
+              ● 신한은행 헤이영캠퍼스 2022.2 ~ 현재진행중
+            </div>
             <div className="flex flex-col text-[0.875rem] ">
               <div className="">- Vue3를 이용하여 프론트엔드 화면 개발</div>
               <div className="">- 타 학교/협력업체 SSO 연동 및 개발</div>
@@ -154,7 +167,9 @@ const ResumeDetail = () => {
               <div>언어 : Typescript, Javascript , java</div>
               <div>프레임워크 : Vue3, Reactjs, Nextjs</div>
               <div>상태관리 : Vuex, Recoil, Zustand</div>
-              <div>디자인 : Css, Scss(Sass), TailwindCss, StyledComponent, Figma</div>
+              <div>
+                디자인 : Css, Scss(Sass), TailwindCss, StyledComponent, Figma
+              </div>
               <div>배포 : Aws Ec2, Docker, GitAction</div>
             </div>
           </div>
